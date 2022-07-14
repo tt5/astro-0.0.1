@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 
+import tailwind from "@astrojs/tailwind";
+
 // https://astro.build/config
 export default defineConfig({
   adapter: cloudflare(),
@@ -15,12 +17,13 @@ export default defineConfig({
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
-      wrap: true,
-    },
-//    remarkplugins: [
-//      'remark-smartypants'
-//    ],
-//    rehypePlugins: [
-//    ],
-  }
+      wrap: true
+    } //    remarkplugins: [
+    //      'remark-smartypants'
+    //    ],
+    //    rehypePlugins: [
+    //    ],
+
+  },
+  integrations: [tailwind()]
 });
