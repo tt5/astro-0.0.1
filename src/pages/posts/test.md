@@ -1,8 +1,8 @@
 ---
-layout: '../../layouts/MdLayout.astro'
+layout: '@layouts/MdLayout.astro'
 title: 'My Markdown page'
 setup: |
-  import Title from '../../components/Title.astro'
+  import Title from '@components/Title.astro'
 ---
 <Title>Title</Title>
 
