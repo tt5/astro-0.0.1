@@ -6,9 +6,13 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "wrangler pages dev ./dist"
   },
   "devDependencies": {
     "astro": "^1.0.0-beta.63"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^0.2.3",
+    "wrangler": "^2.0.16"
   }
 }
