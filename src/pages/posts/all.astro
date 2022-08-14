@@ -1,7 +1,17 @@
 ---
 const posts = await Astro.glob('./*.md');
 ---
-<h1>all</h1>
+
+<style>
+a {
+  @apply underline text-blue-600;
+}
+h1 {
+  @apply text-2xl font-bold;
+}
+</style>
+
+<h1>All posts</h1>
 <div>
 {posts.slice(0, 3).map((post) => (
   <article>

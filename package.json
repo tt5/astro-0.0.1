@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^0.2.3",
+    "rehype-katex": "^6.0.2",
+    "remark-math": "^5.1.1",
     "wrangler": "^2.0.16"
   }
 }

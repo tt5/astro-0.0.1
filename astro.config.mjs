@@ -21,11 +21,15 @@ export default defineConfig({
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
       wrap: true
-    } //    remarkplugins: [
-    //      'remark-smartypants'
-    //    ],
-    //    rehypePlugins: [
-    //    ],
+    },
+    remarkPlugins: [
+      'remark-gfm',
+      'remark-smartypants',
+      'remark-math',
+        ],
+    rehypePlugins: [
+      'rehype-katex',
+        ],
 
   },
   integrations: [tailwind()]

@@ -9,6 +9,13 @@ setup: |
 
 This is my page, written in **Markdown.**
 
+$\displaystyle
+L = \frac{1}{2} \rho v^2 S C_L
+$
+
+text $L$ text
+
+
 ```js
 console.log("hi");
 ```

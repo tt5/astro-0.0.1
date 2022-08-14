@@ -1,8 +1,36 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 
+const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+
+if (!res.ok) {
+  console.log('error')
+}
+
+const todo1 = await res.json()
+const {userId, id, title, completed} = todo1
+
 ---
+<style>
+a {
+  @apply underline text-blue-600;
+}
+</style>
+
+
 <BaseLayout />
+  <main>
 		<h1 class="text-3xl font-bold">Astro</h1>
-    <a href="/posts/test">test</a>
+    <ul>
+    <li>
+    <a href="/posts/all">posts/all</a>
+    </li>
+    <li>
+    <a href="/posts/test">posts/test</a>
+    </li>
+    </ul>
+    <div>title: {title}</div>
+    <div>completed: {JSON.stringify(completed)}</div>
+    <pre>{JSON.stringify(todo1, null, 2)}</pre>
+  </main>
 <BaseLayout />
