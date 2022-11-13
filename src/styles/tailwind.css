@@ -1,0 +1,8 @@
+
+a {
+  @apply underline text-blue-600;
+}
+
+h1 {
+  @apply text-2xl font-bold;
+}

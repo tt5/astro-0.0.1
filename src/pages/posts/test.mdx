@@ -1,0 +1,20 @@
+---
+layout: '@layouts/MdLayout.astro'
+---
+export const title = 'Test'
+import Title from '@components/Title.astro'
+import Expr from 'astro-katex/OnlyExpression.astro'
+
+<Title>{title}</Title>
+
+This is my page, written in **MDX**.
+
+<Expr>\displaystyle
+L = \frac{1}{2} \rho v^2 S C_L</Expr>
+
+text <Expr>L</Expr> text
+
+
+```js
+console.log("hi");
+```
