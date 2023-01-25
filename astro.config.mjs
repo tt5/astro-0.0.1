@@ -1,10 +1,15 @@
 import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
 import tailwind from "@astrojs/tailwind";
-import katex from 'astro-katex';
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
 
 // https://astro.build/config
 import mdx from "@astrojs/mdx";
+
+// https://astro.build/config
+
+// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +18,15 @@ export default defineConfig({
   },
   adapter: cloudflare(),
   markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [
+      [
+        rehypeKatex,
+        {
+          //output: "mathml",
+        },
+      ],
+    ],
     syntaxHighlight: "shiki",
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
@@ -26,5 +40,6 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [tailwind(), mdx(), katex()],
+  integrations: [tailwind(), mdx()],
+  output: "server",
 });

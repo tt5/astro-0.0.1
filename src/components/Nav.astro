@@ -1,0 +1,8 @@
+---
+const { name } = Astro.props
+---
+<nav class="flex gap-2 pl-4">
+<a href="/">home</a>
+{name && <span>/</span>}
+{name && <a href=`/${name}`>{name}</a>}
+</nav>

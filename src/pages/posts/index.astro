@@ -1,0 +1,15 @@
+---
+import Nav from "@components/Nav.astro";
+import Title from "@components/Title.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
+---
+
+<BaseLayout>
+  <Nav />
+  <Title>Posts</Title>
+  <main class="flex flex-col p-4 bg-white">
+    {posts.map((post) => <a href={`/posts/${post.slug}`}>{post.data.title}</a>)}
+  </main>
+</BaseLayout>

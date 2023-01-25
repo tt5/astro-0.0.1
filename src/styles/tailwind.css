@@ -1,8 +1,11 @@
+body {
+  @apply bg-cyan-100;
+}
 
 a {
   @apply underline text-blue-600;
 }
 
 h1 {
-  @apply text-2xl font-bold;
+  @apply text-3xl font-bold;
 }
