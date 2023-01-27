@@ -23,7 +23,7 @@ export default defineConfig({
       [
         rehypeKatex,
         {
-          //output: "mathml",
+          output: "html",
         },
       ],
     ],
@@ -40,6 +40,6 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [tailwind(), mdx()],
+  integrations: [mdx()],
   output: "server",
 });

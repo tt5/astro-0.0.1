@@ -8,8 +8,12 @@ const posts = await getCollection("blog");
 
 <BaseLayout>
   <Nav />
+  <main style="
+    display: flex;
+    flex-direction: column;
+  ">
   <Title>Posts</Title>
-  <main class="flex flex-col p-4 bg-white">
     {posts.map((post) => <a href={`/posts/${post.slug}`}>{post.data.title}</a>)}
   </main>
+  <footer>footer</footer>
 </BaseLayout>

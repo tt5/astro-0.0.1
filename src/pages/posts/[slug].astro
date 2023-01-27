@@ -14,8 +14,11 @@ import Nav from '@components/Nav.astro'
 ---
 
 <Nav name="posts"/>
-<Title>{post?.data.title}</Title>
 
-<main class="p-4 bg-white">
+<main style="
+  padding: 0.5rem;
+">
+<Title>{post?.data.title}</Title>
 <Content />
 </main>
+<footer>footer</footer>

@@ -1,21 +1,21 @@
 ---
-import '../styles/global.css';
 ---
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Tt5 Blog (astro)</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato"
-    >
-    <script type="text/javascript">
-
-</script>
-
 	</head>
-	<body>
+	<body style="
+    min-height: 100vh;
+    min-height: 100dvh;
+  
+    display: grid;
+    grid-template-rows:
+      auto
+      1fr
+      auto;
+  ">
     <slot />
 	</body>
 </html>

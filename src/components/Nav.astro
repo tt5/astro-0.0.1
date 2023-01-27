@@ -1,7 +1,9 @@
 ---
 const { name } = Astro.props
 ---
-<nav class="flex gap-2 pl-4">
+<nav style="
+  padding: 0.5rem;
+">
 <a href="/">home</a>
 {name && <span>/</span>}
 {name && <a href=`/${name}`>{name}</a>}
