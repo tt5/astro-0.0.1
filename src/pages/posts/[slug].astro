@@ -1,12 +1,25 @@
 ---
-import { getEntryBySlug } from 'astro:content';
 
-const { slug } = Astro.params;
+export const prerender = true;
+import { CollectionEntry, getCollection } from 'astro:content';
 
-// @ts-ignore
-const post = await getEntryBySlug('blog', slug);
+//const post = await getEntryBySlug('blog', Astro.params.slug as CollectionEntry<'blog'>["id"]);
 
-// @ts-ignore
+//const { Content } = await post  ?.render() as any
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+
+  return allPosts.map((post) => {
+    return {
+      params: { slug: post.slug }, 
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props as { post: CollectionEntry<'blog'> }
+
 const { Content } = await post.render();
 
 import Title from '@components/Title.astro'
@@ -18,7 +31,6 @@ import Nav from '@components/Nav.astro'
 <main style="
   padding: 0.5rem;
 ">
-<Title>{post?.data.title}</Title>
 <Content />
 </main>
 <footer>footer</footer>

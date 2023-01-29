@@ -1,0 +1,17 @@
+{
+  "functions": [
+    {
+      "function": "entry",
+      "path": "/"
+    },
+    {
+      "function": "entry",
+      "path": "/posts"
+    },
+    {
+      "function": "entry",
+      "pattern": "^/posts/([^/]+?)/?$"
+    }
+  ],
+  "version": 1
+}
