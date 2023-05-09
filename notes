@@ -1,6 +1,2 @@
-npm run build
-npx wrangler pages publish dist/
-
-
 tailwindcss -i src/styles/tailwind.css > src/styles/global.css
 npm install -g @astrojs/language-server

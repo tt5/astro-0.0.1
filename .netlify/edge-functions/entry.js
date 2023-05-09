@@ -2,8 +2,17 @@ globalThis.process = {
 	argv: [],
 	env: Deno.env.toObject(),
 };
+var __defProp = Object.defineProperty;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
 
-// .netlify/edge-functions/chunks/astro.da08a6d2.mjs
+// .netlify/edge-functions/chunks/astro.2d2db69e.mjs
 function Mime$1() {
   this._types = /* @__PURE__ */ Object.create(null);
   this._extensions = /* @__PURE__ */ Object.create(null);
@@ -14,51 +23,6 @@ function Mime$1() {
   this.getType = this.getType.bind(this);
   this.getExtension = this.getExtension.bind(this);
 }
-Mime$1.prototype.define = function(typeMap, force) {
-  for (let type in typeMap) {
-    let extensions = typeMap[type].map(function(t) {
-      return t.toLowerCase();
-    });
-    type = type.toLowerCase();
-    for (let i = 0; i < extensions.length; i++) {
-      const ext = extensions[i];
-      if (ext[0] === "*") {
-        continue;
-      }
-      if (!force && ext in this._types) {
-        throw new Error(
-          'Attempt to change mapping for "' + ext + '" extension from "' + this._types[ext] + '" to "' + type + '". Pass `force=true` to allow this, otherwise remove "' + ext + '" from the list of extensions for "' + type + '".'
-        );
-      }
-      this._types[ext] = type;
-    }
-    if (force || !this._extensions[type]) {
-      const ext = extensions[0];
-      this._extensions[type] = ext[0] !== "*" ? ext : ext.substr(1);
-    }
-  }
-};
-Mime$1.prototype.getType = function(path) {
-  path = String(path);
-  let last = path.replace(/^.*[/\\]/, "").toLowerCase();
-  let ext = last.replace(/^.*\./, "").toLowerCase();
-  let hasPath = last.length < path.length;
-  let hasDot = ext.length < last.length - 1;
-  return (hasDot || !hasPath) && this._types[ext] || null;
-};
-Mime$1.prototype.getExtension = function(type) {
-  type = /^\s*([^;\s]*)/.test(type) && RegExp.$1;
-  return type && this._extensions[type.toLowerCase()] || null;
-};
-var Mime_1 = Mime$1;
-var standard = { "application/andrew-inset": ["ez"], "application/applixware": ["aw"], "application/atom+xml": ["atom"], "application/atomcat+xml": ["atomcat"], "application/atomdeleted+xml": ["atomdeleted"], "application/atomsvc+xml": ["atomsvc"], "application/atsc-dwd+xml": ["dwd"], "application/atsc-held+xml": ["held"], "application/atsc-rsat+xml": ["rsat"], "application/bdoc": ["bdoc"], "application/calendar+xml": ["xcs"], "application/ccxml+xml": ["ccxml"], "application/cdfx+xml": ["cdfx"], "application/cdmi-capability": ["cdmia"], "application/cdmi-container": ["cdmic"], "application/cdmi-domain": ["cdmid"], "application/cdmi-object": ["cdmio"], "application/cdmi-queue": ["cdmiq"], "application/cu-seeme": ["cu"], "application/dash+xml": ["mpd"], "application/davmount+xml": ["davmount"], "application/docbook+xml": ["dbk"], "application/dssc+der": ["dssc"], "application/dssc+xml": ["xdssc"], "application/ecmascript": ["es", "ecma"], "application/emma+xml": ["emma"], "application/emotionml+xml": ["emotionml"], "application/epub+zip": ["epub"], "application/exi": ["exi"], "application/express": ["exp"], "application/fdt+xml": ["fdt"], "application/font-tdpfr": ["pfr"], "application/geo+json": ["geojson"], "application/gml+xml": ["gml"], "application/gpx+xml": ["gpx"], "application/gxf": ["gxf"], "application/gzip": ["gz"], "application/hjson": ["hjson"], "application/hyperstudio": ["stk"], "application/inkml+xml": ["ink", "inkml"], "application/ipfix": ["ipfix"], "application/its+xml": ["its"], "application/java-archive": ["jar", "war", "ear"], "application/java-serialized-object": ["ser"], "application/java-vm": ["class"], "application/javascript": ["js", "mjs"], "application/json": ["json", "map"], "application/json5": ["json5"], "application/jsonml+json": ["jsonml"], "application/ld+json": ["jsonld"], "application/lgr+xml": ["lgr"], "application/lost+xml": ["lostxml"], "application/mac-binhex40": ["hqx"], "application/mac-compactpro": ["cpt"], "application/mads+xml": ["mads"], "application/manifest+json": ["webmanifest"], "application/marc": ["mrc"], "application/marcxml+xml": ["mrcx"], "application/mathematica": ["ma", "nb", "mb"], "application/mathml+xml": ["mathml"], "application/mbox": ["mbox"], "application/mediaservercontrol+xml": ["mscml"], "application/metalink+xml": ["metalink"], "application/metalink4+xml": ["meta4"], "application/mets+xml": ["mets"], "application/mmt-aei+xml": ["maei"], "application/mmt-usd+xml": ["musd"], "application/mods+xml": ["mods"], "application/mp21": ["m21", "mp21"], "application/mp4": ["mp4s", "m4p"], "application/msword": ["doc", "dot"], "application/mxf": ["mxf"], "application/n-quads": ["nq"], "application/n-triples": ["nt"], "application/node": ["cjs"], "application/octet-stream": ["bin", "dms", "lrf", "mar", "so", "dist", "distz", "pkg", "bpk", "dump", "elc", "deploy", "exe", "dll", "deb", "dmg", "iso", "img", "msi", "msp", "msm", "buffer"], "application/oda": ["oda"], "application/oebps-package+xml": ["opf"], "application/ogg": ["ogx"], "application/omdoc+xml": ["omdoc"], "application/onenote": ["onetoc", "onetoc2", "onetmp", "onepkg"], "application/oxps": ["oxps"], "application/p2p-overlay+xml": ["relo"], "application/patch-ops-error+xml": ["xer"], "application/pdf": ["pdf"], "application/pgp-encrypted": ["pgp"], "application/pgp-signature": ["asc", "sig"], "application/pics-rules": ["prf"], "application/pkcs10": ["p10"], "application/pkcs7-mime": ["p7m", "p7c"], "application/pkcs7-signature": ["p7s"], "application/pkcs8": ["p8"], "application/pkix-attr-cert": ["ac"], "application/pkix-cert": ["cer"], "application/pkix-crl": ["crl"], "application/pkix-pkipath": ["pkipath"], "application/pkixcmp": ["pki"], "application/pls+xml": ["pls"], "application/postscript": ["ai", "eps", "ps"], "application/provenance+xml": ["provx"], "application/pskc+xml": ["pskcxml"], "application/raml+yaml": ["raml"], "application/rdf+xml": ["rdf", "owl"], "application/reginfo+xml": ["rif"], "application/relax-ng-compact-syntax": ["rnc"], "application/resource-lists+xml": ["rl"], "application/resource-lists-diff+xml": ["rld"], "application/rls-services+xml": ["rs"], "application/route-apd+xml": ["rapd"], "application/route-s-tsid+xml": ["sls"], "application/route-usd+xml": ["rusd"], "application/rpki-ghostbusters": ["gbr"], "application/rpki-manifest": ["mft"], "application/rpki-roa": ["roa"], "application/rsd+xml": ["rsd"], "application/rss+xml": ["rss"], "application/rtf": ["rtf"], "application/sbml+xml": ["sbml"], "application/scvp-cv-request": ["scq"], "application/scvp-cv-response": ["scs"], "application/scvp-vp-request": ["spq"], "application/scvp-vp-response": ["spp"], "application/sdp": ["sdp"], "application/senml+xml": ["senmlx"], "application/sensml+xml": ["sensmlx"], "application/set-payment-initiation": ["setpay"], "application/set-registration-initiation": ["setreg"], "application/shf+xml": ["shf"], "application/sieve": ["siv", "sieve"], "application/smil+xml": ["smi", "smil"], "application/sparql-query": ["rq"], "application/sparql-results+xml": ["srx"], "application/srgs": ["gram"], "application/srgs+xml": ["grxml"], "application/sru+xml": ["sru"], "application/ssdl+xml": ["ssdl"], "application/ssml+xml": ["ssml"], "application/swid+xml": ["swidtag"], "application/tei+xml": ["tei", "teicorpus"], "application/thraud+xml": ["tfi"], "application/timestamped-data": ["tsd"], "application/toml": ["toml"], "application/trig": ["trig"], "application/ttml+xml": ["ttml"], "application/ubjson": ["ubj"], "application/urc-ressheet+xml": ["rsheet"], "application/urc-targetdesc+xml": ["td"], "application/voicexml+xml": ["vxml"], "application/wasm": ["wasm"], "application/widget": ["wgt"], "application/winhlp": ["hlp"], "application/wsdl+xml": ["wsdl"], "application/wspolicy+xml": ["wspolicy"], "application/xaml+xml": ["xaml"], "application/xcap-att+xml": ["xav"], "application/xcap-caps+xml": ["xca"], "application/xcap-diff+xml": ["xdf"], "application/xcap-el+xml": ["xel"], "application/xcap-ns+xml": ["xns"], "application/xenc+xml": ["xenc"], "application/xhtml+xml": ["xhtml", "xht"], "application/xliff+xml": ["xlf"], "application/xml": ["xml", "xsl", "xsd", "rng"], "application/xml-dtd": ["dtd"], "application/xop+xml": ["xop"], "application/xproc+xml": ["xpl"], "application/xslt+xml": ["*xsl", "xslt"], "application/xspf+xml": ["xspf"], "application/xv+xml": ["mxml", "xhvml", "xvml", "xvm"], "application/yang": ["yang"], "application/yin+xml": ["yin"], "application/zip": ["zip"], "audio/3gpp": ["*3gpp"], "audio/adpcm": ["adp"], "audio/amr": ["amr"], "audio/basic": ["au", "snd"], "audio/midi": ["mid", "midi", "kar", "rmi"], "audio/mobile-xmf": ["mxmf"], "audio/mp3": ["*mp3"], "audio/mp4": ["m4a", "mp4a"], "audio/mpeg": ["mpga", "mp2", "mp2a", "mp3", "m2a", "m3a"], "audio/ogg": ["oga", "ogg", "spx", "opus"], "audio/s3m": ["s3m"], "audio/silk": ["sil"], "audio/wav": ["wav"], "audio/wave": ["*wav"], "audio/webm": ["weba"], "audio/xm": ["xm"], "font/collection": ["ttc"], "font/otf": ["otf"], "font/ttf": ["ttf"], "font/woff": ["woff"], "font/woff2": ["woff2"], "image/aces": ["exr"], "image/apng": ["apng"], "image/avif": ["avif"], "image/bmp": ["bmp"], "image/cgm": ["cgm"], "image/dicom-rle": ["drle"], "image/emf": ["emf"], "image/fits": ["fits"], "image/g3fax": ["g3"], "image/gif": ["gif"], "image/heic": ["heic"], "image/heic-sequence": ["heics"], "image/heif": ["heif"], "image/heif-sequence": ["heifs"], "image/hej2k": ["hej2"], "image/hsj2": ["hsj2"], "image/ief": ["ief"], "image/jls": ["jls"], "image/jp2": ["jp2", "jpg2"], "image/jpeg": ["jpeg", "jpg", "jpe"], "image/jph": ["jph"], "image/jphc": ["jhc"], "image/jpm": ["jpm"], "image/jpx": ["jpx", "jpf"], "image/jxr": ["jxr"], "image/jxra": ["jxra"], "image/jxrs": ["jxrs"], "image/jxs": ["jxs"], "image/jxsc": ["jxsc"], "image/jxsi": ["jxsi"], "image/jxss": ["jxss"], "image/ktx": ["ktx"], "image/ktx2": ["ktx2"], "image/png": ["png"], "image/sgi": ["sgi"], "image/svg+xml": ["svg", "svgz"], "image/t38": ["t38"], "image/tiff": ["tif", "tiff"], "image/tiff-fx": ["tfx"], "image/webp": ["webp"], "image/wmf": ["wmf"], "message/disposition-notification": ["disposition-notification"], "message/global": ["u8msg"], "message/global-delivery-status": ["u8dsn"], "message/global-disposition-notification": ["u8mdn"], "message/global-headers": ["u8hdr"], "message/rfc822": ["eml", "mime"], "model/3mf": ["3mf"], "model/gltf+json": ["gltf"], "model/gltf-binary": ["glb"], "model/iges": ["igs", "iges"], "model/mesh": ["msh", "mesh", "silo"], "model/mtl": ["mtl"], "model/obj": ["obj"], "model/step+xml": ["stpx"], "model/step+zip": ["stpz"], "model/step-xml+zip": ["stpxz"], "model/stl": ["stl"], "model/vrml": ["wrl", "vrml"], "model/x3d+binary": ["*x3db", "x3dbz"], "model/x3d+fastinfoset": ["x3db"], "model/x3d+vrml": ["*x3dv", "x3dvz"], "model/x3d+xml": ["x3d", "x3dz"], "model/x3d-vrml": ["x3dv"], "text/cache-manifest": ["appcache", "manifest"], "text/calendar": ["ics", "ifb"], "text/coffeescript": ["coffee", "litcoffee"], "text/css": ["css"], "text/csv": ["csv"], "text/html": ["html", "htm", "shtml"], "text/jade": ["jade"], "text/jsx": ["jsx"], "text/less": ["less"], "text/markdown": ["markdown", "md"], "text/mathml": ["mml"], "text/mdx": ["mdx"], "text/n3": ["n3"], "text/plain": ["txt", "text", "conf", "def", "list", "log", "in", "ini"], "text/richtext": ["rtx"], "text/rtf": ["*rtf"], "text/sgml": ["sgml", "sgm"], "text/shex": ["shex"], "text/slim": ["slim", "slm"], "text/spdx": ["spdx"], "text/stylus": ["stylus", "styl"], "text/tab-separated-values": ["tsv"], "text/troff": ["t", "tr", "roff", "man", "me", "ms"], "text/turtle": ["ttl"], "text/uri-list": ["uri", "uris", "urls"], "text/vcard": ["vcard"], "text/vtt": ["vtt"], "text/xml": ["*xml"], "text/yaml": ["yaml", "yml"], "video/3gpp": ["3gp", "3gpp"], "video/3gpp2": ["3g2"], "video/h261": ["h261"], "video/h263": ["h263"], "video/h264": ["h264"], "video/iso.segment": ["m4s"], "video/jpeg": ["jpgv"], "video/jpm": ["*jpm", "jpgm"], "video/mj2": ["mj2", "mjp2"], "video/mp2t": ["ts"], "video/mp4": ["mp4", "mp4v", "mpg4"], "video/mpeg": ["mpeg", "mpg", "mpe", "m1v", "m2v"], "video/ogg": ["ogv"], "video/quicktime": ["qt", "mov"], "video/webm": ["webm"] };
-var other = { "application/prs.cww": ["cww"], "application/vnd.1000minds.decision-model+xml": ["1km"], "application/vnd.3gpp.pic-bw-large": ["plb"], "application/vnd.3gpp.pic-bw-small": ["psb"], "application/vnd.3gpp.pic-bw-var": ["pvb"], "application/vnd.3gpp2.tcap": ["tcap"], "application/vnd.3m.post-it-notes": ["pwn"], "application/vnd.accpac.simply.aso": ["aso"], "application/vnd.accpac.simply.imp": ["imp"], "application/vnd.acucobol": ["acu"], "application/vnd.acucorp": ["atc", "acutc"], "application/vnd.adobe.air-application-installer-package+zip": ["air"], "application/vnd.adobe.formscentral.fcdt": ["fcdt"], "application/vnd.adobe.fxp": ["fxp", "fxpl"], "application/vnd.adobe.xdp+xml": ["xdp"], "application/vnd.adobe.xfdf": ["xfdf"], "application/vnd.ahead.space": ["ahead"], "application/vnd.airzip.filesecure.azf": ["azf"], "application/vnd.airzip.filesecure.azs": ["azs"], "application/vnd.amazon.ebook": ["azw"], "application/vnd.americandynamics.acc": ["acc"], "application/vnd.amiga.ami": ["ami"], "application/vnd.android.package-archive": ["apk"], "application/vnd.anser-web-certificate-issue-initiation": ["cii"], "application/vnd.anser-web-funds-transfer-initiation": ["fti"], "application/vnd.antix.game-component": ["atx"], "application/vnd.apple.installer+xml": ["mpkg"], "application/vnd.apple.keynote": ["key"], "application/vnd.apple.mpegurl": ["m3u8"], "application/vnd.apple.numbers": ["numbers"], "application/vnd.apple.pages": ["pages"], "application/vnd.apple.pkpass": ["pkpass"], "application/vnd.aristanetworks.swi": ["swi"], "application/vnd.astraea-software.iota": ["iota"], "application/vnd.audiograph": ["aep"], "application/vnd.balsamiq.bmml+xml": ["bmml"], "application/vnd.blueice.multipass": ["mpm"], "application/vnd.bmi": ["bmi"], "application/vnd.businessobjects": ["rep"], "application/vnd.chemdraw+xml": ["cdxml"], "application/vnd.chipnuts.karaoke-mmd": ["mmd"], "application/vnd.cinderella": ["cdy"], "application/vnd.citationstyles.style+xml": ["csl"], "application/vnd.claymore": ["cla"], "application/vnd.cloanto.rp9": ["rp9"], "application/vnd.clonk.c4group": ["c4g", "c4d", "c4f", "c4p", "c4u"], "application/vnd.cluetrust.cartomobile-config": ["c11amc"], "application/vnd.cluetrust.cartomobile-config-pkg": ["c11amz"], "application/vnd.commonspace": ["csp"], "application/vnd.contact.cmsg": ["cdbcmsg"], "application/vnd.cosmocaller": ["cmc"], "application/vnd.crick.clicker": ["clkx"], "application/vnd.crick.clicker.keyboard": ["clkk"], "application/vnd.crick.clicker.palette": ["clkp"], "application/vnd.crick.clicker.template": ["clkt"], "application/vnd.crick.clicker.wordbank": ["clkw"], "application/vnd.criticaltools.wbs+xml": ["wbs"], "application/vnd.ctc-posml": ["pml"], "application/vnd.cups-ppd": ["ppd"], "application/vnd.curl.car": ["car"], "application/vnd.curl.pcurl": ["pcurl"], "application/vnd.dart": ["dart"], "application/vnd.data-vision.rdz": ["rdz"], "application/vnd.dbf": ["dbf"], "application/vnd.dece.data": ["uvf", "uvvf", "uvd", "uvvd"], "application/vnd.dece.ttml+xml": ["uvt", "uvvt"], "application/vnd.dece.unspecified": ["uvx", "uvvx"], "application/vnd.dece.zip": ["uvz", "uvvz"], "application/vnd.denovo.fcselayout-link": ["fe_launch"], "application/vnd.dna": ["dna"], "application/vnd.dolby.mlp": ["mlp"], "application/vnd.dpgraph": ["dpg"], "application/vnd.dreamfactory": ["dfac"], "application/vnd.ds-keypoint": ["kpxx"], "application/vnd.dvb.ait": ["ait"], "application/vnd.dvb.service": ["svc"], "application/vnd.dynageo": ["geo"], "application/vnd.ecowin.chart": ["mag"], "application/vnd.enliven": ["nml"], "application/vnd.epson.esf": ["esf"], "application/vnd.epson.msf": ["msf"], "application/vnd.epson.quickanime": ["qam"], "application/vnd.epson.salt": ["slt"], "application/vnd.epson.ssf": ["ssf"], "application/vnd.eszigno3+xml": ["es3", "et3"], "application/vnd.ezpix-album": ["ez2"], "application/vnd.ezpix-package": ["ez3"], "application/vnd.fdf": ["fdf"], "application/vnd.fdsn.mseed": ["mseed"], "application/vnd.fdsn.seed": ["seed", "dataless"], "application/vnd.flographit": ["gph"], "application/vnd.fluxtime.clip": ["ftc"], "application/vnd.framemaker": ["fm", "frame", "maker", "book"], "application/vnd.frogans.fnc": ["fnc"], "application/vnd.frogans.ltf": ["ltf"], "application/vnd.fsc.weblaunch": ["fsc"], "application/vnd.fujitsu.oasys": ["oas"], "application/vnd.fujitsu.oasys2": ["oa2"], "application/vnd.fujitsu.oasys3": ["oa3"], "application/vnd.fujitsu.oasysgp": ["fg5"], "application/vnd.fujitsu.oasysprs": ["bh2"], "application/vnd.fujixerox.ddd": ["ddd"], "application/vnd.fujixerox.docuworks": ["xdw"], "application/vnd.fujixerox.docuworks.binder": ["xbd"], "application/vnd.fuzzysheet": ["fzs"], "application/vnd.genomatix.tuxedo": ["txd"], "application/vnd.geogebra.file": ["ggb"], "application/vnd.geogebra.tool": ["ggt"], "application/vnd.geometry-explorer": ["gex", "gre"], "application/vnd.geonext": ["gxt"], "application/vnd.geoplan": ["g2w"], "application/vnd.geospace": ["g3w"], "application/vnd.gmx": ["gmx"], "application/vnd.google-apps.document": ["gdoc"], "application/vnd.google-apps.presentation": ["gslides"], "application/vnd.google-apps.spreadsheet": ["gsheet"], "application/vnd.google-earth.kml+xml": ["kml"], "application/vnd.google-earth.kmz": ["kmz"], "application/vnd.grafeq": ["gqf", "gqs"], "application/vnd.groove-account": ["gac"], "application/vnd.groove-help": ["ghf"], "application/vnd.groove-identity-message": ["gim"], "application/vnd.groove-injector": ["grv"], "application/vnd.groove-tool-message": ["gtm"], "application/vnd.groove-tool-template": ["tpl"], "application/vnd.groove-vcard": ["vcg"], "application/vnd.hal+xml": ["hal"], "application/vnd.handheld-entertainment+xml": ["zmm"], "application/vnd.hbci": ["hbci"], "application/vnd.hhe.lesson-player": ["les"], "application/vnd.hp-hpgl": ["hpgl"], "application/vnd.hp-hpid": ["hpid"], "application/vnd.hp-hps": ["hps"], "application/vnd.hp-jlyt": ["jlt"], "application/vnd.hp-pcl": ["pcl"], "application/vnd.hp-pclxl": ["pclxl"], "application/vnd.hydrostatix.sof-data": ["sfd-hdstx"], "application/vnd.ibm.minipay": ["mpy"], "application/vnd.ibm.modcap": ["afp", "listafp", "list3820"], "application/vnd.ibm.rights-management": ["irm"], "application/vnd.ibm.secure-container": ["sc"], "application/vnd.iccprofile": ["icc", "icm"], "application/vnd.igloader": ["igl"], "application/vnd.immervision-ivp": ["ivp"], "application/vnd.immervision-ivu": ["ivu"], "application/vnd.insors.igm": ["igm"], "application/vnd.intercon.formnet": ["xpw", "xpx"], "application/vnd.intergeo": ["i2g"], "application/vnd.intu.qbo": ["qbo"], "application/vnd.intu.qfx": ["qfx"], "application/vnd.ipunplugged.rcprofile": ["rcprofile"], "application/vnd.irepository.package+xml": ["irp"], "application/vnd.is-xpr": ["xpr"], "application/vnd.isac.fcs": ["fcs"], "application/vnd.jam": ["jam"], "application/vnd.jcp.javame.midlet-rms": ["rms"], "application/vnd.jisp": ["jisp"], "application/vnd.joost.joda-archive": ["joda"], "application/vnd.kahootz": ["ktz", "ktr"], "application/vnd.kde.karbon": ["karbon"], "application/vnd.kde.kchart": ["chrt"], "application/vnd.kde.kformula": ["kfo"], "application/vnd.kde.kivio": ["flw"], "application/vnd.kde.kontour": ["kon"], "application/vnd.kde.kpresenter": ["kpr", "kpt"], "application/vnd.kde.kspread": ["ksp"], "application/vnd.kde.kword": ["kwd", "kwt"], "application/vnd.kenameaapp": ["htke"], "application/vnd.kidspiration": ["kia"], "application/vnd.kinar": ["kne", "knp"], "application/vnd.koan": ["skp", "skd", "skt", "skm"], "application/vnd.kodak-descriptor": ["sse"], "application/vnd.las.las+xml": ["lasxml"], "application/vnd.llamagraphics.life-balance.desktop": ["lbd"], "application/vnd.llamagraphics.life-balance.exchange+xml": ["lbe"], "application/vnd.lotus-1-2-3": ["123"], "application/vnd.lotus-approach": ["apr"], "application/vnd.lotus-freelance": ["pre"], "application/vnd.lotus-notes": ["nsf"], "application/vnd.lotus-organizer": ["org"], "application/vnd.lotus-screencam": ["scm"], "application/vnd.lotus-wordpro": ["lwp"], "application/vnd.macports.portpkg": ["portpkg"], "application/vnd.mapbox-vector-tile": ["mvt"], "application/vnd.mcd": ["mcd"], "application/vnd.medcalcdata": ["mc1"], "application/vnd.mediastation.cdkey": ["cdkey"], "application/vnd.mfer": ["mwf"], "application/vnd.mfmp": ["mfm"], "application/vnd.micrografx.flo": ["flo"], "application/vnd.micrografx.igx": ["igx"], "application/vnd.mif": ["mif"], "application/vnd.mobius.daf": ["daf"], "application/vnd.mobius.dis": ["dis"], "application/vnd.mobius.mbk": ["mbk"], "application/vnd.mobius.mqy": ["mqy"], "application/vnd.mobius.msl": ["msl"], "application/vnd.mobius.plc": ["plc"], "application/vnd.mobius.txf": ["txf"], "application/vnd.mophun.application": ["mpn"], "application/vnd.mophun.certificate": ["mpc"], "application/vnd.mozilla.xul+xml": ["xul"], "application/vnd.ms-artgalry": ["cil"], "application/vnd.ms-cab-compressed": ["cab"], "application/vnd.ms-excel": ["xls", "xlm", "xla", "xlc", "xlt", "xlw"], "application/vnd.ms-excel.addin.macroenabled.12": ["xlam"], "application/vnd.ms-excel.sheet.binary.macroenabled.12": ["xlsb"], "application/vnd.ms-excel.sheet.macroenabled.12": ["xlsm"], "application/vnd.ms-excel.template.macroenabled.12": ["xltm"], "application/vnd.ms-fontobject": ["eot"], "application/vnd.ms-htmlhelp": ["chm"], "application/vnd.ms-ims": ["ims"], "application/vnd.ms-lrm": ["lrm"], "application/vnd.ms-officetheme": ["thmx"], "application/vnd.ms-outlook": ["msg"], "application/vnd.ms-pki.seccat": ["cat"], "application/vnd.ms-pki.stl": ["*stl"], "application/vnd.ms-powerpoint": ["ppt", "pps", "pot"], "application/vnd.ms-powerpoint.addin.macroenabled.12": ["ppam"], "application/vnd.ms-powerpoint.presentation.macroenabled.12": ["pptm"], "application/vnd.ms-powerpoint.slide.macroenabled.12": ["sldm"], "application/vnd.ms-powerpoint.slideshow.macroenabled.12": ["ppsm"], "application/vnd.ms-powerpoint.template.macroenabled.12": ["potm"], "application/vnd.ms-project": ["mpp", "mpt"], "application/vnd.ms-word.document.macroenabled.12": ["docm"], "application/vnd.ms-word.template.macroenabled.12": ["dotm"], "application/vnd.ms-works": ["wps", "wks", "wcm", "wdb"], "application/vnd.ms-wpl": ["wpl"], "application/vnd.ms-xpsdocument": ["xps"], "application/vnd.mseq": ["mseq"], "application/vnd.musician": ["mus"], "application/vnd.muvee.style": ["msty"], "application/vnd.mynfc": ["taglet"], "application/vnd.neurolanguage.nlu": ["nlu"], "application/vnd.nitf": ["ntf", "nitf"], "application/vnd.noblenet-directory": ["nnd"], "application/vnd.noblenet-sealer": ["nns"], "application/vnd.noblenet-web": ["nnw"], "application/vnd.nokia.n-gage.ac+xml": ["*ac"], "application/vnd.nokia.n-gage.data": ["ngdat"], "application/vnd.nokia.n-gage.symbian.install": ["n-gage"], "application/vnd.nokia.radio-preset": ["rpst"], "application/vnd.nokia.radio-presets": ["rpss"], "application/vnd.novadigm.edm": ["edm"], "application/vnd.novadigm.edx": ["edx"], "application/vnd.novadigm.ext": ["ext"], "application/vnd.oasis.opendocument.chart": ["odc"], "application/vnd.oasis.opendocument.chart-template": ["otc"], "application/vnd.oasis.opendocument.database": ["odb"], "application/vnd.oasis.opendocument.formula": ["odf"], "application/vnd.oasis.opendocument.formula-template": ["odft"], "application/vnd.oasis.opendocument.graphics": ["odg"], "application/vnd.oasis.opendocument.graphics-template": ["otg"], "application/vnd.oasis.opendocument.image": ["odi"], "application/vnd.oasis.opendocument.image-template": ["oti"], "application/vnd.oasis.opendocument.presentation": ["odp"], "application/vnd.oasis.opendocument.presentation-template": ["otp"], "application/vnd.oasis.opendocument.spreadsheet": ["ods"], "application/vnd.oasis.opendocument.spreadsheet-template": ["ots"], "application/vnd.oasis.opendocument.text": ["odt"], "application/vnd.oasis.opendocument.text-master": ["odm"], "application/vnd.oasis.opendocument.text-template": ["ott"], "application/vnd.oasis.opendocument.text-web": ["oth"], "application/vnd.olpc-sugar": ["xo"], "application/vnd.oma.dd2+xml": ["dd2"], "application/vnd.openblox.game+xml": ["obgx"], "application/vnd.openofficeorg.extension": ["oxt"], "application/vnd.openstreetmap.data+xml": ["osm"], "application/vnd.openxmlformats-officedocument.presentationml.presentation": ["pptx"], "application/vnd.openxmlformats-officedocument.presentationml.slide": ["sldx"], "application/vnd.openxmlformats-officedocument.presentationml.slideshow": ["ppsx"], "application/vnd.openxmlformats-officedocument.presentationml.template": ["potx"], "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": ["xlsx"], "application/vnd.openxmlformats-officedocument.spreadsheetml.template": ["xltx"], "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ["docx"], "application/vnd.openxmlformats-officedocument.wordprocessingml.template": ["dotx"], "application/vnd.osgeo.mapguide.package": ["mgp"], "application/vnd.osgi.dp": ["dp"], "application/vnd.osgi.subsystem": ["esa"], "application/vnd.palm": ["pdb", "pqa", "oprc"], "application/vnd.pawaafile": ["paw"], "application/vnd.pg.format": ["str"], "application/vnd.pg.osasli": ["ei6"], "application/vnd.picsel": ["efif"], "application/vnd.pmi.widget": ["wg"], "application/vnd.pocketlearn": ["plf"], "application/vnd.powerbuilder6": ["pbd"], "application/vnd.previewsystems.box": ["box"], "application/vnd.proteus.magazine": ["mgz"], "application/vnd.publishare-delta-tree": ["qps"], "application/vnd.pvi.ptid1": ["ptid"], "application/vnd.quark.quarkxpress": ["qxd", "qxt", "qwd", "qwt", "qxl", "qxb"], "application/vnd.rar": ["rar"], "application/vnd.realvnc.bed": ["bed"], "application/vnd.recordare.musicxml": ["mxl"], "application/vnd.recordare.musicxml+xml": ["musicxml"], "application/vnd.rig.cryptonote": ["cryptonote"], "application/vnd.rim.cod": ["cod"], "application/vnd.rn-realmedia": ["rm"], "application/vnd.rn-realmedia-vbr": ["rmvb"], "application/vnd.route66.link66+xml": ["link66"], "application/vnd.sailingtracker.track": ["st"], "application/vnd.seemail": ["see"], "application/vnd.sema": ["sema"], "application/vnd.semd": ["semd"], "application/vnd.semf": ["semf"], "application/vnd.shana.informed.formdata": ["ifm"], "application/vnd.shana.informed.formtemplate": ["itp"], "application/vnd.shana.informed.interchange": ["iif"], "application/vnd.shana.informed.package": ["ipk"], "application/vnd.simtech-mindmapper": ["twd", "twds"], "application/vnd.smaf": ["mmf"], "application/vnd.smart.teacher": ["teacher"], "application/vnd.software602.filler.form+xml": ["fo"], "application/vnd.solent.sdkm+xml": ["sdkm", "sdkd"], "application/vnd.spotfire.dxp": ["dxp"], "application/vnd.spotfire.sfs": ["sfs"], "application/vnd.stardivision.calc": ["sdc"], "application/vnd.stardivision.draw": ["sda"], "application/vnd.stardivision.impress": ["sdd"], "application/vnd.stardivision.math": ["smf"], "application/vnd.stardivision.writer": ["sdw", "vor"], "application/vnd.stardivision.writer-global": ["sgl"], "application/vnd.stepmania.package": ["smzip"], "application/vnd.stepmania.stepchart": ["sm"], "application/vnd.sun.wadl+xml": ["wadl"], "application/vnd.sun.xml.calc": ["sxc"], "application/vnd.sun.xml.calc.template": ["stc"], "application/vnd.sun.xml.draw": ["sxd"], "application/vnd.sun.xml.draw.template": ["std"], "application/vnd.sun.xml.impress": ["sxi"], "application/vnd.sun.xml.impress.template": ["sti"], "application/vnd.sun.xml.math": ["sxm"], "application/vnd.sun.xml.writer": ["sxw"], "application/vnd.sun.xml.writer.global": ["sxg"], "application/vnd.sun.xml.writer.template": ["stw"], "application/vnd.sus-calendar": ["sus", "susp"], "application/vnd.svd": ["svd"], "application/vnd.symbian.install": ["sis", "sisx"], "application/vnd.syncml+xml": ["xsm"], "application/vnd.syncml.dm+wbxml": ["bdm"], "application/vnd.syncml.dm+xml": ["xdm"], "application/vnd.syncml.dmddf+xml": ["ddf"], "application/vnd.tao.intent-module-archive": ["tao"], "application/vnd.tcpdump.pcap": ["pcap", "cap", "dmp"], "application/vnd.tmobile-livetv": ["tmo"], "application/vnd.trid.tpt": ["tpt"], "application/vnd.triscape.mxs": ["mxs"], "application/vnd.trueapp": ["tra"], "application/vnd.ufdl": ["ufd", "ufdl"], "application/vnd.uiq.theme": ["utz"], "application/vnd.umajin": ["umj"], "application/vnd.unity": ["unityweb"], "application/vnd.uoml+xml": ["uoml"], "application/vnd.vcx": ["vcx"], "application/vnd.visio": ["vsd", "vst", "vss", "vsw"], "application/vnd.visionary": ["vis"], "application/vnd.vsf": ["vsf"], "application/vnd.wap.wbxml": ["wbxml"], "application/vnd.wap.wmlc": ["wmlc"], "application/vnd.wap.wmlscriptc": ["wmlsc"], "application/vnd.webturbo": ["wtb"], "application/vnd.wolfram.player": ["nbp"], "application/vnd.wordperfect": ["wpd"], "application/vnd.wqd": ["wqd"], "application/vnd.wt.stf": ["stf"], "application/vnd.xara": ["xar"], "application/vnd.xfdl": ["xfdl"], "application/vnd.yamaha.hv-dic": ["hvd"], "application/vnd.yamaha.hv-script": ["hvs"], "application/vnd.yamaha.hv-voice": ["hvp"], "application/vnd.yamaha.openscoreformat": ["osf"], "application/vnd.yamaha.openscoreformat.osfpvg+xml": ["osfpvg"], "application/vnd.yamaha.smaf-audio": ["saf"], "application/vnd.yamaha.smaf-phrase": ["spf"], "application/vnd.yellowriver-custom-menu": ["cmp"], "application/vnd.zul": ["zir", "zirz"], "application/vnd.zzazz.deck+xml": ["zaz"], "application/x-7z-compressed": ["7z"], "application/x-abiword": ["abw"], "application/x-ace-compressed": ["ace"], "application/x-apple-diskimage": ["*dmg"], "application/x-arj": ["arj"], "application/x-authorware-bin": ["aab", "x32", "u32", "vox"], "application/x-authorware-map": ["aam"], "application/x-authorware-seg": ["aas"], "application/x-bcpio": ["bcpio"], "application/x-bdoc": ["*bdoc"], "application/x-bittorrent": ["torrent"], "application/x-blorb": ["blb", "blorb"], "application/x-bzip": ["bz"], "application/x-bzip2": ["bz2", "boz"], "application/x-cbr": ["cbr", "cba", "cbt", "cbz", "cb7"], "application/x-cdlink": ["vcd"], "application/x-cfs-compressed": ["cfs"], "application/x-chat": ["chat"], "application/x-chess-pgn": ["pgn"], "application/x-chrome-extension": ["crx"], "application/x-cocoa": ["cco"], "application/x-conference": ["nsc"], "application/x-cpio": ["cpio"], "application/x-csh": ["csh"], "application/x-debian-package": ["*deb", "udeb"], "application/x-dgc-compressed": ["dgc"], "application/x-director": ["dir", "dcr", "dxr", "cst", "cct", "cxt", "w3d", "fgd", "swa"], "application/x-doom": ["wad"], "application/x-dtbncx+xml": ["ncx"], "application/x-dtbook+xml": ["dtb"], "application/x-dtbresource+xml": ["res"], "application/x-dvi": ["dvi"], "application/x-envoy": ["evy"], "application/x-eva": ["eva"], "application/x-font-bdf": ["bdf"], "application/x-font-ghostscript": ["gsf"], "application/x-font-linux-psf": ["psf"], "application/x-font-pcf": ["pcf"], "application/x-font-snf": ["snf"], "application/x-font-type1": ["pfa", "pfb", "pfm", "afm"], "application/x-freearc": ["arc"], "application/x-futuresplash": ["spl"], "application/x-gca-compressed": ["gca"], "application/x-glulx": ["ulx"], "application/x-gnumeric": ["gnumeric"], "application/x-gramps-xml": ["gramps"], "application/x-gtar": ["gtar"], "application/x-hdf": ["hdf"], "application/x-httpd-php": ["php"], "application/x-install-instructions": ["install"], "application/x-iso9660-image": ["*iso"], "application/x-iwork-keynote-sffkey": ["*key"], "application/x-iwork-numbers-sffnumbers": ["*numbers"], "application/x-iwork-pages-sffpages": ["*pages"], "application/x-java-archive-diff": ["jardiff"], "application/x-java-jnlp-file": ["jnlp"], "application/x-keepass2": ["kdbx"], "application/x-latex": ["latex"], "application/x-lua-bytecode": ["luac"], "application/x-lzh-compressed": ["lzh", "lha"], "application/x-makeself": ["run"], "application/x-mie": ["mie"], "application/x-mobipocket-ebook": ["prc", "mobi"], "application/x-ms-application": ["application"], "application/x-ms-shortcut": ["lnk"], "application/x-ms-wmd": ["wmd"], "application/x-ms-wmz": ["wmz"], "application/x-ms-xbap": ["xbap"], "application/x-msaccess": ["mdb"], "application/x-msbinder": ["obd"], "application/x-mscardfile": ["crd"], "application/x-msclip": ["clp"], "application/x-msdos-program": ["*exe"], "application/x-msdownload": ["*exe", "*dll", "com", "bat", "*msi"], "application/x-msmediaview": ["mvb", "m13", "m14"], "application/x-msmetafile": ["*wmf", "*wmz", "*emf", "emz"], "application/x-msmoney": ["mny"], "application/x-mspublisher": ["pub"], "application/x-msschedule": ["scd"], "application/x-msterminal": ["trm"], "application/x-mswrite": ["wri"], "application/x-netcdf": ["nc", "cdf"], "application/x-ns-proxy-autoconfig": ["pac"], "application/x-nzb": ["nzb"], "application/x-perl": ["pl", "pm"], "application/x-pilot": ["*prc", "*pdb"], "application/x-pkcs12": ["p12", "pfx"], "application/x-pkcs7-certificates": ["p7b", "spc"], "application/x-pkcs7-certreqresp": ["p7r"], "application/x-rar-compressed": ["*rar"], "application/x-redhat-package-manager": ["rpm"], "application/x-research-info-systems": ["ris"], "application/x-sea": ["sea"], "application/x-sh": ["sh"], "application/x-shar": ["shar"], "application/x-shockwave-flash": ["swf"], "application/x-silverlight-app": ["xap"], "application/x-sql": ["sql"], "application/x-stuffit": ["sit"], "application/x-stuffitx": ["sitx"], "application/x-subrip": ["srt"], "application/x-sv4cpio": ["sv4cpio"], "application/x-sv4crc": ["sv4crc"], "application/x-t3vm-image": ["t3"], "application/x-tads": ["gam"], "application/x-tar": ["tar"], "application/x-tcl": ["tcl", "tk"], "application/x-tex": ["tex"], "application/x-tex-tfm": ["tfm"], "application/x-texinfo": ["texinfo", "texi"], "application/x-tgif": ["*obj"], "application/x-ustar": ["ustar"], "application/x-virtualbox-hdd": ["hdd"], "application/x-virtualbox-ova": ["ova"], "application/x-virtualbox-ovf": ["ovf"], "application/x-virtualbox-vbox": ["vbox"], "application/x-virtualbox-vbox-extpack": ["vbox-extpack"], "application/x-virtualbox-vdi": ["vdi"], "application/x-virtualbox-vhd": ["vhd"], "application/x-virtualbox-vmdk": ["vmdk"], "application/x-wais-source": ["src"], "application/x-web-app-manifest+json": ["webapp"], "application/x-x509-ca-cert": ["der", "crt", "pem"], "application/x-xfig": ["fig"], "application/x-xliff+xml": ["*xlf"], "application/x-xpinstall": ["xpi"], "application/x-xz": ["xz"], "application/x-zmachine": ["z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8"], "audio/vnd.dece.audio": ["uva", "uvva"], "audio/vnd.digital-winds": ["eol"], "audio/vnd.dra": ["dra"], "audio/vnd.dts": ["dts"], "audio/vnd.dts.hd": ["dtshd"], "audio/vnd.lucent.voice": ["lvp"], "audio/vnd.ms-playready.media.pya": ["pya"], "audio/vnd.nuera.ecelp4800": ["ecelp4800"], "audio/vnd.nuera.ecelp7470": ["ecelp7470"], "audio/vnd.nuera.ecelp9600": ["ecelp9600"], "audio/vnd.rip": ["rip"], "audio/x-aac": ["aac"], "audio/x-aiff": ["aif", "aiff", "aifc"], "audio/x-caf": ["caf"], "audio/x-flac": ["flac"], "audio/x-m4a": ["*m4a"], "audio/x-matroska": ["mka"], "audio/x-mpegurl": ["m3u"], "audio/x-ms-wax": ["wax"], "audio/x-ms-wma": ["wma"], "audio/x-pn-realaudio": ["ram", "ra"], "audio/x-pn-realaudio-plugin": ["rmp"], "audio/x-realaudio": ["*ra"], "audio/x-wav": ["*wav"], "chemical/x-cdx": ["cdx"], "chemical/x-cif": ["cif"], "chemical/x-cmdf": ["cmdf"], "chemical/x-cml": ["cml"], "chemical/x-csml": ["csml"], "chemical/x-xyz": ["xyz"], "image/prs.btif": ["btif"], "image/prs.pti": ["pti"], "image/vnd.adobe.photoshop": ["psd"], "image/vnd.airzip.accelerator.azv": ["azv"], "image/vnd.dece.graphic": ["uvi", "uvvi", "uvg", "uvvg"], "image/vnd.djvu": ["djvu", "djv"], "image/vnd.dvb.subtitle": ["*sub"], "image/vnd.dwg": ["dwg"], "image/vnd.dxf": ["dxf"], "image/vnd.fastbidsheet": ["fbs"], "image/vnd.fpx": ["fpx"], "image/vnd.fst": ["fst"], "image/vnd.fujixerox.edmics-mmr": ["mmr"], "image/vnd.fujixerox.edmics-rlc": ["rlc"], "image/vnd.microsoft.icon": ["ico"], "image/vnd.ms-dds": ["dds"], "image/vnd.ms-modi": ["mdi"], "image/vnd.ms-photo": ["wdp"], "image/vnd.net-fpx": ["npx"], "image/vnd.pco.b16": ["b16"], "image/vnd.tencent.tap": ["tap"], "image/vnd.valve.source.texture": ["vtf"], "image/vnd.wap.wbmp": ["wbmp"], "image/vnd.xiff": ["xif"], "image/vnd.zbrush.pcx": ["pcx"], "image/x-3ds": ["3ds"], "image/x-cmu-raster": ["ras"], "image/x-cmx": ["cmx"], "image/x-freehand": ["fh", "fhc", "fh4", "fh5", "fh7"], "image/x-icon": ["*ico"], "image/x-jng": ["jng"], "image/x-mrsid-image": ["sid"], "image/x-ms-bmp": ["*bmp"], "image/x-pcx": ["*pcx"], "image/x-pict": ["pic", "pct"], "image/x-portable-anymap": ["pnm"], "image/x-portable-bitmap": ["pbm"], "image/x-portable-graymap": ["pgm"], "image/x-portable-pixmap": ["ppm"], "image/x-rgb": ["rgb"], "image/x-tga": ["tga"], "image/x-xbitmap": ["xbm"], "image/x-xpixmap": ["xpm"], "image/x-xwindowdump": ["xwd"], "message/vnd.wfa.wsc": ["wsc"], "model/vnd.collada+xml": ["dae"], "model/vnd.dwf": ["dwf"], "model/vnd.gdl": ["gdl"], "model/vnd.gtw": ["gtw"], "model/vnd.mts": ["mts"], "model/vnd.opengex": ["ogex"], "model/vnd.parasolid.transmit.binary": ["x_b"], "model/vnd.parasolid.transmit.text": ["x_t"], "model/vnd.sap.vds": ["vds"], "model/vnd.usdz+zip": ["usdz"], "model/vnd.valve.source.compiled-map": ["bsp"], "model/vnd.vtu": ["vtu"], "text/prs.lines.tag": ["dsc"], "text/vnd.curl": ["curl"], "text/vnd.curl.dcurl": ["dcurl"], "text/vnd.curl.mcurl": ["mcurl"], "text/vnd.curl.scurl": ["scurl"], "text/vnd.dvb.subtitle": ["sub"], "text/vnd.fly": ["fly"], "text/vnd.fmi.flexstor": ["flx"], "text/vnd.graphviz": ["gv"], "text/vnd.in3d.3dml": ["3dml"], "text/vnd.in3d.spot": ["spot"], "text/vnd.sun.j2me.app-descriptor": ["jad"], "text/vnd.wap.wml": ["wml"], "text/vnd.wap.wmlscript": ["wmls"], "text/x-asm": ["s", "asm"], "text/x-c": ["c", "cc", "cxx", "cpp", "h", "hh", "dic"], "text/x-component": ["htc"], "text/x-fortran": ["f", "for", "f77", "f90"], "text/x-handlebars-template": ["hbs"], "text/x-java-source": ["java"], "text/x-lua": ["lua"], "text/x-markdown": ["mkd"], "text/x-nfo": ["nfo"], "text/x-opml": ["opml"], "text/x-org": ["*org"], "text/x-pascal": ["p", "pas"], "text/x-processing": ["pde"], "text/x-sass": ["sass"], "text/x-scss": ["scss"], "text/x-setext": ["etx"], "text/x-sfv": ["sfv"], "text/x-suse-ymp": ["ymp"], "text/x-uuencode": ["uu"], "text/x-vcalendar": ["vcs"], "text/x-vcard": ["vcf"], "video/vnd.dece.hd": ["uvh", "uvvh"], "video/vnd.dece.mobile": ["uvm", "uvvm"], "video/vnd.dece.pd": ["uvp", "uvvp"], "video/vnd.dece.sd": ["uvs", "uvvs"], "video/vnd.dece.video": ["uvv", "uvvv"], "video/vnd.dvb.file": ["dvb"], "video/vnd.fvt": ["fvt"], "video/vnd.mpegurl": ["mxu", "m4u"], "video/vnd.ms-playready.media.pyv": ["pyv"], "video/vnd.uvvu.mp4": ["uvu", "uvvu"], "video/vnd.vivo": ["viv"], "video/x-f4v": ["f4v"], "video/x-fli": ["fli"], "video/x-flv": ["flv"], "video/x-m4v": ["m4v"], "video/x-matroska": ["mkv", "mk3d", "mks"], "video/x-mng": ["mng"], "video/x-ms-asf": ["asf", "asx"], "video/x-ms-vob": ["vob"], "video/x-ms-wm": ["wm"], "video/x-ms-wmv": ["wmv"], "video/x-ms-wmx": ["wmx"], "video/x-ms-wvx": ["wvx"], "video/x-msvideo": ["avi"], "video/x-sgi-movie": ["movie"], "video/x-smv": ["smv"], "x-conference/x-cooltalk": ["ice"] };
-var Mime = Mime_1;
-var mime = new Mime(standard, other);
-var parse_1 = parse$1;
-var serialize_1 = serialize;
-var __toString = Object.prototype.toString;
-var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
 function parse$1(str, options) {
   if (typeof str !== "string") {
     throw new TypeError("argument str must be a string");
@@ -190,168 +154,6 @@ function tryDecode(str, decode2) {
     return str;
   }
 }
-var __accessCheck$3 = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
-};
-var __privateGet$3 = (obj, member, getter) => {
-  __accessCheck$3(obj, member, "read from private field");
-  return getter ? getter.call(obj) : member.get(obj);
-};
-var __privateAdd$3 = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
-  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-};
-var __privateSet$3 = (obj, member, value, setter) => {
-  __accessCheck$3(obj, member, "write to private field");
-  setter ? setter.call(obj, value) : member.set(obj, value);
-  return value;
-};
-var __privateMethod$1 = (obj, member, method) => {
-  __accessCheck$3(obj, member, "access private method");
-  return method;
-};
-var _request;
-var _requestValues;
-var _outgoing;
-var _ensureParsed;
-var ensureParsed_fn;
-var _ensureOutgoingMap;
-var ensureOutgoingMap_fn;
-var _parse;
-var parse_fn;
-var DELETED_EXPIRATION = new Date(0);
-var DELETED_VALUE = "deleted";
-var AstroCookie = class {
-  constructor(value) {
-    this.value = value;
-  }
-  json() {
-    if (this.value === void 0) {
-      throw new Error(`Cannot convert undefined to an object.`);
-    }
-    return JSON.parse(this.value);
-  }
-  number() {
-    return Number(this.value);
-  }
-  boolean() {
-    if (this.value === "false")
-      return false;
-    if (this.value === "0")
-      return false;
-    return Boolean(this.value);
-  }
-};
-var AstroCookies = class {
-  constructor(request) {
-    __privateAdd$3(this, _ensureParsed);
-    __privateAdd$3(this, _ensureOutgoingMap);
-    __privateAdd$3(this, _parse);
-    __privateAdd$3(this, _request, void 0);
-    __privateAdd$3(this, _requestValues, void 0);
-    __privateAdd$3(this, _outgoing, void 0);
-    __privateSet$3(this, _request, request);
-    __privateSet$3(this, _requestValues, null);
-    __privateSet$3(this, _outgoing, null);
-  }
-  delete(key, options) {
-    const serializeOptions = {
-      expires: DELETED_EXPIRATION
-    };
-    if (options == null ? void 0 : options.domain) {
-      serializeOptions.domain = options.domain;
-    }
-    if (options == null ? void 0 : options.path) {
-      serializeOptions.path = options.path;
-    }
-    __privateMethod$1(this, _ensureOutgoingMap, ensureOutgoingMap_fn).call(this).set(key, [
-      DELETED_VALUE,
-      serialize_1(key, DELETED_VALUE, serializeOptions),
-      false
-    ]);
-  }
-  get(key) {
-    if (__privateGet$3(this, _outgoing) !== null && __privateGet$3(this, _outgoing).has(key)) {
-      let [serializedValue, , isSetValue] = __privateGet$3(this, _outgoing).get(key);
-      if (isSetValue) {
-        return new AstroCookie(serializedValue);
-      } else {
-        return new AstroCookie(void 0);
-      }
-    }
-    const values = __privateMethod$1(this, _ensureParsed, ensureParsed_fn).call(this);
-    const value = values[key];
-    return new AstroCookie(value);
-  }
-  has(key) {
-    if (__privateGet$3(this, _outgoing) !== null && __privateGet$3(this, _outgoing).has(key)) {
-      let [, , isSetValue] = __privateGet$3(this, _outgoing).get(key);
-      return isSetValue;
-    }
-    const values = __privateMethod$1(this, _ensureParsed, ensureParsed_fn).call(this);
-    return !!values[key];
-  }
-  set(key, value, options) {
-    let serializedValue;
-    if (typeof value === "string") {
-      serializedValue = value;
-    } else {
-      let toStringValue = value.toString();
-      if (toStringValue === Object.prototype.toString.call(value)) {
-        serializedValue = JSON.stringify(value);
-      } else {
-        serializedValue = toStringValue;
-      }
-    }
-    const serializeOptions = {};
-    if (options) {
-      Object.assign(serializeOptions, options);
-    }
-    __privateMethod$1(this, _ensureOutgoingMap, ensureOutgoingMap_fn).call(this).set(key, [
-      serializedValue,
-      serialize_1(key, serializedValue, serializeOptions),
-      true
-    ]);
-  }
-  *headers() {
-    if (__privateGet$3(this, _outgoing) == null)
-      return;
-    for (const [, value] of __privateGet$3(this, _outgoing)) {
-      yield value[1];
-    }
-  }
-};
-_request = /* @__PURE__ */ new WeakMap();
-_requestValues = /* @__PURE__ */ new WeakMap();
-_outgoing = /* @__PURE__ */ new WeakMap();
-_ensureParsed = /* @__PURE__ */ new WeakSet();
-ensureParsed_fn = function() {
-  if (!__privateGet$3(this, _requestValues)) {
-    __privateMethod$1(this, _parse, parse_fn).call(this);
-  }
-  if (!__privateGet$3(this, _requestValues)) {
-    __privateSet$3(this, _requestValues, {});
-  }
-  return __privateGet$3(this, _requestValues);
-};
-_ensureOutgoingMap = /* @__PURE__ */ new WeakSet();
-ensureOutgoingMap_fn = function() {
-  if (!__privateGet$3(this, _outgoing)) {
-    __privateSet$3(this, _outgoing, /* @__PURE__ */ new Map());
-  }
-  return __privateGet$3(this, _outgoing);
-};
-_parse = /* @__PURE__ */ new WeakSet();
-parse_fn = function() {
-  const raw = __privateGet$3(this, _request).headers.get("cookie");
-  if (!raw) {
-    return;
-  }
-  __privateSet$3(this, _requestValues, parse_1(raw));
-};
-var astroCookiesSymbol = Symbol.for("astro.cookies");
 function attachToResponse(response, cookies) {
   Reflect.set(response, astroCookiesSymbol, cookies);
 }
@@ -389,7 +191,6 @@ function createComponent(arg1, moduleId) {
     return createComponentWithOptions(arg1);
   }
 }
-var ASTRO_VERSION = "2.0.2";
 function createAstroGlobFn() {
   const globHandler = (importMetaGlobResult, globValue) => {
     let allEntries = [...Object.values(importMetaGlobResult)];
@@ -468,17 +269,6 @@ Update your code to remove this warning.`);
   });
   return handler.call(mod, proxy, request);
 }
-var { replace } = "";
-var ca = /[&<>'"]/g;
-var esca = {
-  "&": "&amp;",
-  "<": "&lt;",
-  ">": "&gt;",
-  "'": "&#39;",
-  '"': "&quot;"
-};
-var pe = (m) => esca[m];
-var escape = (es) => replace.call(es, ca, pe);
 function serializeListValue(value) {
   const hash = {};
   push(value);
@@ -517,34 +307,50 @@ async function* streamAsyncIterator(stream) {
     reader.releaseLock();
   }
 }
-var escapeHTML = escape;
-var HTMLBytes = class extends Uint8Array {
-};
-Object.defineProperty(HTMLBytes.prototype, Symbol.toStringTag, {
-  get() {
-    return "HTMLBytes";
-  }
-});
-var HTMLString = class extends String {
-  get [Symbol.toStringTag]() {
-    return "HTMLString";
-  }
-};
-var markHTMLString = (value) => {
-  if (value instanceof HTMLString) {
-    return value;
-  }
-  if (typeof value === "string") {
-    return new HTMLString(value);
-  }
-  return value;
-};
 function isHTMLString(value) {
   return Object.prototype.toString.call(value) === "[object HTMLString]";
 }
-var AstroJSX = "astro:jsx";
-var Empty = Symbol("empty");
-var toSlotName = (slotAttr) => slotAttr;
+function markHTMLBytes(bytes) {
+  return new HTMLBytes(bytes);
+}
+function hasGetReader(obj) {
+  return typeof obj.getReader === "function";
+}
+async function* unescapeChunksAsync(iterable) {
+  if (hasGetReader(iterable)) {
+    for await (const chunk of streamAsyncIterator(iterable)) {
+      yield unescapeHTML(chunk);
+    }
+  } else {
+    for await (const chunk of iterable) {
+      yield unescapeHTML(chunk);
+    }
+  }
+}
+function* unescapeChunks(iterable) {
+  for (const chunk of iterable) {
+    yield unescapeHTML(chunk);
+  }
+}
+function unescapeHTML(str) {
+  if (!!str && typeof str === "object") {
+    if (str instanceof Uint8Array) {
+      return markHTMLBytes(str);
+    } else if (str instanceof Response && str.body) {
+      const body3 = str.body;
+      return unescapeChunksAsync(body3);
+    } else if (typeof str.then === "function") {
+      return Promise.resolve(str).then((value) => {
+        return unescapeHTML(value);
+      });
+    } else if (Symbol.iterator in str) {
+      return unescapeChunks(str);
+    } else if (Symbol.asyncIterator in str || hasGetReader(str)) {
+      return unescapeChunksAsync(str);
+    }
+  }
+  return markHTMLString(str);
+}
 function isVNode(vnode) {
   return vnode && typeof vnode === "object" && vnode[AstroJSX];
 }
@@ -617,25 +423,12 @@ function createVNode(type, props) {
   transformSlots(vnode);
   return vnode;
 }
-var idle_prebuilt_default = `(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));`;
-var load_prebuilt_default = `(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));`;
-var media_prebuilt_default = `(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));`;
-var only_prebuilt_default = `(self.Astro=self.Astro||{}).only=t=>{(async()=>await(await t())())()},window.dispatchEvent(new Event("astro:only"));`;
-var visible_prebuilt_default = `(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));`;
-var astro_island_prebuilt_default = `var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(\`astro:\${e}\`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}`;
 function determineIfNeedsHydrationScript(result) {
   if (result._metadata.hasHydrationScript) {
     return false;
   }
   return result._metadata.hasHydrationScript = true;
 }
-var hydrationScripts = {
-  idle: idle_prebuilt_default,
-  load: load_prebuilt_default,
-  only: only_prebuilt_default,
-  media: media_prebuilt_default,
-  visible: visible_prebuilt_default
-};
 function determinesIfNeedsDirectiveScript(result, directive) {
   if (result._metadata.hasDirectives.has(directive)) {
     return false;
@@ -659,39 +452,16 @@ function getPrescripts(type, directive) {
   }
   return "";
 }
-var headAndContentSym = Symbol.for("astro.headAndContent");
 function isHeadAndContent(obj) {
   return typeof obj === "object" && !!obj[headAndContentSym];
 }
-var _a$1;
-var renderTemplateResultSym = Symbol.for("astro.renderTemplateResult");
-var RenderTemplateResult = class {
-  constructor(htmlParts, expressions) {
-    this[_a$1] = true;
-    this.htmlParts = htmlParts;
-    this.error = void 0;
-    this.expressions = expressions.map((expression) => {
-      if (isPromise(expression)) {
-        return Promise.resolve(expression).catch((err) => {
-          if (!this.error) {
-            this.error = err;
-            throw err;
-          }
-        });
-      }
-      return expression;
-    });
-  }
-  async *[(_a$1 = renderTemplateResultSym, Symbol.asyncIterator)]() {
-    const { htmlParts, expressions } = this;
-    for (let i = 0; i < htmlParts.length; i++) {
-      const html = htmlParts[i];
-      const expression = expressions[i];
-      yield markHTMLString(html);
-      yield* renderChild(expression);
-    }
-  }
-};
+function createHeadAndContent(head, content) {
+  return {
+    [headAndContentSym]: true,
+    head,
+    content
+  };
+}
 function isRenderTemplateResult(obj) {
   return typeof obj === "object" && !!obj[renderTemplateResultSym];
 }
@@ -739,253 +509,11 @@ function isAPropagatingComponent(result, factory) {
   }
   return hint === "in-tree" || hint === "self";
 }
-var defineErrors = (errs) => errs;
-var AstroErrorData = defineErrors({
-  UnknownCompilerError: {
-    title: "Unknown compiler error.",
-    code: 1e3,
-    hint: "This is almost always a problem with the Astro compiler, not your code. Please open an issue at https://astro.build/issues/compiler."
-  },
-  StaticRedirectNotAvailable: {
-    title: "`Astro.redirect` is not available in static mode.",
-    code: 3001,
-    message: "Redirects are only available when using `output: 'server'`. Update your Astro config if you need SSR features.",
-    hint: "See https://docs.astro.build/en/guides/server-side-rendering/#enabling-ssr-in-your-project for more information on how to enable SSR."
-  },
-  ClientAddressNotAvailable: {
-    title: "`Astro.clientAddress` is not available in current adapter.",
-    code: 3002,
-    message: (adapterName) => `\`Astro.clientAddress\` is not available in the \`${adapterName}\` adapter. File an issue with the adapter to add support.`
-  },
-  StaticClientAddressNotAvailable: {
-    title: "`Astro.clientAddress` is not available in static mode.",
-    code: 3003,
-    message: "`Astro.clientAddress` is only available when using `output: 'server'`. Update your Astro config if you need SSR features.",
-    hint: "See https://docs.astro.build/en/guides/server-side-rendering/#enabling-ssr-in-your-project for more information on how to enable SSR."
-  },
-  NoMatchingStaticPathFound: {
-    title: "No static path found for requested path.",
-    code: 3004,
-    message: (pathName) => `A \`getStaticPaths()\` route pattern was matched, but no matching static path was found for requested path \`${pathName}\`.`,
-    hint: (possibleRoutes) => `Possible dynamic routes being matched: ${possibleRoutes.join(", ")}.`
-  },
-  OnlyResponseCanBeReturned: {
-    title: "Invalid type returned by Astro page.",
-    code: 3005,
-    message: (route, returnedValue) => `Route \`${route ? route : ""}\` returned a \`${returnedValue}\`. Only a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) can be returned from Astro files.`,
-    hint: "See https://docs.astro.build/en/guides/server-side-rendering/#response for more information."
-  },
-  MissingMediaQueryDirective: {
-    title: "Missing value for `client:media` directive.",
-    code: 3006,
-    message: 'Media query not provided for `client:media` directive. A media query similar to `client:media="(max-width: 600px)"` must be provided'
-  },
-  NoMatchingRenderer: {
-    title: "No matching renderer found.",
-    code: 3007,
-    message: (componentName, componentExtension, plural, validRenderersCount) => `Unable to render \`${componentName}\`.
-
-${validRenderersCount > 0 ? `There ${plural ? "are." : "is."} ${validRenderersCount} renderer${plural ? "s." : ""} configured in your \`astro.config.mjs\` file,
-but ${plural ? "none were." : "it was not."} able to server-side render \`${componentName}\`.` : `No valid renderer was found ${componentExtension ? `for the \`.${componentExtension}\` file extension.` : `for this file extension.`}`}`,
-    hint: (probableRenderers) => `Did you mean to enable the ${probableRenderers} integration?
-
-See https://docs.astro.build/en/core-concepts/framework-components/ for more information on how to install and configure integrations.`
-  },
-  NoClientEntrypoint: {
-    title: "No client entrypoint specified in renderer.",
-    code: 3008,
-    message: (componentName, clientDirective, rendererName) => `\`${componentName}\` component has a \`client:${clientDirective}\` directive, but no client entrypoint was provided by \`${rendererName}\`.`,
-    hint: "See https://docs.astro.build/en/reference/integrations-reference/#addrenderer-option for more information on how to configure your renderer."
-  },
-  NoClientOnlyHint: {
-    title: "Missing hint on client:only directive.",
-    code: 3009,
-    message: (componentName) => `Unable to render \`${componentName}\`. When using the \`client:only\` hydration strategy, Astro needs a hint to use the correct renderer.`,
-    hint: (probableRenderers) => `Did you mean to pass \`client:only="${probableRenderers}"\`? See https://docs.astro.build/en/reference/directives-reference/#clientonly for more information on client:only`
-  },
-  InvalidGetStaticPathParam: {
-    title: "Invalid value returned by a `getStaticPaths` path.",
-    code: 3010,
-    message: (paramType) => `Invalid params given to \`getStaticPaths\` path. Expected an \`object\`, got \`${paramType}\``,
-    hint: "See https://docs.astro.build/en/reference/api-reference/#getstaticpaths for more information on getStaticPaths."
-  },
-  InvalidGetStaticPathsReturn: {
-    title: "Invalid value returned by getStaticPaths.",
-    code: 3011,
-    message: (returnType) => `Invalid type returned by \`getStaticPaths\`. Expected an \`array\`, got \`${returnType}\``,
-    hint: "See https://docs.astro.build/en/reference/api-reference/#getstaticpaths for more information on getStaticPaths."
-  },
-  GetStaticPathsRemovedRSSHelper: {
-    title: "getStaticPaths RSS helper is not available anymore.",
-    code: 3012,
-    message: "The RSS helper has been removed from `getStaticPaths`. Try the new @astrojs/rss package instead.",
-    hint: "See https://docs.astro.build/en/guides/rss/ for more information."
-  },
-  GetStaticPathsExpectedParams: {
-    title: "Missing params property on `getStaticPaths` route.",
-    code: 3013,
-    message: "Missing or empty required `params` property on `getStaticPaths` route.",
-    hint: "See https://docs.astro.build/en/reference/api-reference/#getstaticpaths for more information on getStaticPaths."
-  },
-  GetStaticPathsInvalidRouteParam: {
-    title: "Invalid value for `getStaticPaths` route parameter.",
-    code: 3014,
-    message: (key, value, valueType) => `Invalid getStaticPaths route parameter for \`${key}\`. Expected undefined, a string or a number, received \`${valueType}\` (\`${value}\`)`,
-    hint: "See https://docs.astro.build/en/reference/api-reference/#getstaticpaths for more information on getStaticPaths."
-  },
-  GetStaticPathsRequired: {
-    title: "`getStaticPaths()` function required for dynamic routes.",
-    code: 3015,
-    message: "`getStaticPaths()` function is required for dynamic routes. Make sure that you `export` a `getStaticPaths` function from your dynamic route.",
-    hint: `See https://docs.astro.build/en/core-concepts/routing/#dynamic-routes for more information on dynamic routes.
-
-Alternatively, set \`output: "server"\` in your Astro config file to switch to a non-static server build. This error can also occur if using \`export const prerender = true;\`.
-See https://docs.astro.build/en/guides/server-side-rendering/ for more information on non-static rendering.`
-  },
-  ReservedSlotName: {
-    title: "Invalid slot name.",
-    code: 3016,
-    message: (slotName2) => `Unable to create a slot named \`${slotName2}\`. \`${slotName2}\` is a reserved slot name. Please update the name of this slot.`
-  },
-  NoAdapterInstalled: {
-    title: "Cannot use Server-side Rendering without an adapter.",
-    code: 3017,
-    message: `Cannot use \`output: 'server'\` without an adapter. Please install and configure the appropriate server adapter for your final deployment.`,
-    hint: "See https://docs.astro.build/en/guides/server-side-rendering/ for more information."
-  },
-  NoMatchingImport: {
-    title: "No import found for component.",
-    code: 3018,
-    message: (componentName) => `Could not render \`${componentName}\`. No matching import has been found for \`${componentName}\`.`,
-    hint: "Please make sure the component is properly imported."
-  },
-  InvalidPrerenderExport: {
-    title: "Invalid prerender export.",
-    code: 3019,
-    message: (prefix, suffix) => {
-      let msg = `A \`prerender\` export has been detected, but its value cannot be statically analyzed.`;
-      if (prefix !== "const")
-        msg += `
-Expected \`const\` declaration but got \`${prefix}\`.`;
-      if (suffix !== "true")
-        msg += `
-Expected \`true\` value but got \`${suffix}\`.`;
-      return msg;
-    },
-    hint: "Mutable values declared at runtime are not supported. Please make sure to use exactly `export const prerender = true`."
-  },
-  UnknownViteError: {
-    title: "Unknown Vite Error.",
-    code: 4e3
-  },
-  FailedToLoadModuleSSR: {
-    title: "Could not import file.",
-    code: 4001,
-    message: (importName) => `Could not import \`${importName}\`.`,
-    hint: "This is often caused by a typo in the import path. Please make sure the file exists."
-  },
-  InvalidGlob: {
-    title: "Invalid glob pattern.",
-    code: 4002,
-    message: (globPattern) => `Invalid glob pattern: \`${globPattern}\`. Glob patterns must start with './', '../' or '/'.`,
-    hint: "See https://docs.astro.build/en/guides/imports/#glob-patterns for more information on supported glob patterns."
-  },
-  UnknownCSSError: {
-    title: "Unknown CSS Error.",
-    code: 5e3
-  },
-  CSSSyntaxError: {
-    title: "CSS Syntax Error.",
-    code: 5001
-  },
-  UnknownMarkdownError: {
-    title: "Unknown Markdown Error.",
-    code: 6e3
-  },
-  MarkdownFrontmatterParseError: {
-    title: "Failed to parse Markdown frontmatter.",
-    code: 6001
-  },
-  InvalidFrontmatterInjectionError: {
-    title: "Invalid frontmatter injection.",
-    code: 6003,
-    message: 'A remark or rehype plugin attempted to inject invalid frontmatter. Ensure "astro.frontmatter" is set to a valid JSON object that is not `null` or `undefined`.',
-    hint: "See the frontmatter injection docs https://docs.astro.build/en/guides/markdown-content/#modifying-frontmatter-programmatically for more information."
-  },
-  MdxIntegrationMissingError: {
-    title: "MDX integration missing.",
-    code: 6004,
-    message: (file) => `Unable to render ${file}. Ensure that the \`@astrojs/mdx\` integration is installed.`,
-    hint: "See the MDX integration docs for installation and usage instructions: https://docs.astro.build/en/guides/integrations-guide/mdx/"
-  },
-  UnknownConfigError: {
-    title: "Unknown configuration error.",
-    code: 7e3
-  },
-  ConfigNotFound: {
-    title: "Specified configuration file not found.",
-    code: 7001,
-    message: (configFile) => `Unable to resolve \`--config "${configFile}"\`. Does the file exist?`
-  },
-  ConfigLegacyKey: {
-    title: "Legacy configuration detected.",
-    code: 7002,
-    message: (legacyConfigKey) => `Legacy configuration detected: \`${legacyConfigKey}\`.`,
-    hint: "Please update your configuration to the new format.\nSee https://astro.build/config for more information."
-  },
-  UnknownCLIError: {
-    title: "Unknown CLI Error.",
-    code: 8e3
-  },
-  GenerateContentTypesError: {
-    title: "Failed to generate content types.",
-    code: 8001,
-    message: "`astro sync` command failed to generate content collection types.",
-    hint: "Check your `src/content/config.*` file for typos."
-  },
-  UnknownContentCollectionError: {
-    title: "Unknown Content Collection Error.",
-    code: 9e3
-  },
-  InvalidContentEntryFrontmatterError: {
-    title: "Content entry frontmatter does not match schema.",
-    code: 9001,
-    message: (collection, entryId, error2) => {
-      return [
-        `${String(collection)} \u2192 ${String(entryId)} frontmatter does not match collection schema.`,
-        ...error2.errors.map((zodError) => zodError.message)
-      ].join("\n");
-    },
-    hint: "See https://docs.astro.build/en/guides/content-collections/ for more information on content schemas."
-  },
-  InvalidContentEntrySlugError: {
-    title: "Invalid content entry slug.",
-    code: 9002,
-    message: (collection, entryId) => {
-      return `${String(collection)} \u2192 ${String(
-        entryId
-      )} has an invalid slug. \`slug\` must be a string.`;
-    },
-    hint: "See https://docs.astro.build/en/guides/content-collections/ for more on the `slug` field."
-  },
-  ContentSchemaContainsSlugError: {
-    title: "Content Schema should not contain `slug`.",
-    code: 9003,
-    message: (collection) => {
-      return `A content collection schema should not contain \`slug\` since it is reserved for slug generation. Remove this from your ${collection} collection schema.`;
-    },
-    hint: "See https://docs.astro.build/en/guides/content-collections/ for more on the `slug` field."
-  },
-  UnknownError: {
-    title: "Unknown Error.",
-    code: 99999
-  }
-});
 function normalizeLF(code) {
   return code.replace(/\r\n|\r(?!\n)|\n/g, "\n");
 }
 function getErrorDataByCode(code) {
-  const entry = Object.entries(AstroErrorData).find((data) => data[1].code === code);
+  const entry = Object.entries(AstroErrorData).find((data3) => data3[1].code === code);
   if (entry) {
     return {
       name: entry[0],
@@ -1023,61 +551,6 @@ function codeFrame(src, loc) {
   }
   return output;
 }
-var AstroError = class extends Error {
-  constructor(props, ...params) {
-    var _a2;
-    super(...params);
-    this.type = "AstroError";
-    const { code, name, title, message, stack, location, hint, frame } = props;
-    this.errorCode = code;
-    if (name && name !== "Error") {
-      this.name = name;
-    } else {
-      this.name = ((_a2 = getErrorDataByCode(this.errorCode)) == null ? void 0 : _a2.name) ?? "UnknownError";
-    }
-    this.title = title;
-    if (message)
-      this.message = message;
-    this.stack = stack ? stack : this.stack;
-    this.loc = location;
-    this.hint = hint;
-    this.frame = frame;
-  }
-  setErrorCode(errorCode) {
-    this.errorCode = errorCode;
-  }
-  setLocation(location) {
-    this.loc = location;
-  }
-  setName(name) {
-    this.name = name;
-  }
-  setMessage(message) {
-    this.message = message;
-  }
-  setHint(hint) {
-    this.hint = hint;
-  }
-  setFrame(source, location) {
-    this.frame = codeFrame(source, location);
-  }
-  static is(err) {
-    return err.type === "AstroError";
-  }
-};
-var PROP_TYPE = {
-  Value: 0,
-  JSON: 1,
-  RegExp: 2,
-  Date: 3,
-  Map: 4,
-  Set: 5,
-  BigInt: 6,
-  URL: 7,
-  Uint8Array: 8,
-  Uint16Array: 9,
-  Uint32Array: 10
-};
 function serializeArray(value, metadata = {}, parents = /* @__PURE__ */ new WeakSet()) {
   if (parents.has(value)) {
     throw new Error(`Cyclic reference detected while serializing props for <${metadata.displayName} client:${metadata.hydrate}>!
@@ -1158,9 +631,6 @@ function serializeProps(props, metadata) {
   const serialized = JSON.stringify(serializeObject(props, metadata));
   return serialized;
 }
-var HydrationDirectivesRaw = ["load", "idle", "media", "visible", "only"];
-var HydrationDirectives = new Set(HydrationDirectivesRaw);
-var HydrationDirectiveProps = new Set(HydrationDirectivesRaw.map((n) => `client:${n}`));
 function extractDirectives(displayName, inputProps) {
   let extracted = {
     isPage: false,
@@ -1265,39 +735,6 @@ async function generateHydrateScript(scriptOptions, metadata) {
   );
   return island;
 }
-var _a;
-var astroComponentInstanceSym = Symbol.for("astro.componentInstance");
-var AstroComponentInstance = class {
-  constructor(result, props, slots, factory) {
-    this[_a] = true;
-    this.result = result;
-    this.props = props;
-    this.factory = factory;
-    this.slotValues = {};
-    for (const name in slots) {
-      this.slotValues[name] = slots[name]();
-    }
-  }
-  async init() {
-    this.returnValue = this.factory(this.result, this.props, this.slotValues);
-    return this.returnValue;
-  }
-  async *render() {
-    if (this.returnValue === void 0) {
-      await this.init();
-    }
-    let value = this.returnValue;
-    if (isPromise(value)) {
-      value = await value;
-    }
-    if (isHeadAndContent(value)) {
-      yield* value.content;
-    } else {
-      yield* renderChild(value);
-    }
-  }
-};
-_a = astroComponentInstanceSym;
 function validateComponentProps(props, displayName) {
   if (props != null) {
     for (const prop of Object.keys(props)) {
@@ -1351,14 +788,6 @@ async function* renderChild(child) {
     yield child;
   }
 }
-var slotString = Symbol.for("astro:slot-string");
-var SlotString = class extends HTMLString {
-  constructor(content, instructions) {
-    super(content);
-    this.instructions = instructions;
-    this[slotString] = true;
-  }
-};
 function isSlotString(str) {
   return !!str[slotString];
 }
@@ -1401,10 +830,6 @@ async function renderSlots(result, slots = {}) {
   }
   return { slotInstructions, children };
 }
-var Fragment = Symbol.for("astro:fragment");
-var Renderer = Symbol.for("astro:renderer");
-var encoder = new TextEncoder();
-var decoder = new TextDecoder();
 function stringifyChunk(result, chunk) {
   switch (chunk.type) {
     case "directive": {
@@ -1435,49 +860,12 @@ function stringifyChunk(result, chunk) {
     }
   }
 }
-var HTMLParts = class {
-  constructor() {
-    this.parts = "";
-  }
-  append(part, result) {
-    if (ArrayBuffer.isView(part)) {
-      this.parts += decoder.decode(part);
-    } else {
-      this.parts += stringifyChunk(result, part);
-    }
-  }
-  toString() {
-    return this.parts;
-  }
-  toArrayBuffer() {
-    return encoder.encode(this.parts);
-  }
-};
 function chunkToByteArray(result, chunk) {
   if (chunk instanceof Uint8Array) {
     return chunk;
   }
   return encoder.encode(stringifyChunk(result, chunk));
 }
-var ClientOnlyPlaceholder = "astro-client-only";
-var Skip = class {
-  constructor(vnode) {
-    this.vnode = vnode;
-    this.count = 0;
-  }
-  increment() {
-    this.count++;
-  }
-  haveNoTried() {
-    return this.count === 0;
-  }
-  isCompleted() {
-    return this.count > 2;
-  }
-};
-Skip.symbol = Symbol("astro:jsx:skip");
-var originalConsoleError;
-var consoleFilterRefs = 0;
 async function renderJSX(result, vnode) {
   switch (true) {
     case vnode instanceof HTMLString:
@@ -1665,8 +1053,6 @@ function filteredConsoleError(msg, ...rest) {
   }
   originalConsoleError(msg, ...rest);
 }
-var dictionary = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY";
-var binary = dictionary.length;
 function bitwise(str) {
   let hash = 0;
   if (str.length === 0)
@@ -1694,19 +1080,6 @@ function shorthash(text) {
   }
   return sign + result;
 }
-var voidElementNames = /^(area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr)$/i;
-var htmlBooleanAttributes = /^(allowfullscreen|async|autofocus|autoplay|controls|default|defer|disabled|disablepictureinpicture|disableremoteplayback|formnovalidate|hidden|loop|nomodule|novalidate|open|playsinline|readonly|required|reversed|scoped|seamless|itemscope)$/i;
-var htmlEnumAttributes = /^(contenteditable|draggable|spellcheck|value)$/i;
-var svgEnumAttributes = /^(autoReverse|externalResourcesRequired|focusable|preserveAlpha)$/i;
-var STATIC_DIRECTIVES = /* @__PURE__ */ new Set(["set:html", "set:text"]);
-var toIdent = (k) => k.trim().replace(/(?:(?!^)\b\w|\s+|[^\w]+)/g, (match, index) => {
-  if (/[^\w]|\s/.test(match))
-    return "";
-  return index === 0 ? match : match.toUpperCase();
-});
-var toAttributeString = (value, shouldEscape = true) => shouldEscape ? String(value).replace(/&/g, "&#38;").replace(/"/g, "&#34;") : value;
-var kebab = (k) => k.toLowerCase() === k ? k : k.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
-var toStyleString = (obj) => Object.entries(obj).map(([k, v]) => `${kebab(k)}:${v}`).join(";");
 function defineScriptVars(vars) {
   let output = "";
   for (const [key, value] of Object.entries(vars)) {
@@ -1800,7 +1173,6 @@ function getHTMLElementName(constructor) {
   const assignedName = constructor.name.replace(/^HTML|Element$/g, "").replace(/[A-Z]/g, "-$&").toLowerCase().replace(/^-/, "html-");
   return assignedName;
 }
-var rendererAliases = /* @__PURE__ */ new Map([["solid", "solid-js"]]);
 function guessRenderers(componentUrl) {
   const extname = componentUrl == null ? void 0 : componentUrl.split(".").pop();
   switch (extname) {
@@ -2079,11 +1451,6 @@ function renderComponentToIterable(result, displayName, Component, props, slots 
   }
   return renderResult;
 }
-var uniqueElements = (item, index, all) => {
-  const props = JSON.stringify(item.props);
-  const children = item.children;
-  return index === all.findIndex((i) => JSON.stringify(i.props) === props && i.children == children);
-};
 async function* renderExtraHead(result, base) {
   yield base;
   for (const part of result.extraHead) {
@@ -2108,43 +1475,22 @@ function createRenderHead(result) {
   result._metadata.hasRenderedHead = true;
   return renderAllHeadContent.bind(null, result);
 }
-var renderHead = createRenderHead;
 async function* maybeRenderHead(result) {
   if (result._metadata.hasRenderedHead) {
     return;
   }
   yield createRenderHead(result)();
 }
-var __accessCheck$2 = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
-};
-var __privateGet$2 = (obj, member, getter) => {
-  __accessCheck$2(obj, member, "read from private field");
-  return getter ? getter.call(obj) : member.get(obj);
-};
-var __privateAdd$2 = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
-  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-};
-var __privateSet$2 = (obj, member, value, setter) => {
-  __accessCheck$2(obj, member, "write to private field");
-  setter ? setter.call(obj, value) : member.set(obj, value);
-  return value;
-};
-var isNodeJS = typeof process === "object" && Object.prototype.toString.call(process) === "[object process]";
-var StreamingCompatibleResponse;
 function createResponseClass() {
   var _isStream, _body, _a2;
   StreamingCompatibleResponse = (_a2 = class extends Response {
-    constructor(body, init2) {
-      let isStream = body instanceof ReadableStream;
-      super(isStream ? null : body, init2);
+    constructor(body3, init2) {
+      let isStream = body3 instanceof ReadableStream;
+      super(isStream ? null : body3, init2);
       __privateAdd$2(this, _isStream, void 0);
       __privateAdd$2(this, _body, void 0);
       __privateSet$2(this, _isStream, isStream);
-      __privateSet$2(this, _body, body);
+      __privateSet$2(this, _body, body3);
     }
     get body() {
       return __privateGet$2(this, _body);
@@ -2152,9 +1498,9 @@ function createResponseClass() {
     async text() {
       if (__privateGet$2(this, _isStream) && isNodeJS) {
         let decoder2 = new TextDecoder();
-        let body = __privateGet$2(this, _body);
+        let body3 = __privateGet$2(this, _body);
         let out = "";
-        for await (let chunk of streamAsyncIterator(body)) {
+        for await (let chunk of streamAsyncIterator(body3)) {
           out += decoder2.decode(chunk);
         }
         return out;
@@ -2163,10 +1509,10 @@ function createResponseClass() {
     }
     async arrayBuffer() {
       if (__privateGet$2(this, _isStream) && isNodeJS) {
-        let body = __privateGet$2(this, _body);
+        let body3 = __privateGet$2(this, _body);
         let chunks = [];
         let len = 0;
-        for await (let chunk of streamAsyncIterator(body)) {
+        for await (let chunk of streamAsyncIterator(body3)) {
           chunks.push(chunk);
           len += chunk.length;
         }
@@ -2183,16 +1529,6 @@ function createResponseClass() {
   }, _isStream = /* @__PURE__ */ new WeakMap(), _body = /* @__PURE__ */ new WeakMap(), _a2);
   return StreamingCompatibleResponse;
 }
-var createResponse = isNodeJS ? (body, init2) => {
-  if (typeof body === "string" || ArrayBuffer.isView(body)) {
-    return new Response(body, init2);
-  }
-  if (typeof StreamingCompatibleResponse === "undefined") {
-    return new (createResponseClass())(body, init2);
-  }
-  return new StreamingCompatibleResponse(body, init2);
-} : (body, init2) => new Response(body, init2);
-var needsHeadRenderingSymbol = Symbol.for("astro.needsHeadRendering");
 function nonAstroPageNeedsHeadInjection(pageComponent) {
   return needsHeadRenderingSymbol in pageComponent && !!pageComponent[needsHeadRenderingSymbol];
 }
@@ -2275,9 +1611,9 @@ async function renderPage$1(result, componentFactory, props, children, streaming
     let iterable = renderAstroTemplateResult(templateResult);
     let init2 = result.response;
     let headers = new Headers(init2.headers);
-    let body;
+    let body3;
     if (streaming) {
-      body = new ReadableStream({
+      body3 = new ReadableStream({
         start(controller) {
           async function read() {
             let i = 0;
@@ -2308,10 +1644,10 @@ async function renderPage$1(result, componentFactory, props, children, streaming
         }
       });
     } else {
-      body = await iterableToHTMLBytes(result, iterable);
-      headers.set("Content-Length", body.byteLength.toString());
+      body3 = await iterableToHTMLBytes(result, iterable);
+      headers.set("Content-Length", body3.byteLength.toString());
     }
-    let response = createResponse(body, { ...init2, headers });
+    let response = createResponse(body3, { ...init2, headers });
     return response;
   }
   if (!(factoryReturnValue instanceof Response)) {
@@ -2327,6 +1663,44 @@ async function renderPage$1(result, componentFactory, props, children, streaming
     });
   }
   return factoryReturnValue;
+}
+function renderStyleElement(children) {
+  return renderElement("style", {
+    props: {},
+    children
+  });
+}
+function renderStylesheet({ href }) {
+  return renderElement(
+    "link",
+    {
+      props: {
+        rel: stylesheetRel,
+        href
+      },
+      children: ""
+    },
+    false
+  );
+}
+function renderUniqueStylesheet(result, link) {
+  for (const existingLink of result.links) {
+    if (existingLink.props.rel === stylesheetRel && existingLink.props.href === link.href) {
+      return "";
+    }
+  }
+  return renderStylesheet(link);
+}
+function __astro_tag_component__(Component, rendererName) {
+  if (!Component)
+    return;
+  if (typeof Component !== "function")
+    return;
+  Object.defineProperty(Component, Renderer, {
+    value: rendererName,
+    enumerable: false,
+    writable: false
+  });
 }
 function spreadAttributes(values, _name, { class: scopedClassName } = {}) {
   let output = "";
@@ -2344,18 +1718,6 @@ function spreadAttributes(values, _name, { class: scopedClassName } = {}) {
   }
   return markHTMLString(output);
 }
-var FORCE_COLOR;
-var NODE_DISABLE_COLORS;
-var NO_COLOR;
-var TERM;
-var isTTY = true;
-if (typeof process !== "undefined") {
-  ({ FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env || {});
-  isTTY = process.stdout && process.stdout.isTTY;
-}
-var $ = {
-  enabled: !NODE_DISABLE_COLORS && NO_COLOR == null && TERM !== "dumb" && (FORCE_COLOR != null && FORCE_COLOR !== "0" || isTTY)
-};
 function init(x, y) {
   let rgx = new RegExp(`\\x1b\\[${y}m`, "g");
   let open = `\x1B[${x}m`, close = `\x1B[${y}m`;
@@ -2365,112 +1727,6 @@ function init(x, y) {
     return open + (!!~("" + txt).indexOf(close) ? txt.replace(rgx, close + open) : txt) + close;
   };
 }
-var reset = init(0, 0);
-var bold = init(1, 22);
-var dim = init(2, 22);
-var red = init(31, 39);
-var yellow = init(33, 39);
-var cyan = init(36, 39);
-var eastasianwidthExports = {};
-var eastasianwidth = {
-  get exports() {
-    return eastasianwidthExports;
-  },
-  set exports(v) {
-    eastasianwidthExports = v;
-  }
-};
-(function(module) {
-  var eaw = {};
-  {
-    module.exports = eaw;
-  }
-  eaw.eastAsianWidth = function(character) {
-    var x = character.charCodeAt(0);
-    var y = character.length == 2 ? character.charCodeAt(1) : 0;
-    var codePoint = x;
-    if (55296 <= x && x <= 56319 && (56320 <= y && y <= 57343)) {
-      x &= 1023;
-      y &= 1023;
-      codePoint = x << 10 | y;
-      codePoint += 65536;
-    }
-    if (12288 == codePoint || 65281 <= codePoint && codePoint <= 65376 || 65504 <= codePoint && codePoint <= 65510) {
-      return "F";
-    }
-    if (8361 == codePoint || 65377 <= codePoint && codePoint <= 65470 || 65474 <= codePoint && codePoint <= 65479 || 65482 <= codePoint && codePoint <= 65487 || 65490 <= codePoint && codePoint <= 65495 || 65498 <= codePoint && codePoint <= 65500 || 65512 <= codePoint && codePoint <= 65518) {
-      return "H";
-    }
-    if (4352 <= codePoint && codePoint <= 4447 || 4515 <= codePoint && codePoint <= 4519 || 4602 <= codePoint && codePoint <= 4607 || 9001 <= codePoint && codePoint <= 9002 || 11904 <= codePoint && codePoint <= 11929 || 11931 <= codePoint && codePoint <= 12019 || 12032 <= codePoint && codePoint <= 12245 || 12272 <= codePoint && codePoint <= 12283 || 12289 <= codePoint && codePoint <= 12350 || 12353 <= codePoint && codePoint <= 12438 || 12441 <= codePoint && codePoint <= 12543 || 12549 <= codePoint && codePoint <= 12589 || 12593 <= codePoint && codePoint <= 12686 || 12688 <= codePoint && codePoint <= 12730 || 12736 <= codePoint && codePoint <= 12771 || 12784 <= codePoint && codePoint <= 12830 || 12832 <= codePoint && codePoint <= 12871 || 12880 <= codePoint && codePoint <= 13054 || 13056 <= codePoint && codePoint <= 19903 || 19968 <= codePoint && codePoint <= 42124 || 42128 <= codePoint && codePoint <= 42182 || 43360 <= codePoint && codePoint <= 43388 || 44032 <= codePoint && codePoint <= 55203 || 55216 <= codePoint && codePoint <= 55238 || 55243 <= codePoint && codePoint <= 55291 || 63744 <= codePoint && codePoint <= 64255 || 65040 <= codePoint && codePoint <= 65049 || 65072 <= codePoint && codePoint <= 65106 || 65108 <= codePoint && codePoint <= 65126 || 65128 <= codePoint && codePoint <= 65131 || 110592 <= codePoint && codePoint <= 110593 || 127488 <= codePoint && codePoint <= 127490 || 127504 <= codePoint && codePoint <= 127546 || 127552 <= codePoint && codePoint <= 127560 || 127568 <= codePoint && codePoint <= 127569 || 131072 <= codePoint && codePoint <= 194367 || 177984 <= codePoint && codePoint <= 196605 || 196608 <= codePoint && codePoint <= 262141) {
-      return "W";
-    }
-    if (32 <= codePoint && codePoint <= 126 || 162 <= codePoint && codePoint <= 163 || 165 <= codePoint && codePoint <= 166 || 172 == codePoint || 175 == codePoint || 10214 <= codePoint && codePoint <= 10221 || 10629 <= codePoint && codePoint <= 10630) {
-      return "Na";
-    }
-    if (161 == codePoint || 164 == codePoint || 167 <= codePoint && codePoint <= 168 || 170 == codePoint || 173 <= codePoint && codePoint <= 174 || 176 <= codePoint && codePoint <= 180 || 182 <= codePoint && codePoint <= 186 || 188 <= codePoint && codePoint <= 191 || 198 == codePoint || 208 == codePoint || 215 <= codePoint && codePoint <= 216 || 222 <= codePoint && codePoint <= 225 || 230 == codePoint || 232 <= codePoint && codePoint <= 234 || 236 <= codePoint && codePoint <= 237 || 240 == codePoint || 242 <= codePoint && codePoint <= 243 || 247 <= codePoint && codePoint <= 250 || 252 == codePoint || 254 == codePoint || 257 == codePoint || 273 == codePoint || 275 == codePoint || 283 == codePoint || 294 <= codePoint && codePoint <= 295 || 299 == codePoint || 305 <= codePoint && codePoint <= 307 || 312 == codePoint || 319 <= codePoint && codePoint <= 322 || 324 == codePoint || 328 <= codePoint && codePoint <= 331 || 333 == codePoint || 338 <= codePoint && codePoint <= 339 || 358 <= codePoint && codePoint <= 359 || 363 == codePoint || 462 == codePoint || 464 == codePoint || 466 == codePoint || 468 == codePoint || 470 == codePoint || 472 == codePoint || 474 == codePoint || 476 == codePoint || 593 == codePoint || 609 == codePoint || 708 == codePoint || 711 == codePoint || 713 <= codePoint && codePoint <= 715 || 717 == codePoint || 720 == codePoint || 728 <= codePoint && codePoint <= 731 || 733 == codePoint || 735 == codePoint || 768 <= codePoint && codePoint <= 879 || 913 <= codePoint && codePoint <= 929 || 931 <= codePoint && codePoint <= 937 || 945 <= codePoint && codePoint <= 961 || 963 <= codePoint && codePoint <= 969 || 1025 == codePoint || 1040 <= codePoint && codePoint <= 1103 || 1105 == codePoint || 8208 == codePoint || 8211 <= codePoint && codePoint <= 8214 || 8216 <= codePoint && codePoint <= 8217 || 8220 <= codePoint && codePoint <= 8221 || 8224 <= codePoint && codePoint <= 8226 || 8228 <= codePoint && codePoint <= 8231 || 8240 == codePoint || 8242 <= codePoint && codePoint <= 8243 || 8245 == codePoint || 8251 == codePoint || 8254 == codePoint || 8308 == codePoint || 8319 == codePoint || 8321 <= codePoint && codePoint <= 8324 || 8364 == codePoint || 8451 == codePoint || 8453 == codePoint || 8457 == codePoint || 8467 == codePoint || 8470 == codePoint || 8481 <= codePoint && codePoint <= 8482 || 8486 == codePoint || 8491 == codePoint || 8531 <= codePoint && codePoint <= 8532 || 8539 <= codePoint && codePoint <= 8542 || 8544 <= codePoint && codePoint <= 8555 || 8560 <= codePoint && codePoint <= 8569 || 8585 == codePoint || 8592 <= codePoint && codePoint <= 8601 || 8632 <= codePoint && codePoint <= 8633 || 8658 == codePoint || 8660 == codePoint || 8679 == codePoint || 8704 == codePoint || 8706 <= codePoint && codePoint <= 8707 || 8711 <= codePoint && codePoint <= 8712 || 8715 == codePoint || 8719 == codePoint || 8721 == codePoint || 8725 == codePoint || 8730 == codePoint || 8733 <= codePoint && codePoint <= 8736 || 8739 == codePoint || 8741 == codePoint || 8743 <= codePoint && codePoint <= 8748 || 8750 == codePoint || 8756 <= codePoint && codePoint <= 8759 || 8764 <= codePoint && codePoint <= 8765 || 8776 == codePoint || 8780 == codePoint || 8786 == codePoint || 8800 <= codePoint && codePoint <= 8801 || 8804 <= codePoint && codePoint <= 8807 || 8810 <= codePoint && codePoint <= 8811 || 8814 <= codePoint && codePoint <= 8815 || 8834 <= codePoint && codePoint <= 8835 || 8838 <= codePoint && codePoint <= 8839 || 8853 == codePoint || 8857 == codePoint || 8869 == codePoint || 8895 == codePoint || 8978 == codePoint || 9312 <= codePoint && codePoint <= 9449 || 9451 <= codePoint && codePoint <= 9547 || 9552 <= codePoint && codePoint <= 9587 || 9600 <= codePoint && codePoint <= 9615 || 9618 <= codePoint && codePoint <= 9621 || 9632 <= codePoint && codePoint <= 9633 || 9635 <= codePoint && codePoint <= 9641 || 9650 <= codePoint && codePoint <= 9651 || 9654 <= codePoint && codePoint <= 9655 || 9660 <= codePoint && codePoint <= 9661 || 9664 <= codePoint && codePoint <= 9665 || 9670 <= codePoint && codePoint <= 9672 || 9675 == codePoint || 9678 <= codePoint && codePoint <= 9681 || 9698 <= codePoint && codePoint <= 9701 || 9711 == codePoint || 9733 <= codePoint && codePoint <= 9734 || 9737 == codePoint || 9742 <= codePoint && codePoint <= 9743 || 9748 <= codePoint && codePoint <= 9749 || 9756 == codePoint || 9758 == codePoint || 9792 == codePoint || 9794 == codePoint || 9824 <= codePoint && codePoint <= 9825 || 9827 <= codePoint && codePoint <= 9829 || 9831 <= codePoint && codePoint <= 9834 || 9836 <= codePoint && codePoint <= 9837 || 9839 == codePoint || 9886 <= codePoint && codePoint <= 9887 || 9918 <= codePoint && codePoint <= 9919 || 9924 <= codePoint && codePoint <= 9933 || 9935 <= codePoint && codePoint <= 9953 || 9955 == codePoint || 9960 <= codePoint && codePoint <= 9983 || 10045 == codePoint || 10071 == codePoint || 10102 <= codePoint && codePoint <= 10111 || 11093 <= codePoint && codePoint <= 11097 || 12872 <= codePoint && codePoint <= 12879 || 57344 <= codePoint && codePoint <= 63743 || 65024 <= codePoint && codePoint <= 65039 || 65533 == codePoint || 127232 <= codePoint && codePoint <= 127242 || 127248 <= codePoint && codePoint <= 127277 || 127280 <= codePoint && codePoint <= 127337 || 127344 <= codePoint && codePoint <= 127386 || 917760 <= codePoint && codePoint <= 917999 || 983040 <= codePoint && codePoint <= 1048573 || 1048576 <= codePoint && codePoint <= 1114109) {
-      return "A";
-    }
-    return "N";
-  };
-  eaw.characterLength = function(character) {
-    var code = this.eastAsianWidth(character);
-    if (code == "F" || code == "W" || code == "A") {
-      return 2;
-    } else {
-      return 1;
-    }
-  };
-  function stringToArray(string) {
-    return string.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
-  }
-  eaw.length = function(string) {
-    var characters = stringToArray(string);
-    var len = 0;
-    for (var i = 0; i < characters.length; i++) {
-      len = len + this.characterLength(characters[i]);
-    }
-    return len;
-  };
-  eaw.slice = function(text, start, end) {
-    textLen = eaw.length(text);
-    start = start ? start : 0;
-    end = end ? end : 1;
-    if (start < 0) {
-      start = textLen + start;
-    }
-    if (end < 0) {
-      end = textLen + end;
-    }
-    var result = "";
-    var eawLen = 0;
-    var chars = stringToArray(text);
-    for (var i = 0; i < chars.length; i++) {
-      var char = chars[i];
-      var charLen = eaw.length(char);
-      if (eawLen >= start - (charLen == 2 ? 1 : 0)) {
-        if (eawLen + charLen <= end) {
-          result += char;
-        } else {
-          break;
-        }
-      }
-      eawLen += charLen;
-    }
-    return result;
-  };
-})(eastasianwidth);
-var dateTimeFormat = new Intl.DateTimeFormat([], {
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit"
-});
-var levels = {
-  debug: 20,
-  info: 30,
-  warn: 40,
-  error: 50,
-  silent: 90
-};
 function log(opts, level, type, message) {
   const logLevel = opts.level;
   const dest = opts.dest;
@@ -2495,18 +1751,6 @@ function debug(...args) {
     globalThis._astroGlobalDebug(...args);
   }
 }
-if (typeof process !== "undefined") {
-  let proc = process;
-  if ("argv" in proc && Array.isArray(proc.argv)) {
-    if (proc.argv.includes("--verbose"))
-      ;
-    else if (proc.argv.includes("--silent"))
-      ;
-    else
-      ;
-  }
-}
-var VALID_PARAM_TYPES = ["string", "number", "undefined"];
 function validateGetStaticPathsParameter([key, value], route) {
   if (!VALID_PARAM_TYPES.includes(typeof value)) {
     throw new AstroError({
@@ -2604,28 +1848,6 @@ function stringifyParams(params, routeComponent) {
   }, {});
   return JSON.stringify(validatedParams, Object.keys(params).sort());
 }
-var __accessCheck$1 = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
-};
-var __privateGet$1 = (obj, member, getter) => {
-  __accessCheck$1(obj, member, "read from private field");
-  return getter ? getter.call(obj) : member.get(obj);
-};
-var __privateAdd$1 = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
-  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-};
-var __privateSet$1 = (obj, member, value, setter) => {
-  __accessCheck$1(obj, member, "write to private field");
-  setter ? setter.call(obj, value) : member.set(obj, value);
-  return value;
-};
-var _result;
-var _slots;
-var _loggingOpts;
-var clientAddressSymbol$1 = Symbol.for("astro.clientAddress");
 function onlyAvailableInSSR(name) {
   return function _onlyAvailableInSSR() {
     switch (name) {
@@ -2642,73 +1864,9 @@ function getFunctionExpression(slot) {
     return;
   return slot.expressions[0];
 }
-var Slots = class {
-  constructor(result, slots, logging) {
-    __privateAdd$1(this, _result, void 0);
-    __privateAdd$1(this, _slots, void 0);
-    __privateAdd$1(this, _loggingOpts, void 0);
-    __privateSet$1(this, _result, result);
-    __privateSet$1(this, _slots, slots);
-    __privateSet$1(this, _loggingOpts, logging);
-    if (slots) {
-      for (const key of Object.keys(slots)) {
-        if (this[key] !== void 0) {
-          throw new AstroError({
-            ...AstroErrorData.ReservedSlotName,
-            message: AstroErrorData.ReservedSlotName.message(key)
-          });
-        }
-        Object.defineProperty(this, key, {
-          get() {
-            return true;
-          },
-          enumerable: true
-        });
-      }
-    }
-  }
-  has(name) {
-    if (!__privateGet$1(this, _slots))
-      return false;
-    return Boolean(__privateGet$1(this, _slots)[name]);
-  }
-  async render(name, args = []) {
-    if (!__privateGet$1(this, _slots) || !this.has(name))
-      return;
-    if (!Array.isArray(args)) {
-      warn(
-        __privateGet$1(this, _loggingOpts),
-        "Astro.slots.render",
-        `Expected second parameter to be an array, received a ${typeof args}. If you're trying to pass an array as a single argument and getting unexpected results, make sure you're passing your array as a item of an array. Ex: Astro.slots.render('default', [["Hello", "World"]])`
-      );
-    } else if (args.length > 0) {
-      const slotValue = __privateGet$1(this, _slots)[name];
-      const component = typeof slotValue === "function" ? await slotValue() : await slotValue;
-      const expression = getFunctionExpression(component);
-      if (expression) {
-        const slot = expression(...args);
-        return await renderSlot(__privateGet$1(this, _result), slot).then(
-          (res) => res != null ? String(res) : res
-        );
-      }
-      if (typeof component === "function") {
-        return await renderJSX(__privateGet$1(this, _result), component(...args)).then(
-          (res) => res != null ? String(res) : res
-        );
-      }
-    }
-    const content = await renderSlot(__privateGet$1(this, _result), __privateGet$1(this, _slots)[name]);
-    const outHTML = stringifyChunk(__privateGet$1(this, _result), content);
-    return outHTML;
-  }
-};
-_result = /* @__PURE__ */ new WeakMap();
-_slots = /* @__PURE__ */ new WeakMap();
-_loggingOpts = /* @__PURE__ */ new WeakMap();
-var renderMarkdown = null;
 function createResult(args) {
   const { markdown, params, pathname, renderers: renderers2, request, resolve } = args;
-  const url = new URL(request.url);
+  const url3 = new URL(request.url);
   const headers = new Headers();
   headers.set("Content-Type", "text/html");
   const response = {
@@ -2758,7 +1916,7 @@ function createResult(args) {
         params,
         props,
         request,
-        url,
+        url: url3,
         redirect: args.ssr ? (path, status) => {
           return new Response(null, {
             status: status || 302,
@@ -2801,7 +1959,7 @@ function createResult(args) {
   return result;
 }
 function generatePaginateFunction(routeMatch) {
-  return function paginateUtility(data, args = {}) {
+  return function paginateUtility(data3, args = {}) {
     let { pageSize: _pageSize, params: _params, props: _props } = args;
     const pageSize = _pageSize || 10;
     const paramName = "page";
@@ -2818,11 +1976,11 @@ function generatePaginateFunction(routeMatch) {
 Rename your file to \`[...page].astro\` or customize the param name via the \`paginate([], {param: '...'}\` option.`
       );
     }
-    const lastPage = Math.max(1, Math.ceil(data.length / pageSize));
+    const lastPage = Math.max(1, Math.ceil(data3.length / pageSize));
     const result = [...Array(lastPage).keys()].map((num) => {
       const pageNum = num + 1;
       const start = pageSize === Infinity ? 0 : (pageNum - 1) * pageSize;
-      const end = Math.min(start + pageSize, data.length);
+      const end = Math.min(start + pageSize, data3.length);
       const params = {
         ...additionalParams,
         [paramName]: includesFirstPageNumber || pageNum > 1 ? String(pageNum) : void 0
@@ -2832,11 +1990,11 @@ Rename your file to \`[...page].astro\` or customize the param name via the \`pa
         props: {
           ...additionalProps,
           page: {
-            data: data.slice(start, end),
+            data: data3.slice(start, end),
             start,
             end: end - 1,
             size: pageSize,
-            total: data.length,
+            total: data3.length,
             currentPage: pageNum,
             lastPage,
             url: {
@@ -2891,29 +2049,6 @@ async function callGetStaticPaths({
     staticPaths: keyedStaticPaths
   };
 }
-var RouteCache = class {
-  constructor(logging, mode = "production") {
-    this.cache = {};
-    this.logging = logging;
-    this.mode = mode;
-  }
-  clearAll() {
-    this.cache = {};
-  }
-  set(route, entry) {
-    if (this.mode === "production" && this.cache[route.component]) {
-      warn(
-        this.logging,
-        "routeCache",
-        `Internal Warning: route cache overwritten. (${route.component})`
-      );
-    }
-    this.cache[route.component] = entry;
-  }
-  get(route) {
-    return this.cache[route.component];
-  }
-};
 function findPathItemByKey(staticPaths, params, route) {
   const paramsKey = stringifyParams(params, route.component);
   const matchedStaticPath = staticPaths.keyed.get(paramsKey);
@@ -2922,10 +2057,6 @@ function findPathItemByKey(staticPaths, params, route) {
   }
   debug("findPathItemByKey", `Unexpected cache miss looking for ${paramsKey}`);
 }
-var GetParamsAndPropsError = /* @__PURE__ */ ((GetParamsAndPropsError2) => {
-  GetParamsAndPropsError2[GetParamsAndPropsError2["NoMatchingStaticPath"] = 0] = "NoMatchingStaticPath";
-  return GetParamsAndPropsError2;
-})(GetParamsAndPropsError || {});
 async function getParamsAndProps(opts) {
   const { logging, mod, route, routeCache, pathname, ssr } = opts;
   let params = {};
@@ -3009,7 +2140,6 @@ async function renderPage(mod, ctx, env) {
   }
   return response;
 }
-var clientAddressSymbol = Symbol.for("astro.clientAddress");
 function createAPIContext({
   request,
   params,
@@ -3088,43 +2218,6 @@ async function call(mod, env, ctx) {
     cookies: context.cookies
   };
 }
-var lastMessage;
-var lastMessageCount = 1;
-var consoleLogDestination = {
-  write(event) {
-    let dest = console.error;
-    if (levels[event.level] < levels["error"]) {
-      dest = console.log;
-    }
-    function getPrefix() {
-      let prefix = "";
-      let type = event.type;
-      if (type) {
-        prefix += dim(dateTimeFormat.format(new Date()) + " ");
-        if (event.level === "info") {
-          type = bold(cyan(`[${type}]`));
-        } else if (event.level === "warn") {
-          type = bold(yellow(`[${type}]`));
-        } else if (event.level === "error") {
-          type = bold(red(`[${type}]`));
-        }
-        prefix += `${type} `;
-      }
-      return reset(prefix);
-    }
-    let message = event.message;
-    if (message === lastMessage) {
-      lastMessageCount++;
-      message = `${message} ${yellow(`(x${lastMessageCount})`)}`;
-    } else {
-      lastMessage = message;
-      lastMessageCount = 1;
-    }
-    const outMessage = getPrefix() + message;
-    dest(outMessage);
-    return true;
-  }
-};
 function appendForwardSlash(path) {
   return path.endsWith("/") ? path : path + "/";
 }
@@ -3148,14 +2241,14 @@ function joinPaths(...paths) {
 }
 function createRenderContext(options) {
   const request = options.request;
-  const url = new URL(request.url);
-  const origin = options.origin ?? url.origin;
-  const pathname = options.pathname ?? url.pathname;
+  const url3 = new URL(request.url);
+  const origin = options.origin ?? url3.origin;
+  const pathname = options.pathname ?? url3.pathname;
   return {
     ...options,
     origin,
     pathname,
-    url
+    url: url3
   };
 }
 function createEnvironment(options) {
@@ -3400,7 +2493,7 @@ function tokensToFunction(tokens, options) {
       return new RegExp("^(?:".concat(token.pattern, ")$"), reFlags);
     }
   });
-  return function(data) {
+  return function(data3) {
     var path = "";
     for (var i = 0; i < tokens.length; i++) {
       var token = tokens[i];
@@ -3408,7 +2501,7 @@ function tokensToFunction(tokens, options) {
         path += token;
         continue;
       }
-      var value = data ? data[token.name] : void 0;
+      var value = data3 ? data3[token.name] : void 0;
       var optional = token.modifier === "?" || token.modifier === "*";
       var repeat = token.modifier === "*" || token.modifier === "+";
       if (Array.isArray(value)) {
@@ -3499,245 +2592,6 @@ function deserializeManifest(serializedManifest) {
     routes
   };
 }
-var __accessCheck = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
-};
-var __privateGet = (obj, member, getter) => {
-  __accessCheck(obj, member, "read from private field");
-  return getter ? getter.call(obj) : member.get(obj);
-};
-var __privateAdd = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
-  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-};
-var __privateSet = (obj, member, value, setter) => {
-  __accessCheck(obj, member, "write to private field");
-  setter ? setter.call(obj, value) : member.set(obj, value);
-  return value;
-};
-var __privateMethod = (obj, member, method) => {
-  __accessCheck(obj, member, "access private method");
-  return method;
-};
-var _env;
-var _manifest;
-var _manifestData;
-var _routeDataToRouteInfo;
-var _encoder;
-var _logging;
-var _base;
-var _baseWithoutTrailingSlash;
-var _renderPage;
-var renderPage_fn;
-var _callEndpoint;
-var callEndpoint_fn;
-var App = class {
-  constructor(manifest, streaming = true) {
-    __privateAdd(this, _renderPage);
-    __privateAdd(this, _callEndpoint);
-    __privateAdd(this, _env, void 0);
-    __privateAdd(this, _manifest, void 0);
-    __privateAdd(this, _manifestData, void 0);
-    __privateAdd(this, _routeDataToRouteInfo, void 0);
-    __privateAdd(this, _encoder, new TextEncoder());
-    __privateAdd(this, _logging, {
-      dest: consoleLogDestination,
-      level: "info"
-    });
-    __privateAdd(this, _base, void 0);
-    __privateAdd(this, _baseWithoutTrailingSlash, void 0);
-    __privateSet(this, _manifest, manifest);
-    __privateSet(this, _manifestData, {
-      routes: manifest.routes.map((route) => route.routeData)
-    });
-    __privateSet(this, _routeDataToRouteInfo, new Map(manifest.routes.map((route) => [route.routeData, route])));
-    __privateSet(this, _env, createEnvironment({
-      adapterName: manifest.adapterName,
-      logging: __privateGet(this, _logging),
-      markdown: manifest.markdown,
-      mode: "production",
-      renderers: manifest.renderers,
-      async resolve(specifier) {
-        if (!(specifier in manifest.entryModules)) {
-          throw new Error(`Unable to resolve [${specifier}]`);
-        }
-        const bundlePath = manifest.entryModules[specifier];
-        switch (true) {
-          case bundlePath.startsWith("data:"):
-          case bundlePath.length === 0: {
-            return bundlePath;
-          }
-          default: {
-            return prependForwardSlash(joinPaths(manifest.base, bundlePath));
-          }
-        }
-      },
-      routeCache: new RouteCache(__privateGet(this, _logging)),
-      site: __privateGet(this, _manifest).site,
-      ssr: true,
-      streaming
-    }));
-    __privateSet(this, _base, __privateGet(this, _manifest).base || "/");
-    __privateSet(this, _baseWithoutTrailingSlash, removeTrailingForwardSlash(__privateGet(this, _base)));
-  }
-  removeBase(pathname) {
-    if (pathname.startsWith(__privateGet(this, _base))) {
-      return pathname.slice(__privateGet(this, _baseWithoutTrailingSlash).length + 1);
-    }
-    return pathname;
-  }
-  match(request, { matchNotFound = false } = {}) {
-    const url = new URL(request.url);
-    if (__privateGet(this, _manifest).assets.has(url.pathname)) {
-      return void 0;
-    }
-    let pathname = "/" + this.removeBase(url.pathname);
-    let routeData = matchRoute(pathname, __privateGet(this, _manifestData));
-    if (routeData) {
-      const asset = matchAssets(routeData, __privateGet(this, _manifest).assets);
-      if (asset)
-        return void 0;
-      return routeData;
-    } else if (matchNotFound) {
-      return matchRoute("/404", __privateGet(this, _manifestData));
-    } else {
-      return void 0;
-    }
-  }
-  async render(request, routeData) {
-    let defaultStatus = 200;
-    if (!routeData) {
-      routeData = this.match(request);
-      if (!routeData) {
-        defaultStatus = 404;
-        routeData = this.match(request, { matchNotFound: true });
-      }
-      if (!routeData) {
-        return new Response(null, {
-          status: 404,
-          statusText: "Not found"
-        });
-      }
-    }
-    if (routeData.route === "/404") {
-      defaultStatus = 404;
-    }
-    let mod = __privateGet(this, _manifest).pageMap.get(routeData.component);
-    if (routeData.type === "page") {
-      let response = await __privateMethod(this, _renderPage, renderPage_fn).call(this, request, routeData, mod, defaultStatus);
-      if (response.status === 500) {
-        const fiveHundredRouteData = matchRoute("/500", __privateGet(this, _manifestData));
-        if (fiveHundredRouteData) {
-          mod = __privateGet(this, _manifest).pageMap.get(fiveHundredRouteData.component);
-          try {
-            let fiveHundredResponse = await __privateMethod(this, _renderPage, renderPage_fn).call(this, request, fiveHundredRouteData, mod, 500);
-            return fiveHundredResponse;
-          } catch {
-          }
-        }
-      }
-      return response;
-    } else if (routeData.type === "endpoint") {
-      return __privateMethod(this, _callEndpoint, callEndpoint_fn).call(this, request, routeData, mod, defaultStatus);
-    } else {
-      throw new Error(`Unsupported route type [${routeData.type}].`);
-    }
-  }
-  setCookieHeaders(response) {
-    return getSetCookiesFromResponse(response);
-  }
-};
-_env = /* @__PURE__ */ new WeakMap();
-_manifest = /* @__PURE__ */ new WeakMap();
-_manifestData = /* @__PURE__ */ new WeakMap();
-_routeDataToRouteInfo = /* @__PURE__ */ new WeakMap();
-_encoder = /* @__PURE__ */ new WeakMap();
-_logging = /* @__PURE__ */ new WeakMap();
-_base = /* @__PURE__ */ new WeakMap();
-_baseWithoutTrailingSlash = /* @__PURE__ */ new WeakMap();
-_renderPage = /* @__PURE__ */ new WeakSet();
-renderPage_fn = async function(request, routeData, mod, status = 200) {
-  const url = new URL(request.url);
-  const pathname = "/" + this.removeBase(url.pathname);
-  const info = __privateGet(this, _routeDataToRouteInfo).get(routeData);
-  const links = createLinkStylesheetElementSet(info.links);
-  let scripts = /* @__PURE__ */ new Set();
-  for (const script of info.scripts) {
-    if ("stage" in script) {
-      if (script.stage === "head-inline") {
-        scripts.add({
-          props: {},
-          children: script.children
-        });
-      }
-    } else {
-      scripts.add(createModuleScriptElement(script));
-    }
-  }
-  try {
-    const ctx = createRenderContext({
-      request,
-      origin: url.origin,
-      pathname,
-      scripts,
-      links,
-      route: routeData,
-      status
-    });
-    const response = await renderPage(mod, ctx, __privateGet(this, _env));
-    return response;
-  } catch (err) {
-    error(__privateGet(this, _logging), "ssr", err.stack || err.message || String(err));
-    return new Response(null, {
-      status: 500,
-      statusText: "Internal server error"
-    });
-  }
-};
-_callEndpoint = /* @__PURE__ */ new WeakSet();
-callEndpoint_fn = async function(request, routeData, mod, status = 200) {
-  const url = new URL(request.url);
-  const pathname = "/" + this.removeBase(url.pathname);
-  const handler = mod;
-  const ctx = createRenderContext({
-    request,
-    origin: url.origin,
-    pathname,
-    route: routeData,
-    status
-  });
-  const result = await call(handler, __privateGet(this, _env), ctx);
-  if (result.type === "response") {
-    if (result.response.headers.get("X-Astro-Response") === "Not-Found") {
-      const fourOhFourRequest = new Request(new URL("/404", request.url));
-      const fourOhFourRouteData = this.match(fourOhFourRequest);
-      if (fourOhFourRouteData) {
-        return this.render(fourOhFourRequest, fourOhFourRouteData);
-      }
-    }
-    return result.response;
-  } else {
-    const body = result.body;
-    const headers = new Headers();
-    const mimeType = mime.getType(url.pathname);
-    if (mimeType) {
-      headers.set("Content-Type", `${mimeType};charset=utf-8`);
-    } else {
-      headers.set("Content-Type", "text/plain;charset=utf-8");
-    }
-    const bytes = __privateGet(this, _encoder).encode(body);
-    headers.set("Content-Length", bytes.byteLength.toString());
-    const response = new Response(bytes, {
-      status: 200,
-      headers
-    });
-    attachToResponse(response, result.cookies);
-    return response;
-  }
-};
-var slotName = (str) => str.trim().replace(/[-_]([a-z])/g, (_2, w) => w.toUpperCase());
 async function check(Component, props, { default: children = null, ...slotted } = {}) {
   if (typeof Component !== "function")
     return false;
@@ -3763,15 +2617,1915 @@ async function renderToStaticMarkup(Component, props = {}, { default: children =
   const html = await renderJSX(result, createVNode(Component, { ...props, ...slots, children }));
   return { html };
 }
-var server_default = {
-  check,
-  renderToStaticMarkup
-};
+function createCollectionToGlobResultMap({
+  globResult,
+  contentDir: contentDir2
+}) {
+  const collectionToGlobResultMap = {};
+  for (const key in globResult) {
+    const keyRelativeToContentDir = key.replace(new RegExp(`^${contentDir2}`), "");
+    const segments = keyRelativeToContentDir.split("/");
+    if (segments.length <= 1)
+      continue;
+    const collection3 = segments[0];
+    const entryId = segments.slice(1).join("/");
+    collectionToGlobResultMap[collection3] ?? (collectionToGlobResultMap[collection3] = {});
+    collectionToGlobResultMap[collection3][entryId] = globResult[key];
+  }
+  return collectionToGlobResultMap;
+}
+function createGetCollection({
+  collectionToEntryMap: collectionToEntryMap2,
+  collectionToRenderEntryMap: collectionToRenderEntryMap2
+}) {
+  return async function getCollection2(collection3, filter) {
+    const lazyImports = Object.values(collectionToEntryMap2[collection3] ?? {});
+    const entries = Promise.all(
+      lazyImports.map(async (lazyImport) => {
+        const entry = await lazyImport();
+        return {
+          id: entry.id,
+          slug: entry.slug,
+          body: entry.body,
+          collection: entry.collection,
+          data: entry.data,
+          async render() {
+            return render({
+              collection: entry.collection,
+              id: entry.id,
+              collectionToRenderEntryMap: collectionToRenderEntryMap2
+            });
+          }
+        };
+      })
+    );
+    if (typeof filter === "function") {
+      return (await entries).filter(filter);
+    } else {
+      return entries;
+    }
+  };
+}
+function createGetEntryBySlug({
+  getCollection: getCollection2,
+  collectionToRenderEntryMap: collectionToRenderEntryMap2
+}) {
+  return async function getEntryBySlug2(collection3, slug3) {
+    const entries = await getCollection2(collection3);
+    let candidate = void 0;
+    for (let entry2 of entries) {
+      if (entry2.slug === slug3) {
+        candidate = entry2;
+        break;
+      }
+    }
+    if (typeof candidate === "undefined") {
+      return void 0;
+    }
+    const entry = candidate;
+    return {
+      id: entry.id,
+      slug: entry.slug,
+      body: entry.body,
+      collection: entry.collection,
+      data: entry.data,
+      async render() {
+        return render({
+          collection: entry.collection,
+          id: entry.id,
+          collectionToRenderEntryMap: collectionToRenderEntryMap2
+        });
+      }
+    };
+  };
+}
+async function render({
+  collection: collection3,
+  id: id3,
+  collectionToRenderEntryMap: collectionToRenderEntryMap2
+}) {
+  var _a2;
+  const lazyImport = (_a2 = collectionToRenderEntryMap2[collection3]) == null ? void 0 : _a2[id3];
+  if (!lazyImport)
+    throw new Error(`${String(collection3)} \u2192 ${String(id3)} does not exist.`);
+  const mod = await lazyImport();
+  const Content3 = createComponent({
+    factory(result, props, slots) {
+      let styles = "", links = "";
+      if (Array.isArray(mod == null ? void 0 : mod.collectedStyles)) {
+        styles = mod.collectedStyles.map((style) => renderStyleElement(style)).join("");
+      }
+      if (Array.isArray(mod == null ? void 0 : mod.collectedLinks)) {
+        links = mod.collectedLinks.map((link) => {
+          return renderUniqueStylesheet(result, {
+            href: prependForwardSlash(link)
+          });
+        }).join("");
+      }
+      return createHeadAndContent(
+        unescapeHTML(styles + links),
+        renderTemplate`${renderComponent(result, "Content", mod.Content, props, slots)}`
+      );
+    },
+    propagation: "self"
+  });
+  return {
+    Content: Content3,
+    headings: mod.getHeadings(),
+    remarkPluginFrontmatter: mod.frontmatter
+  };
+}
+var Mime_1, standard, other, Mime, mime, parse_1, serialize_1, __toString, fieldContentRegExp, __accessCheck$3, __privateGet$3, __privateAdd$3, __privateSet$3, __privateMethod$1, _request, _requestValues, _outgoing, _ensureParsed, ensureParsed_fn, _ensureOutgoingMap, ensureOutgoingMap_fn, _parse, parse_fn, DELETED_EXPIRATION, DELETED_VALUE, AstroCookie, AstroCookies, astroCookiesSymbol, ASTRO_VERSION, replace, ca, esca, pe, escape, escapeHTML, HTMLBytes, HTMLString, markHTMLString, AstroJSX, Empty, toSlotName, idle_prebuilt_default, load_prebuilt_default, media_prebuilt_default, only_prebuilt_default, visible_prebuilt_default, astro_island_prebuilt_default, hydrationScripts, headAndContentSym, _a$1, renderTemplateResultSym, RenderTemplateResult, defineErrors, AstroErrorData, AstroError, PROP_TYPE, HydrationDirectivesRaw, HydrationDirectives, HydrationDirectiveProps, _a, astroComponentInstanceSym, AstroComponentInstance, slotString, SlotString, Fragment, Renderer, encoder, decoder, HTMLParts, ClientOnlyPlaceholder, Skip, originalConsoleError, consoleFilterRefs, dictionary, binary, voidElementNames, htmlBooleanAttributes, htmlEnumAttributes, svgEnumAttributes, STATIC_DIRECTIVES, toIdent, toAttributeString, kebab, toStyleString, rendererAliases, uniqueElements, renderHead, __accessCheck$2, __privateGet$2, __privateAdd$2, __privateSet$2, isNodeJS, StreamingCompatibleResponse, createResponse, needsHeadRenderingSymbol, stylesheetRel, FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM, isTTY, $, reset, bold, dim, red, yellow, cyan, eastasianwidthExports, eastasianwidth, dateTimeFormat, levels, VALID_PARAM_TYPES, __accessCheck$1, __privateGet$1, __privateAdd$1, __privateSet$1, _result, _slots, _loggingOpts, clientAddressSymbol$1, Slots, renderMarkdown, RouteCache, GetParamsAndPropsError, clientAddressSymbol, lastMessage, lastMessageCount, consoleLogDestination, __accessCheck, __privateGet, __privateAdd, __privateSet, __privateMethod, _env, _manifest, _manifestData, _routeDataToRouteInfo, _encoder, _logging, _base, _baseWithoutTrailingSlash, _renderPage, renderPage_fn, _callEndpoint, callEndpoint_fn, App, slotName, server_default;
+var init_astro_2d2db69e = __esm({
+  ".netlify/edge-functions/chunks/astro.2d2db69e.mjs"() {
+    Mime$1.prototype.define = function(typeMap, force) {
+      for (let type in typeMap) {
+        let extensions = typeMap[type].map(function(t) {
+          return t.toLowerCase();
+        });
+        type = type.toLowerCase();
+        for (let i = 0; i < extensions.length; i++) {
+          const ext = extensions[i];
+          if (ext[0] === "*") {
+            continue;
+          }
+          if (!force && ext in this._types) {
+            throw new Error(
+              'Attempt to change mapping for "' + ext + '" extension from "' + this._types[ext] + '" to "' + type + '". Pass `force=true` to allow this, otherwise remove "' + ext + '" from the list of extensions for "' + type + '".'
+            );
+          }
+          this._types[ext] = type;
+        }
+        if (force || !this._extensions[type]) {
+          const ext = extensions[0];
+          this._extensions[type] = ext[0] !== "*" ? ext : ext.substr(1);
+        }
+      }
+    };
+    Mime$1.prototype.getType = function(path) {
+      path = String(path);
+      let last = path.replace(/^.*[/\\]/, "").toLowerCase();
+      let ext = last.replace(/^.*\./, "").toLowerCase();
+      let hasPath = last.length < path.length;
+      let hasDot = ext.length < last.length - 1;
+      return (hasDot || !hasPath) && this._types[ext] || null;
+    };
+    Mime$1.prototype.getExtension = function(type) {
+      type = /^\s*([^;\s]*)/.test(type) && RegExp.$1;
+      return type && this._extensions[type.toLowerCase()] || null;
+    };
+    Mime_1 = Mime$1;
+    standard = { "application/andrew-inset": ["ez"], "application/applixware": ["aw"], "application/atom+xml": ["atom"], "application/atomcat+xml": ["atomcat"], "application/atomdeleted+xml": ["atomdeleted"], "application/atomsvc+xml": ["atomsvc"], "application/atsc-dwd+xml": ["dwd"], "application/atsc-held+xml": ["held"], "application/atsc-rsat+xml": ["rsat"], "application/bdoc": ["bdoc"], "application/calendar+xml": ["xcs"], "application/ccxml+xml": ["ccxml"], "application/cdfx+xml": ["cdfx"], "application/cdmi-capability": ["cdmia"], "application/cdmi-container": ["cdmic"], "application/cdmi-domain": ["cdmid"], "application/cdmi-object": ["cdmio"], "application/cdmi-queue": ["cdmiq"], "application/cu-seeme": ["cu"], "application/dash+xml": ["mpd"], "application/davmount+xml": ["davmount"], "application/docbook+xml": ["dbk"], "application/dssc+der": ["dssc"], "application/dssc+xml": ["xdssc"], "application/ecmascript": ["es", "ecma"], "application/emma+xml": ["emma"], "application/emotionml+xml": ["emotionml"], "application/epub+zip": ["epub"], "application/exi": ["exi"], "application/express": ["exp"], "application/fdt+xml": ["fdt"], "application/font-tdpfr": ["pfr"], "application/geo+json": ["geojson"], "application/gml+xml": ["gml"], "application/gpx+xml": ["gpx"], "application/gxf": ["gxf"], "application/gzip": ["gz"], "application/hjson": ["hjson"], "application/hyperstudio": ["stk"], "application/inkml+xml": ["ink", "inkml"], "application/ipfix": ["ipfix"], "application/its+xml": ["its"], "application/java-archive": ["jar", "war", "ear"], "application/java-serialized-object": ["ser"], "application/java-vm": ["class"], "application/javascript": ["js", "mjs"], "application/json": ["json", "map"], "application/json5": ["json5"], "application/jsonml+json": ["jsonml"], "application/ld+json": ["jsonld"], "application/lgr+xml": ["lgr"], "application/lost+xml": ["lostxml"], "application/mac-binhex40": ["hqx"], "application/mac-compactpro": ["cpt"], "application/mads+xml": ["mads"], "application/manifest+json": ["webmanifest"], "application/marc": ["mrc"], "application/marcxml+xml": ["mrcx"], "application/mathematica": ["ma", "nb", "mb"], "application/mathml+xml": ["mathml"], "application/mbox": ["mbox"], "application/mediaservercontrol+xml": ["mscml"], "application/metalink+xml": ["metalink"], "application/metalink4+xml": ["meta4"], "application/mets+xml": ["mets"], "application/mmt-aei+xml": ["maei"], "application/mmt-usd+xml": ["musd"], "application/mods+xml": ["mods"], "application/mp21": ["m21", "mp21"], "application/mp4": ["mp4s", "m4p"], "application/msword": ["doc", "dot"], "application/mxf": ["mxf"], "application/n-quads": ["nq"], "application/n-triples": ["nt"], "application/node": ["cjs"], "application/octet-stream": ["bin", "dms", "lrf", "mar", "so", "dist", "distz", "pkg", "bpk", "dump", "elc", "deploy", "exe", "dll", "deb", "dmg", "iso", "img", "msi", "msp", "msm", "buffer"], "application/oda": ["oda"], "application/oebps-package+xml": ["opf"], "application/ogg": ["ogx"], "application/omdoc+xml": ["omdoc"], "application/onenote": ["onetoc", "onetoc2", "onetmp", "onepkg"], "application/oxps": ["oxps"], "application/p2p-overlay+xml": ["relo"], "application/patch-ops-error+xml": ["xer"], "application/pdf": ["pdf"], "application/pgp-encrypted": ["pgp"], "application/pgp-signature": ["asc", "sig"], "application/pics-rules": ["prf"], "application/pkcs10": ["p10"], "application/pkcs7-mime": ["p7m", "p7c"], "application/pkcs7-signature": ["p7s"], "application/pkcs8": ["p8"], "application/pkix-attr-cert": ["ac"], "application/pkix-cert": ["cer"], "application/pkix-crl": ["crl"], "application/pkix-pkipath": ["pkipath"], "application/pkixcmp": ["pki"], "application/pls+xml": ["pls"], "application/postscript": ["ai", "eps", "ps"], "application/provenance+xml": ["provx"], "application/pskc+xml": ["pskcxml"], "application/raml+yaml": ["raml"], "application/rdf+xml": ["rdf", "owl"], "application/reginfo+xml": ["rif"], "application/relax-ng-compact-syntax": ["rnc"], "application/resource-lists+xml": ["rl"], "application/resource-lists-diff+xml": ["rld"], "application/rls-services+xml": ["rs"], "application/route-apd+xml": ["rapd"], "application/route-s-tsid+xml": ["sls"], "application/route-usd+xml": ["rusd"], "application/rpki-ghostbusters": ["gbr"], "application/rpki-manifest": ["mft"], "application/rpki-roa": ["roa"], "application/rsd+xml": ["rsd"], "application/rss+xml": ["rss"], "application/rtf": ["rtf"], "application/sbml+xml": ["sbml"], "application/scvp-cv-request": ["scq"], "application/scvp-cv-response": ["scs"], "application/scvp-vp-request": ["spq"], "application/scvp-vp-response": ["spp"], "application/sdp": ["sdp"], "application/senml+xml": ["senmlx"], "application/sensml+xml": ["sensmlx"], "application/set-payment-initiation": ["setpay"], "application/set-registration-initiation": ["setreg"], "application/shf+xml": ["shf"], "application/sieve": ["siv", "sieve"], "application/smil+xml": ["smi", "smil"], "application/sparql-query": ["rq"], "application/sparql-results+xml": ["srx"], "application/srgs": ["gram"], "application/srgs+xml": ["grxml"], "application/sru+xml": ["sru"], "application/ssdl+xml": ["ssdl"], "application/ssml+xml": ["ssml"], "application/swid+xml": ["swidtag"], "application/tei+xml": ["tei", "teicorpus"], "application/thraud+xml": ["tfi"], "application/timestamped-data": ["tsd"], "application/toml": ["toml"], "application/trig": ["trig"], "application/ttml+xml": ["ttml"], "application/ubjson": ["ubj"], "application/urc-ressheet+xml": ["rsheet"], "application/urc-targetdesc+xml": ["td"], "application/voicexml+xml": ["vxml"], "application/wasm": ["wasm"], "application/widget": ["wgt"], "application/winhlp": ["hlp"], "application/wsdl+xml": ["wsdl"], "application/wspolicy+xml": ["wspolicy"], "application/xaml+xml": ["xaml"], "application/xcap-att+xml": ["xav"], "application/xcap-caps+xml": ["xca"], "application/xcap-diff+xml": ["xdf"], "application/xcap-el+xml": ["xel"], "application/xcap-ns+xml": ["xns"], "application/xenc+xml": ["xenc"], "application/xhtml+xml": ["xhtml", "xht"], "application/xliff+xml": ["xlf"], "application/xml": ["xml", "xsl", "xsd", "rng"], "application/xml-dtd": ["dtd"], "application/xop+xml": ["xop"], "application/xproc+xml": ["xpl"], "application/xslt+xml": ["*xsl", "xslt"], "application/xspf+xml": ["xspf"], "application/xv+xml": ["mxml", "xhvml", "xvml", "xvm"], "application/yang": ["yang"], "application/yin+xml": ["yin"], "application/zip": ["zip"], "audio/3gpp": ["*3gpp"], "audio/adpcm": ["adp"], "audio/amr": ["amr"], "audio/basic": ["au", "snd"], "audio/midi": ["mid", "midi", "kar", "rmi"], "audio/mobile-xmf": ["mxmf"], "audio/mp3": ["*mp3"], "audio/mp4": ["m4a", "mp4a"], "audio/mpeg": ["mpga", "mp2", "mp2a", "mp3", "m2a", "m3a"], "audio/ogg": ["oga", "ogg", "spx", "opus"], "audio/s3m": ["s3m"], "audio/silk": ["sil"], "audio/wav": ["wav"], "audio/wave": ["*wav"], "audio/webm": ["weba"], "audio/xm": ["xm"], "font/collection": ["ttc"], "font/otf": ["otf"], "font/ttf": ["ttf"], "font/woff": ["woff"], "font/woff2": ["woff2"], "image/aces": ["exr"], "image/apng": ["apng"], "image/avif": ["avif"], "image/bmp": ["bmp"], "image/cgm": ["cgm"], "image/dicom-rle": ["drle"], "image/emf": ["emf"], "image/fits": ["fits"], "image/g3fax": ["g3"], "image/gif": ["gif"], "image/heic": ["heic"], "image/heic-sequence": ["heics"], "image/heif": ["heif"], "image/heif-sequence": ["heifs"], "image/hej2k": ["hej2"], "image/hsj2": ["hsj2"], "image/ief": ["ief"], "image/jls": ["jls"], "image/jp2": ["jp2", "jpg2"], "image/jpeg": ["jpeg", "jpg", "jpe"], "image/jph": ["jph"], "image/jphc": ["jhc"], "image/jpm": ["jpm"], "image/jpx": ["jpx", "jpf"], "image/jxr": ["jxr"], "image/jxra": ["jxra"], "image/jxrs": ["jxrs"], "image/jxs": ["jxs"], "image/jxsc": ["jxsc"], "image/jxsi": ["jxsi"], "image/jxss": ["jxss"], "image/ktx": ["ktx"], "image/ktx2": ["ktx2"], "image/png": ["png"], "image/sgi": ["sgi"], "image/svg+xml": ["svg", "svgz"], "image/t38": ["t38"], "image/tiff": ["tif", "tiff"], "image/tiff-fx": ["tfx"], "image/webp": ["webp"], "image/wmf": ["wmf"], "message/disposition-notification": ["disposition-notification"], "message/global": ["u8msg"], "message/global-delivery-status": ["u8dsn"], "message/global-disposition-notification": ["u8mdn"], "message/global-headers": ["u8hdr"], "message/rfc822": ["eml", "mime"], "model/3mf": ["3mf"], "model/gltf+json": ["gltf"], "model/gltf-binary": ["glb"], "model/iges": ["igs", "iges"], "model/mesh": ["msh", "mesh", "silo"], "model/mtl": ["mtl"], "model/obj": ["obj"], "model/step+xml": ["stpx"], "model/step+zip": ["stpz"], "model/step-xml+zip": ["stpxz"], "model/stl": ["stl"], "model/vrml": ["wrl", "vrml"], "model/x3d+binary": ["*x3db", "x3dbz"], "model/x3d+fastinfoset": ["x3db"], "model/x3d+vrml": ["*x3dv", "x3dvz"], "model/x3d+xml": ["x3d", "x3dz"], "model/x3d-vrml": ["x3dv"], "text/cache-manifest": ["appcache", "manifest"], "text/calendar": ["ics", "ifb"], "text/coffeescript": ["coffee", "litcoffee"], "text/css": ["css"], "text/csv": ["csv"], "text/html": ["html", "htm", "shtml"], "text/jade": ["jade"], "text/jsx": ["jsx"], "text/less": ["less"], "text/markdown": ["markdown", "md"], "text/mathml": ["mml"], "text/mdx": ["mdx"], "text/n3": ["n3"], "text/plain": ["txt", "text", "conf", "def", "list", "log", "in", "ini"], "text/richtext": ["rtx"], "text/rtf": ["*rtf"], "text/sgml": ["sgml", "sgm"], "text/shex": ["shex"], "text/slim": ["slim", "slm"], "text/spdx": ["spdx"], "text/stylus": ["stylus", "styl"], "text/tab-separated-values": ["tsv"], "text/troff": ["t", "tr", "roff", "man", "me", "ms"], "text/turtle": ["ttl"], "text/uri-list": ["uri", "uris", "urls"], "text/vcard": ["vcard"], "text/vtt": ["vtt"], "text/xml": ["*xml"], "text/yaml": ["yaml", "yml"], "video/3gpp": ["3gp", "3gpp"], "video/3gpp2": ["3g2"], "video/h261": ["h261"], "video/h263": ["h263"], "video/h264": ["h264"], "video/iso.segment": ["m4s"], "video/jpeg": ["jpgv"], "video/jpm": ["*jpm", "jpgm"], "video/mj2": ["mj2", "mjp2"], "video/mp2t": ["ts"], "video/mp4": ["mp4", "mp4v", "mpg4"], "video/mpeg": ["mpeg", "mpg", "mpe", "m1v", "m2v"], "video/ogg": ["ogv"], "video/quicktime": ["qt", "mov"], "video/webm": ["webm"] };
+    other = { "application/prs.cww": ["cww"], "application/vnd.1000minds.decision-model+xml": ["1km"], "application/vnd.3gpp.pic-bw-large": ["plb"], "application/vnd.3gpp.pic-bw-small": ["psb"], "application/vnd.3gpp.pic-bw-var": ["pvb"], "application/vnd.3gpp2.tcap": ["tcap"], "application/vnd.3m.post-it-notes": ["pwn"], "application/vnd.accpac.simply.aso": ["aso"], "application/vnd.accpac.simply.imp": ["imp"], "application/vnd.acucobol": ["acu"], "application/vnd.acucorp": ["atc", "acutc"], "application/vnd.adobe.air-application-installer-package+zip": ["air"], "application/vnd.adobe.formscentral.fcdt": ["fcdt"], "application/vnd.adobe.fxp": ["fxp", "fxpl"], "application/vnd.adobe.xdp+xml": ["xdp"], "application/vnd.adobe.xfdf": ["xfdf"], "application/vnd.ahead.space": ["ahead"], "application/vnd.airzip.filesecure.azf": ["azf"], "application/vnd.airzip.filesecure.azs": ["azs"], "application/vnd.amazon.ebook": ["azw"], "application/vnd.americandynamics.acc": ["acc"], "application/vnd.amiga.ami": ["ami"], "application/vnd.android.package-archive": ["apk"], "application/vnd.anser-web-certificate-issue-initiation": ["cii"], "application/vnd.anser-web-funds-transfer-initiation": ["fti"], "application/vnd.antix.game-component": ["atx"], "application/vnd.apple.installer+xml": ["mpkg"], "application/vnd.apple.keynote": ["key"], "application/vnd.apple.mpegurl": ["m3u8"], "application/vnd.apple.numbers": ["numbers"], "application/vnd.apple.pages": ["pages"], "application/vnd.apple.pkpass": ["pkpass"], "application/vnd.aristanetworks.swi": ["swi"], "application/vnd.astraea-software.iota": ["iota"], "application/vnd.audiograph": ["aep"], "application/vnd.balsamiq.bmml+xml": ["bmml"], "application/vnd.blueice.multipass": ["mpm"], "application/vnd.bmi": ["bmi"], "application/vnd.businessobjects": ["rep"], "application/vnd.chemdraw+xml": ["cdxml"], "application/vnd.chipnuts.karaoke-mmd": ["mmd"], "application/vnd.cinderella": ["cdy"], "application/vnd.citationstyles.style+xml": ["csl"], "application/vnd.claymore": ["cla"], "application/vnd.cloanto.rp9": ["rp9"], "application/vnd.clonk.c4group": ["c4g", "c4d", "c4f", "c4p", "c4u"], "application/vnd.cluetrust.cartomobile-config": ["c11amc"], "application/vnd.cluetrust.cartomobile-config-pkg": ["c11amz"], "application/vnd.commonspace": ["csp"], "application/vnd.contact.cmsg": ["cdbcmsg"], "application/vnd.cosmocaller": ["cmc"], "application/vnd.crick.clicker": ["clkx"], "application/vnd.crick.clicker.keyboard": ["clkk"], "application/vnd.crick.clicker.palette": ["clkp"], "application/vnd.crick.clicker.template": ["clkt"], "application/vnd.crick.clicker.wordbank": ["clkw"], "application/vnd.criticaltools.wbs+xml": ["wbs"], "application/vnd.ctc-posml": ["pml"], "application/vnd.cups-ppd": ["ppd"], "application/vnd.curl.car": ["car"], "application/vnd.curl.pcurl": ["pcurl"], "application/vnd.dart": ["dart"], "application/vnd.data-vision.rdz": ["rdz"], "application/vnd.dbf": ["dbf"], "application/vnd.dece.data": ["uvf", "uvvf", "uvd", "uvvd"], "application/vnd.dece.ttml+xml": ["uvt", "uvvt"], "application/vnd.dece.unspecified": ["uvx", "uvvx"], "application/vnd.dece.zip": ["uvz", "uvvz"], "application/vnd.denovo.fcselayout-link": ["fe_launch"], "application/vnd.dna": ["dna"], "application/vnd.dolby.mlp": ["mlp"], "application/vnd.dpgraph": ["dpg"], "application/vnd.dreamfactory": ["dfac"], "application/vnd.ds-keypoint": ["kpxx"], "application/vnd.dvb.ait": ["ait"], "application/vnd.dvb.service": ["svc"], "application/vnd.dynageo": ["geo"], "application/vnd.ecowin.chart": ["mag"], "application/vnd.enliven": ["nml"], "application/vnd.epson.esf": ["esf"], "application/vnd.epson.msf": ["msf"], "application/vnd.epson.quickanime": ["qam"], "application/vnd.epson.salt": ["slt"], "application/vnd.epson.ssf": ["ssf"], "application/vnd.eszigno3+xml": ["es3", "et3"], "application/vnd.ezpix-album": ["ez2"], "application/vnd.ezpix-package": ["ez3"], "application/vnd.fdf": ["fdf"], "application/vnd.fdsn.mseed": ["mseed"], "application/vnd.fdsn.seed": ["seed", "dataless"], "application/vnd.flographit": ["gph"], "application/vnd.fluxtime.clip": ["ftc"], "application/vnd.framemaker": ["fm", "frame", "maker", "book"], "application/vnd.frogans.fnc": ["fnc"], "application/vnd.frogans.ltf": ["ltf"], "application/vnd.fsc.weblaunch": ["fsc"], "application/vnd.fujitsu.oasys": ["oas"], "application/vnd.fujitsu.oasys2": ["oa2"], "application/vnd.fujitsu.oasys3": ["oa3"], "application/vnd.fujitsu.oasysgp": ["fg5"], "application/vnd.fujitsu.oasysprs": ["bh2"], "application/vnd.fujixerox.ddd": ["ddd"], "application/vnd.fujixerox.docuworks": ["xdw"], "application/vnd.fujixerox.docuworks.binder": ["xbd"], "application/vnd.fuzzysheet": ["fzs"], "application/vnd.genomatix.tuxedo": ["txd"], "application/vnd.geogebra.file": ["ggb"], "application/vnd.geogebra.tool": ["ggt"], "application/vnd.geometry-explorer": ["gex", "gre"], "application/vnd.geonext": ["gxt"], "application/vnd.geoplan": ["g2w"], "application/vnd.geospace": ["g3w"], "application/vnd.gmx": ["gmx"], "application/vnd.google-apps.document": ["gdoc"], "application/vnd.google-apps.presentation": ["gslides"], "application/vnd.google-apps.spreadsheet": ["gsheet"], "application/vnd.google-earth.kml+xml": ["kml"], "application/vnd.google-earth.kmz": ["kmz"], "application/vnd.grafeq": ["gqf", "gqs"], "application/vnd.groove-account": ["gac"], "application/vnd.groove-help": ["ghf"], "application/vnd.groove-identity-message": ["gim"], "application/vnd.groove-injector": ["grv"], "application/vnd.groove-tool-message": ["gtm"], "application/vnd.groove-tool-template": ["tpl"], "application/vnd.groove-vcard": ["vcg"], "application/vnd.hal+xml": ["hal"], "application/vnd.handheld-entertainment+xml": ["zmm"], "application/vnd.hbci": ["hbci"], "application/vnd.hhe.lesson-player": ["les"], "application/vnd.hp-hpgl": ["hpgl"], "application/vnd.hp-hpid": ["hpid"], "application/vnd.hp-hps": ["hps"], "application/vnd.hp-jlyt": ["jlt"], "application/vnd.hp-pcl": ["pcl"], "application/vnd.hp-pclxl": ["pclxl"], "application/vnd.hydrostatix.sof-data": ["sfd-hdstx"], "application/vnd.ibm.minipay": ["mpy"], "application/vnd.ibm.modcap": ["afp", "listafp", "list3820"], "application/vnd.ibm.rights-management": ["irm"], "application/vnd.ibm.secure-container": ["sc"], "application/vnd.iccprofile": ["icc", "icm"], "application/vnd.igloader": ["igl"], "application/vnd.immervision-ivp": ["ivp"], "application/vnd.immervision-ivu": ["ivu"], "application/vnd.insors.igm": ["igm"], "application/vnd.intercon.formnet": ["xpw", "xpx"], "application/vnd.intergeo": ["i2g"], "application/vnd.intu.qbo": ["qbo"], "application/vnd.intu.qfx": ["qfx"], "application/vnd.ipunplugged.rcprofile": ["rcprofile"], "application/vnd.irepository.package+xml": ["irp"], "application/vnd.is-xpr": ["xpr"], "application/vnd.isac.fcs": ["fcs"], "application/vnd.jam": ["jam"], "application/vnd.jcp.javame.midlet-rms": ["rms"], "application/vnd.jisp": ["jisp"], "application/vnd.joost.joda-archive": ["joda"], "application/vnd.kahootz": ["ktz", "ktr"], "application/vnd.kde.karbon": ["karbon"], "application/vnd.kde.kchart": ["chrt"], "application/vnd.kde.kformula": ["kfo"], "application/vnd.kde.kivio": ["flw"], "application/vnd.kde.kontour": ["kon"], "application/vnd.kde.kpresenter": ["kpr", "kpt"], "application/vnd.kde.kspread": ["ksp"], "application/vnd.kde.kword": ["kwd", "kwt"], "application/vnd.kenameaapp": ["htke"], "application/vnd.kidspiration": ["kia"], "application/vnd.kinar": ["kne", "knp"], "application/vnd.koan": ["skp", "skd", "skt", "skm"], "application/vnd.kodak-descriptor": ["sse"], "application/vnd.las.las+xml": ["lasxml"], "application/vnd.llamagraphics.life-balance.desktop": ["lbd"], "application/vnd.llamagraphics.life-balance.exchange+xml": ["lbe"], "application/vnd.lotus-1-2-3": ["123"], "application/vnd.lotus-approach": ["apr"], "application/vnd.lotus-freelance": ["pre"], "application/vnd.lotus-notes": ["nsf"], "application/vnd.lotus-organizer": ["org"], "application/vnd.lotus-screencam": ["scm"], "application/vnd.lotus-wordpro": ["lwp"], "application/vnd.macports.portpkg": ["portpkg"], "application/vnd.mapbox-vector-tile": ["mvt"], "application/vnd.mcd": ["mcd"], "application/vnd.medcalcdata": ["mc1"], "application/vnd.mediastation.cdkey": ["cdkey"], "application/vnd.mfer": ["mwf"], "application/vnd.mfmp": ["mfm"], "application/vnd.micrografx.flo": ["flo"], "application/vnd.micrografx.igx": ["igx"], "application/vnd.mif": ["mif"], "application/vnd.mobius.daf": ["daf"], "application/vnd.mobius.dis": ["dis"], "application/vnd.mobius.mbk": ["mbk"], "application/vnd.mobius.mqy": ["mqy"], "application/vnd.mobius.msl": ["msl"], "application/vnd.mobius.plc": ["plc"], "application/vnd.mobius.txf": ["txf"], "application/vnd.mophun.application": ["mpn"], "application/vnd.mophun.certificate": ["mpc"], "application/vnd.mozilla.xul+xml": ["xul"], "application/vnd.ms-artgalry": ["cil"], "application/vnd.ms-cab-compressed": ["cab"], "application/vnd.ms-excel": ["xls", "xlm", "xla", "xlc", "xlt", "xlw"], "application/vnd.ms-excel.addin.macroenabled.12": ["xlam"], "application/vnd.ms-excel.sheet.binary.macroenabled.12": ["xlsb"], "application/vnd.ms-excel.sheet.macroenabled.12": ["xlsm"], "application/vnd.ms-excel.template.macroenabled.12": ["xltm"], "application/vnd.ms-fontobject": ["eot"], "application/vnd.ms-htmlhelp": ["chm"], "application/vnd.ms-ims": ["ims"], "application/vnd.ms-lrm": ["lrm"], "application/vnd.ms-officetheme": ["thmx"], "application/vnd.ms-outlook": ["msg"], "application/vnd.ms-pki.seccat": ["cat"], "application/vnd.ms-pki.stl": ["*stl"], "application/vnd.ms-powerpoint": ["ppt", "pps", "pot"], "application/vnd.ms-powerpoint.addin.macroenabled.12": ["ppam"], "application/vnd.ms-powerpoint.presentation.macroenabled.12": ["pptm"], "application/vnd.ms-powerpoint.slide.macroenabled.12": ["sldm"], "application/vnd.ms-powerpoint.slideshow.macroenabled.12": ["ppsm"], "application/vnd.ms-powerpoint.template.macroenabled.12": ["potm"], "application/vnd.ms-project": ["mpp", "mpt"], "application/vnd.ms-word.document.macroenabled.12": ["docm"], "application/vnd.ms-word.template.macroenabled.12": ["dotm"], "application/vnd.ms-works": ["wps", "wks", "wcm", "wdb"], "application/vnd.ms-wpl": ["wpl"], "application/vnd.ms-xpsdocument": ["xps"], "application/vnd.mseq": ["mseq"], "application/vnd.musician": ["mus"], "application/vnd.muvee.style": ["msty"], "application/vnd.mynfc": ["taglet"], "application/vnd.neurolanguage.nlu": ["nlu"], "application/vnd.nitf": ["ntf", "nitf"], "application/vnd.noblenet-directory": ["nnd"], "application/vnd.noblenet-sealer": ["nns"], "application/vnd.noblenet-web": ["nnw"], "application/vnd.nokia.n-gage.ac+xml": ["*ac"], "application/vnd.nokia.n-gage.data": ["ngdat"], "application/vnd.nokia.n-gage.symbian.install": ["n-gage"], "application/vnd.nokia.radio-preset": ["rpst"], "application/vnd.nokia.radio-presets": ["rpss"], "application/vnd.novadigm.edm": ["edm"], "application/vnd.novadigm.edx": ["edx"], "application/vnd.novadigm.ext": ["ext"], "application/vnd.oasis.opendocument.chart": ["odc"], "application/vnd.oasis.opendocument.chart-template": ["otc"], "application/vnd.oasis.opendocument.database": ["odb"], "application/vnd.oasis.opendocument.formula": ["odf"], "application/vnd.oasis.opendocument.formula-template": ["odft"], "application/vnd.oasis.opendocument.graphics": ["odg"], "application/vnd.oasis.opendocument.graphics-template": ["otg"], "application/vnd.oasis.opendocument.image": ["odi"], "application/vnd.oasis.opendocument.image-template": ["oti"], "application/vnd.oasis.opendocument.presentation": ["odp"], "application/vnd.oasis.opendocument.presentation-template": ["otp"], "application/vnd.oasis.opendocument.spreadsheet": ["ods"], "application/vnd.oasis.opendocument.spreadsheet-template": ["ots"], "application/vnd.oasis.opendocument.text": ["odt"], "application/vnd.oasis.opendocument.text-master": ["odm"], "application/vnd.oasis.opendocument.text-template": ["ott"], "application/vnd.oasis.opendocument.text-web": ["oth"], "application/vnd.olpc-sugar": ["xo"], "application/vnd.oma.dd2+xml": ["dd2"], "application/vnd.openblox.game+xml": ["obgx"], "application/vnd.openofficeorg.extension": ["oxt"], "application/vnd.openstreetmap.data+xml": ["osm"], "application/vnd.openxmlformats-officedocument.presentationml.presentation": ["pptx"], "application/vnd.openxmlformats-officedocument.presentationml.slide": ["sldx"], "application/vnd.openxmlformats-officedocument.presentationml.slideshow": ["ppsx"], "application/vnd.openxmlformats-officedocument.presentationml.template": ["potx"], "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": ["xlsx"], "application/vnd.openxmlformats-officedocument.spreadsheetml.template": ["xltx"], "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ["docx"], "application/vnd.openxmlformats-officedocument.wordprocessingml.template": ["dotx"], "application/vnd.osgeo.mapguide.package": ["mgp"], "application/vnd.osgi.dp": ["dp"], "application/vnd.osgi.subsystem": ["esa"], "application/vnd.palm": ["pdb", "pqa", "oprc"], "application/vnd.pawaafile": ["paw"], "application/vnd.pg.format": ["str"], "application/vnd.pg.osasli": ["ei6"], "application/vnd.picsel": ["efif"], "application/vnd.pmi.widget": ["wg"], "application/vnd.pocketlearn": ["plf"], "application/vnd.powerbuilder6": ["pbd"], "application/vnd.previewsystems.box": ["box"], "application/vnd.proteus.magazine": ["mgz"], "application/vnd.publishare-delta-tree": ["qps"], "application/vnd.pvi.ptid1": ["ptid"], "application/vnd.quark.quarkxpress": ["qxd", "qxt", "qwd", "qwt", "qxl", "qxb"], "application/vnd.rar": ["rar"], "application/vnd.realvnc.bed": ["bed"], "application/vnd.recordare.musicxml": ["mxl"], "application/vnd.recordare.musicxml+xml": ["musicxml"], "application/vnd.rig.cryptonote": ["cryptonote"], "application/vnd.rim.cod": ["cod"], "application/vnd.rn-realmedia": ["rm"], "application/vnd.rn-realmedia-vbr": ["rmvb"], "application/vnd.route66.link66+xml": ["link66"], "application/vnd.sailingtracker.track": ["st"], "application/vnd.seemail": ["see"], "application/vnd.sema": ["sema"], "application/vnd.semd": ["semd"], "application/vnd.semf": ["semf"], "application/vnd.shana.informed.formdata": ["ifm"], "application/vnd.shana.informed.formtemplate": ["itp"], "application/vnd.shana.informed.interchange": ["iif"], "application/vnd.shana.informed.package": ["ipk"], "application/vnd.simtech-mindmapper": ["twd", "twds"], "application/vnd.smaf": ["mmf"], "application/vnd.smart.teacher": ["teacher"], "application/vnd.software602.filler.form+xml": ["fo"], "application/vnd.solent.sdkm+xml": ["sdkm", "sdkd"], "application/vnd.spotfire.dxp": ["dxp"], "application/vnd.spotfire.sfs": ["sfs"], "application/vnd.stardivision.calc": ["sdc"], "application/vnd.stardivision.draw": ["sda"], "application/vnd.stardivision.impress": ["sdd"], "application/vnd.stardivision.math": ["smf"], "application/vnd.stardivision.writer": ["sdw", "vor"], "application/vnd.stardivision.writer-global": ["sgl"], "application/vnd.stepmania.package": ["smzip"], "application/vnd.stepmania.stepchart": ["sm"], "application/vnd.sun.wadl+xml": ["wadl"], "application/vnd.sun.xml.calc": ["sxc"], "application/vnd.sun.xml.calc.template": ["stc"], "application/vnd.sun.xml.draw": ["sxd"], "application/vnd.sun.xml.draw.template": ["std"], "application/vnd.sun.xml.impress": ["sxi"], "application/vnd.sun.xml.impress.template": ["sti"], "application/vnd.sun.xml.math": ["sxm"], "application/vnd.sun.xml.writer": ["sxw"], "application/vnd.sun.xml.writer.global": ["sxg"], "application/vnd.sun.xml.writer.template": ["stw"], "application/vnd.sus-calendar": ["sus", "susp"], "application/vnd.svd": ["svd"], "application/vnd.symbian.install": ["sis", "sisx"], "application/vnd.syncml+xml": ["xsm"], "application/vnd.syncml.dm+wbxml": ["bdm"], "application/vnd.syncml.dm+xml": ["xdm"], "application/vnd.syncml.dmddf+xml": ["ddf"], "application/vnd.tao.intent-module-archive": ["tao"], "application/vnd.tcpdump.pcap": ["pcap", "cap", "dmp"], "application/vnd.tmobile-livetv": ["tmo"], "application/vnd.trid.tpt": ["tpt"], "application/vnd.triscape.mxs": ["mxs"], "application/vnd.trueapp": ["tra"], "application/vnd.ufdl": ["ufd", "ufdl"], "application/vnd.uiq.theme": ["utz"], "application/vnd.umajin": ["umj"], "application/vnd.unity": ["unityweb"], "application/vnd.uoml+xml": ["uoml"], "application/vnd.vcx": ["vcx"], "application/vnd.visio": ["vsd", "vst", "vss", "vsw"], "application/vnd.visionary": ["vis"], "application/vnd.vsf": ["vsf"], "application/vnd.wap.wbxml": ["wbxml"], "application/vnd.wap.wmlc": ["wmlc"], "application/vnd.wap.wmlscriptc": ["wmlsc"], "application/vnd.webturbo": ["wtb"], "application/vnd.wolfram.player": ["nbp"], "application/vnd.wordperfect": ["wpd"], "application/vnd.wqd": ["wqd"], "application/vnd.wt.stf": ["stf"], "application/vnd.xara": ["xar"], "application/vnd.xfdl": ["xfdl"], "application/vnd.yamaha.hv-dic": ["hvd"], "application/vnd.yamaha.hv-script": ["hvs"], "application/vnd.yamaha.hv-voice": ["hvp"], "application/vnd.yamaha.openscoreformat": ["osf"], "application/vnd.yamaha.openscoreformat.osfpvg+xml": ["osfpvg"], "application/vnd.yamaha.smaf-audio": ["saf"], "application/vnd.yamaha.smaf-phrase": ["spf"], "application/vnd.yellowriver-custom-menu": ["cmp"], "application/vnd.zul": ["zir", "zirz"], "application/vnd.zzazz.deck+xml": ["zaz"], "application/x-7z-compressed": ["7z"], "application/x-abiword": ["abw"], "application/x-ace-compressed": ["ace"], "application/x-apple-diskimage": ["*dmg"], "application/x-arj": ["arj"], "application/x-authorware-bin": ["aab", "x32", "u32", "vox"], "application/x-authorware-map": ["aam"], "application/x-authorware-seg": ["aas"], "application/x-bcpio": ["bcpio"], "application/x-bdoc": ["*bdoc"], "application/x-bittorrent": ["torrent"], "application/x-blorb": ["blb", "blorb"], "application/x-bzip": ["bz"], "application/x-bzip2": ["bz2", "boz"], "application/x-cbr": ["cbr", "cba", "cbt", "cbz", "cb7"], "application/x-cdlink": ["vcd"], "application/x-cfs-compressed": ["cfs"], "application/x-chat": ["chat"], "application/x-chess-pgn": ["pgn"], "application/x-chrome-extension": ["crx"], "application/x-cocoa": ["cco"], "application/x-conference": ["nsc"], "application/x-cpio": ["cpio"], "application/x-csh": ["csh"], "application/x-debian-package": ["*deb", "udeb"], "application/x-dgc-compressed": ["dgc"], "application/x-director": ["dir", "dcr", "dxr", "cst", "cct", "cxt", "w3d", "fgd", "swa"], "application/x-doom": ["wad"], "application/x-dtbncx+xml": ["ncx"], "application/x-dtbook+xml": ["dtb"], "application/x-dtbresource+xml": ["res"], "application/x-dvi": ["dvi"], "application/x-envoy": ["evy"], "application/x-eva": ["eva"], "application/x-font-bdf": ["bdf"], "application/x-font-ghostscript": ["gsf"], "application/x-font-linux-psf": ["psf"], "application/x-font-pcf": ["pcf"], "application/x-font-snf": ["snf"], "application/x-font-type1": ["pfa", "pfb", "pfm", "afm"], "application/x-freearc": ["arc"], "application/x-futuresplash": ["spl"], "application/x-gca-compressed": ["gca"], "application/x-glulx": ["ulx"], "application/x-gnumeric": ["gnumeric"], "application/x-gramps-xml": ["gramps"], "application/x-gtar": ["gtar"], "application/x-hdf": ["hdf"], "application/x-httpd-php": ["php"], "application/x-install-instructions": ["install"], "application/x-iso9660-image": ["*iso"], "application/x-iwork-keynote-sffkey": ["*key"], "application/x-iwork-numbers-sffnumbers": ["*numbers"], "application/x-iwork-pages-sffpages": ["*pages"], "application/x-java-archive-diff": ["jardiff"], "application/x-java-jnlp-file": ["jnlp"], "application/x-keepass2": ["kdbx"], "application/x-latex": ["latex"], "application/x-lua-bytecode": ["luac"], "application/x-lzh-compressed": ["lzh", "lha"], "application/x-makeself": ["run"], "application/x-mie": ["mie"], "application/x-mobipocket-ebook": ["prc", "mobi"], "application/x-ms-application": ["application"], "application/x-ms-shortcut": ["lnk"], "application/x-ms-wmd": ["wmd"], "application/x-ms-wmz": ["wmz"], "application/x-ms-xbap": ["xbap"], "application/x-msaccess": ["mdb"], "application/x-msbinder": ["obd"], "application/x-mscardfile": ["crd"], "application/x-msclip": ["clp"], "application/x-msdos-program": ["*exe"], "application/x-msdownload": ["*exe", "*dll", "com", "bat", "*msi"], "application/x-msmediaview": ["mvb", "m13", "m14"], "application/x-msmetafile": ["*wmf", "*wmz", "*emf", "emz"], "application/x-msmoney": ["mny"], "application/x-mspublisher": ["pub"], "application/x-msschedule": ["scd"], "application/x-msterminal": ["trm"], "application/x-mswrite": ["wri"], "application/x-netcdf": ["nc", "cdf"], "application/x-ns-proxy-autoconfig": ["pac"], "application/x-nzb": ["nzb"], "application/x-perl": ["pl", "pm"], "application/x-pilot": ["*prc", "*pdb"], "application/x-pkcs12": ["p12", "pfx"], "application/x-pkcs7-certificates": ["p7b", "spc"], "application/x-pkcs7-certreqresp": ["p7r"], "application/x-rar-compressed": ["*rar"], "application/x-redhat-package-manager": ["rpm"], "application/x-research-info-systems": ["ris"], "application/x-sea": ["sea"], "application/x-sh": ["sh"], "application/x-shar": ["shar"], "application/x-shockwave-flash": ["swf"], "application/x-silverlight-app": ["xap"], "application/x-sql": ["sql"], "application/x-stuffit": ["sit"], "application/x-stuffitx": ["sitx"], "application/x-subrip": ["srt"], "application/x-sv4cpio": ["sv4cpio"], "application/x-sv4crc": ["sv4crc"], "application/x-t3vm-image": ["t3"], "application/x-tads": ["gam"], "application/x-tar": ["tar"], "application/x-tcl": ["tcl", "tk"], "application/x-tex": ["tex"], "application/x-tex-tfm": ["tfm"], "application/x-texinfo": ["texinfo", "texi"], "application/x-tgif": ["*obj"], "application/x-ustar": ["ustar"], "application/x-virtualbox-hdd": ["hdd"], "application/x-virtualbox-ova": ["ova"], "application/x-virtualbox-ovf": ["ovf"], "application/x-virtualbox-vbox": ["vbox"], "application/x-virtualbox-vbox-extpack": ["vbox-extpack"], "application/x-virtualbox-vdi": ["vdi"], "application/x-virtualbox-vhd": ["vhd"], "application/x-virtualbox-vmdk": ["vmdk"], "application/x-wais-source": ["src"], "application/x-web-app-manifest+json": ["webapp"], "application/x-x509-ca-cert": ["der", "crt", "pem"], "application/x-xfig": ["fig"], "application/x-xliff+xml": ["*xlf"], "application/x-xpinstall": ["xpi"], "application/x-xz": ["xz"], "application/x-zmachine": ["z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8"], "audio/vnd.dece.audio": ["uva", "uvva"], "audio/vnd.digital-winds": ["eol"], "audio/vnd.dra": ["dra"], "audio/vnd.dts": ["dts"], "audio/vnd.dts.hd": ["dtshd"], "audio/vnd.lucent.voice": ["lvp"], "audio/vnd.ms-playready.media.pya": ["pya"], "audio/vnd.nuera.ecelp4800": ["ecelp4800"], "audio/vnd.nuera.ecelp7470": ["ecelp7470"], "audio/vnd.nuera.ecelp9600": ["ecelp9600"], "audio/vnd.rip": ["rip"], "audio/x-aac": ["aac"], "audio/x-aiff": ["aif", "aiff", "aifc"], "audio/x-caf": ["caf"], "audio/x-flac": ["flac"], "audio/x-m4a": ["*m4a"], "audio/x-matroska": ["mka"], "audio/x-mpegurl": ["m3u"], "audio/x-ms-wax": ["wax"], "audio/x-ms-wma": ["wma"], "audio/x-pn-realaudio": ["ram", "ra"], "audio/x-pn-realaudio-plugin": ["rmp"], "audio/x-realaudio": ["*ra"], "audio/x-wav": ["*wav"], "chemical/x-cdx": ["cdx"], "chemical/x-cif": ["cif"], "chemical/x-cmdf": ["cmdf"], "chemical/x-cml": ["cml"], "chemical/x-csml": ["csml"], "chemical/x-xyz": ["xyz"], "image/prs.btif": ["btif"], "image/prs.pti": ["pti"], "image/vnd.adobe.photoshop": ["psd"], "image/vnd.airzip.accelerator.azv": ["azv"], "image/vnd.dece.graphic": ["uvi", "uvvi", "uvg", "uvvg"], "image/vnd.djvu": ["djvu", "djv"], "image/vnd.dvb.subtitle": ["*sub"], "image/vnd.dwg": ["dwg"], "image/vnd.dxf": ["dxf"], "image/vnd.fastbidsheet": ["fbs"], "image/vnd.fpx": ["fpx"], "image/vnd.fst": ["fst"], "image/vnd.fujixerox.edmics-mmr": ["mmr"], "image/vnd.fujixerox.edmics-rlc": ["rlc"], "image/vnd.microsoft.icon": ["ico"], "image/vnd.ms-dds": ["dds"], "image/vnd.ms-modi": ["mdi"], "image/vnd.ms-photo": ["wdp"], "image/vnd.net-fpx": ["npx"], "image/vnd.pco.b16": ["b16"], "image/vnd.tencent.tap": ["tap"], "image/vnd.valve.source.texture": ["vtf"], "image/vnd.wap.wbmp": ["wbmp"], "image/vnd.xiff": ["xif"], "image/vnd.zbrush.pcx": ["pcx"], "image/x-3ds": ["3ds"], "image/x-cmu-raster": ["ras"], "image/x-cmx": ["cmx"], "image/x-freehand": ["fh", "fhc", "fh4", "fh5", "fh7"], "image/x-icon": ["*ico"], "image/x-jng": ["jng"], "image/x-mrsid-image": ["sid"], "image/x-ms-bmp": ["*bmp"], "image/x-pcx": ["*pcx"], "image/x-pict": ["pic", "pct"], "image/x-portable-anymap": ["pnm"], "image/x-portable-bitmap": ["pbm"], "image/x-portable-graymap": ["pgm"], "image/x-portable-pixmap": ["ppm"], "image/x-rgb": ["rgb"], "image/x-tga": ["tga"], "image/x-xbitmap": ["xbm"], "image/x-xpixmap": ["xpm"], "image/x-xwindowdump": ["xwd"], "message/vnd.wfa.wsc": ["wsc"], "model/vnd.collada+xml": ["dae"], "model/vnd.dwf": ["dwf"], "model/vnd.gdl": ["gdl"], "model/vnd.gtw": ["gtw"], "model/vnd.mts": ["mts"], "model/vnd.opengex": ["ogex"], "model/vnd.parasolid.transmit.binary": ["x_b"], "model/vnd.parasolid.transmit.text": ["x_t"], "model/vnd.sap.vds": ["vds"], "model/vnd.usdz+zip": ["usdz"], "model/vnd.valve.source.compiled-map": ["bsp"], "model/vnd.vtu": ["vtu"], "text/prs.lines.tag": ["dsc"], "text/vnd.curl": ["curl"], "text/vnd.curl.dcurl": ["dcurl"], "text/vnd.curl.mcurl": ["mcurl"], "text/vnd.curl.scurl": ["scurl"], "text/vnd.dvb.subtitle": ["sub"], "text/vnd.fly": ["fly"], "text/vnd.fmi.flexstor": ["flx"], "text/vnd.graphviz": ["gv"], "text/vnd.in3d.3dml": ["3dml"], "text/vnd.in3d.spot": ["spot"], "text/vnd.sun.j2me.app-descriptor": ["jad"], "text/vnd.wap.wml": ["wml"], "text/vnd.wap.wmlscript": ["wmls"], "text/x-asm": ["s", "asm"], "text/x-c": ["c", "cc", "cxx", "cpp", "h", "hh", "dic"], "text/x-component": ["htc"], "text/x-fortran": ["f", "for", "f77", "f90"], "text/x-handlebars-template": ["hbs"], "text/x-java-source": ["java"], "text/x-lua": ["lua"], "text/x-markdown": ["mkd"], "text/x-nfo": ["nfo"], "text/x-opml": ["opml"], "text/x-org": ["*org"], "text/x-pascal": ["p", "pas"], "text/x-processing": ["pde"], "text/x-sass": ["sass"], "text/x-scss": ["scss"], "text/x-setext": ["etx"], "text/x-sfv": ["sfv"], "text/x-suse-ymp": ["ymp"], "text/x-uuencode": ["uu"], "text/x-vcalendar": ["vcs"], "text/x-vcard": ["vcf"], "video/vnd.dece.hd": ["uvh", "uvvh"], "video/vnd.dece.mobile": ["uvm", "uvvm"], "video/vnd.dece.pd": ["uvp", "uvvp"], "video/vnd.dece.sd": ["uvs", "uvvs"], "video/vnd.dece.video": ["uvv", "uvvv"], "video/vnd.dvb.file": ["dvb"], "video/vnd.fvt": ["fvt"], "video/vnd.mpegurl": ["mxu", "m4u"], "video/vnd.ms-playready.media.pyv": ["pyv"], "video/vnd.uvvu.mp4": ["uvu", "uvvu"], "video/vnd.vivo": ["viv"], "video/x-f4v": ["f4v"], "video/x-fli": ["fli"], "video/x-flv": ["flv"], "video/x-m4v": ["m4v"], "video/x-matroska": ["mkv", "mk3d", "mks"], "video/x-mng": ["mng"], "video/x-ms-asf": ["asf", "asx"], "video/x-ms-vob": ["vob"], "video/x-ms-wm": ["wm"], "video/x-ms-wmv": ["wmv"], "video/x-ms-wmx": ["wmx"], "video/x-ms-wvx": ["wvx"], "video/x-msvideo": ["avi"], "video/x-sgi-movie": ["movie"], "video/x-smv": ["smv"], "x-conference/x-cooltalk": ["ice"] };
+    Mime = Mime_1;
+    mime = new Mime(standard, other);
+    parse_1 = parse$1;
+    serialize_1 = serialize;
+    __toString = Object.prototype.toString;
+    fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
+    __accessCheck$3 = (obj, member, msg) => {
+      if (!member.has(obj))
+        throw TypeError("Cannot " + msg);
+    };
+    __privateGet$3 = (obj, member, getter) => {
+      __accessCheck$3(obj, member, "read from private field");
+      return getter ? getter.call(obj) : member.get(obj);
+    };
+    __privateAdd$3 = (obj, member, value) => {
+      if (member.has(obj))
+        throw TypeError("Cannot add the same private member more than once");
+      member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+    };
+    __privateSet$3 = (obj, member, value, setter) => {
+      __accessCheck$3(obj, member, "write to private field");
+      setter ? setter.call(obj, value) : member.set(obj, value);
+      return value;
+    };
+    __privateMethod$1 = (obj, member, method) => {
+      __accessCheck$3(obj, member, "access private method");
+      return method;
+    };
+    DELETED_EXPIRATION = new Date(0);
+    DELETED_VALUE = "deleted";
+    AstroCookie = class {
+      constructor(value) {
+        this.value = value;
+      }
+      json() {
+        if (this.value === void 0) {
+          throw new Error(`Cannot convert undefined to an object.`);
+        }
+        return JSON.parse(this.value);
+      }
+      number() {
+        return Number(this.value);
+      }
+      boolean() {
+        if (this.value === "false")
+          return false;
+        if (this.value === "0")
+          return false;
+        return Boolean(this.value);
+      }
+    };
+    AstroCookies = class {
+      constructor(request) {
+        __privateAdd$3(this, _ensureParsed);
+        __privateAdd$3(this, _ensureOutgoingMap);
+        __privateAdd$3(this, _parse);
+        __privateAdd$3(this, _request, void 0);
+        __privateAdd$3(this, _requestValues, void 0);
+        __privateAdd$3(this, _outgoing, void 0);
+        __privateSet$3(this, _request, request);
+        __privateSet$3(this, _requestValues, null);
+        __privateSet$3(this, _outgoing, null);
+      }
+      delete(key, options) {
+        const serializeOptions = {
+          expires: DELETED_EXPIRATION
+        };
+        if (options == null ? void 0 : options.domain) {
+          serializeOptions.domain = options.domain;
+        }
+        if (options == null ? void 0 : options.path) {
+          serializeOptions.path = options.path;
+        }
+        __privateMethod$1(this, _ensureOutgoingMap, ensureOutgoingMap_fn).call(this).set(key, [
+          DELETED_VALUE,
+          serialize_1(key, DELETED_VALUE, serializeOptions),
+          false
+        ]);
+      }
+      get(key) {
+        if (__privateGet$3(this, _outgoing) !== null && __privateGet$3(this, _outgoing).has(key)) {
+          let [serializedValue, , isSetValue] = __privateGet$3(this, _outgoing).get(key);
+          if (isSetValue) {
+            return new AstroCookie(serializedValue);
+          } else {
+            return new AstroCookie(void 0);
+          }
+        }
+        const values = __privateMethod$1(this, _ensureParsed, ensureParsed_fn).call(this);
+        const value = values[key];
+        return new AstroCookie(value);
+      }
+      has(key) {
+        if (__privateGet$3(this, _outgoing) !== null && __privateGet$3(this, _outgoing).has(key)) {
+          let [, , isSetValue] = __privateGet$3(this, _outgoing).get(key);
+          return isSetValue;
+        }
+        const values = __privateMethod$1(this, _ensureParsed, ensureParsed_fn).call(this);
+        return !!values[key];
+      }
+      set(key, value, options) {
+        let serializedValue;
+        if (typeof value === "string") {
+          serializedValue = value;
+        } else {
+          let toStringValue = value.toString();
+          if (toStringValue === Object.prototype.toString.call(value)) {
+            serializedValue = JSON.stringify(value);
+          } else {
+            serializedValue = toStringValue;
+          }
+        }
+        const serializeOptions = {};
+        if (options) {
+          Object.assign(serializeOptions, options);
+        }
+        __privateMethod$1(this, _ensureOutgoingMap, ensureOutgoingMap_fn).call(this).set(key, [
+          serializedValue,
+          serialize_1(key, serializedValue, serializeOptions),
+          true
+        ]);
+      }
+      *headers() {
+        if (__privateGet$3(this, _outgoing) == null)
+          return;
+        for (const [, value] of __privateGet$3(this, _outgoing)) {
+          yield value[1];
+        }
+      }
+    };
+    _request = /* @__PURE__ */ new WeakMap();
+    _requestValues = /* @__PURE__ */ new WeakMap();
+    _outgoing = /* @__PURE__ */ new WeakMap();
+    _ensureParsed = /* @__PURE__ */ new WeakSet();
+    ensureParsed_fn = function() {
+      if (!__privateGet$3(this, _requestValues)) {
+        __privateMethod$1(this, _parse, parse_fn).call(this);
+      }
+      if (!__privateGet$3(this, _requestValues)) {
+        __privateSet$3(this, _requestValues, {});
+      }
+      return __privateGet$3(this, _requestValues);
+    };
+    _ensureOutgoingMap = /* @__PURE__ */ new WeakSet();
+    ensureOutgoingMap_fn = function() {
+      if (!__privateGet$3(this, _outgoing)) {
+        __privateSet$3(this, _outgoing, /* @__PURE__ */ new Map());
+      }
+      return __privateGet$3(this, _outgoing);
+    };
+    _parse = /* @__PURE__ */ new WeakSet();
+    parse_fn = function() {
+      const raw = __privateGet$3(this, _request).headers.get("cookie");
+      if (!raw) {
+        return;
+      }
+      __privateSet$3(this, _requestValues, parse_1(raw));
+    };
+    astroCookiesSymbol = Symbol.for("astro.cookies");
+    ASTRO_VERSION = "2.0.2";
+    ({ replace } = "");
+    ca = /[&<>'"]/g;
+    esca = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      "'": "&#39;",
+      '"': "&quot;"
+    };
+    pe = (m) => esca[m];
+    escape = (es) => replace.call(es, ca, pe);
+    escapeHTML = escape;
+    HTMLBytes = class extends Uint8Array {
+    };
+    Object.defineProperty(HTMLBytes.prototype, Symbol.toStringTag, {
+      get() {
+        return "HTMLBytes";
+      }
+    });
+    HTMLString = class extends String {
+      get [Symbol.toStringTag]() {
+        return "HTMLString";
+      }
+    };
+    markHTMLString = (value) => {
+      if (value instanceof HTMLString) {
+        return value;
+      }
+      if (typeof value === "string") {
+        return new HTMLString(value);
+      }
+      return value;
+    };
+    AstroJSX = "astro:jsx";
+    Empty = Symbol("empty");
+    toSlotName = (slotAttr) => slotAttr;
+    idle_prebuilt_default = `(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));`;
+    load_prebuilt_default = `(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));`;
+    media_prebuilt_default = `(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));`;
+    only_prebuilt_default = `(self.Astro=self.Astro||{}).only=t=>{(async()=>await(await t())())()},window.dispatchEvent(new Event("astro:only"));`;
+    visible_prebuilt_default = `(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));`;
+    astro_island_prebuilt_default = `var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(\`astro:\${e}\`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}`;
+    hydrationScripts = {
+      idle: idle_prebuilt_default,
+      load: load_prebuilt_default,
+      only: only_prebuilt_default,
+      media: media_prebuilt_default,
+      visible: visible_prebuilt_default
+    };
+    headAndContentSym = Symbol.for("astro.headAndContent");
+    renderTemplateResultSym = Symbol.for("astro.renderTemplateResult");
+    RenderTemplateResult = class {
+      constructor(htmlParts, expressions) {
+        this[_a$1] = true;
+        this.htmlParts = htmlParts;
+        this.error = void 0;
+        this.expressions = expressions.map((expression) => {
+          if (isPromise(expression)) {
+            return Promise.resolve(expression).catch((err) => {
+              if (!this.error) {
+                this.error = err;
+                throw err;
+              }
+            });
+          }
+          return expression;
+        });
+      }
+      async *[(_a$1 = renderTemplateResultSym, Symbol.asyncIterator)]() {
+        const { htmlParts, expressions } = this;
+        for (let i = 0; i < htmlParts.length; i++) {
+          const html = htmlParts[i];
+          const expression = expressions[i];
+          yield markHTMLString(html);
+          yield* renderChild(expression);
+        }
+      }
+    };
+    defineErrors = (errs) => errs;
+    AstroErrorData = defineErrors({
+      UnknownCompilerError: {
+        title: "Unknown compiler error.",
+        code: 1e3,
+        hint: "This is almost always a problem with the Astro compiler, not your code. Please open an issue at https://astro.build/issues/compiler."
+      },
+      StaticRedirectNotAvailable: {
+        title: "`Astro.redirect` is not available in static mode.",
+        code: 3001,
+        message: "Redirects are only available when using `output: 'server'`. Update your Astro config if you need SSR features.",
+        hint: "See https://docs.astro.build/en/guides/server-side-rendering/#enabling-ssr-in-your-project for more information on how to enable SSR."
+      },
+      ClientAddressNotAvailable: {
+        title: "`Astro.clientAddress` is not available in current adapter.",
+        code: 3002,
+        message: (adapterName) => `\`Astro.clientAddress\` is not available in the \`${adapterName}\` adapter. File an issue with the adapter to add support.`
+      },
+      StaticClientAddressNotAvailable: {
+        title: "`Astro.clientAddress` is not available in static mode.",
+        code: 3003,
+        message: "`Astro.clientAddress` is only available when using `output: 'server'`. Update your Astro config if you need SSR features.",
+        hint: "See https://docs.astro.build/en/guides/server-side-rendering/#enabling-ssr-in-your-project for more information on how to enable SSR."
+      },
+      NoMatchingStaticPathFound: {
+        title: "No static path found for requested path.",
+        code: 3004,
+        message: (pathName) => `A \`getStaticPaths()\` route pattern was matched, but no matching static path was found for requested path \`${pathName}\`.`,
+        hint: (possibleRoutes) => `Possible dynamic routes being matched: ${possibleRoutes.join(", ")}.`
+      },
+      OnlyResponseCanBeReturned: {
+        title: "Invalid type returned by Astro page.",
+        code: 3005,
+        message: (route, returnedValue) => `Route \`${route ? route : ""}\` returned a \`${returnedValue}\`. Only a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) can be returned from Astro files.`,
+        hint: "See https://docs.astro.build/en/guides/server-side-rendering/#response for more information."
+      },
+      MissingMediaQueryDirective: {
+        title: "Missing value for `client:media` directive.",
+        code: 3006,
+        message: 'Media query not provided for `client:media` directive. A media query similar to `client:media="(max-width: 600px)"` must be provided'
+      },
+      NoMatchingRenderer: {
+        title: "No matching renderer found.",
+        code: 3007,
+        message: (componentName, componentExtension, plural, validRenderersCount) => `Unable to render \`${componentName}\`.
 
-// .netlify/edge-functions/chunks/pages/all.6acc3dae.mjs
-var $$Astro$1 = createAstro();
+${validRenderersCount > 0 ? `There ${plural ? "are." : "is."} ${validRenderersCount} renderer${plural ? "s." : ""} configured in your \`astro.config.mjs\` file,
+but ${plural ? "none were." : "it was not."} able to server-side render \`${componentName}\`.` : `No valid renderer was found ${componentExtension ? `for the \`.${componentExtension}\` file extension.` : `for this file extension.`}`}`,
+        hint: (probableRenderers) => `Did you mean to enable the ${probableRenderers} integration?
+
+See https://docs.astro.build/en/core-concepts/framework-components/ for more information on how to install and configure integrations.`
+      },
+      NoClientEntrypoint: {
+        title: "No client entrypoint specified in renderer.",
+        code: 3008,
+        message: (componentName, clientDirective, rendererName) => `\`${componentName}\` component has a \`client:${clientDirective}\` directive, but no client entrypoint was provided by \`${rendererName}\`.`,
+        hint: "See https://docs.astro.build/en/reference/integrations-reference/#addrenderer-option for more information on how to configure your renderer."
+      },
+      NoClientOnlyHint: {
+        title: "Missing hint on client:only directive.",
+        code: 3009,
+        message: (componentName) => `Unable to render \`${componentName}\`. When using the \`client:only\` hydration strategy, Astro needs a hint to use the correct renderer.`,
+        hint: (probableRenderers) => `Did you mean to pass \`client:only="${probableRenderers}"\`? See https://docs.astro.build/en/reference/directives-reference/#clientonly for more information on client:only`
+      },
+      InvalidGetStaticPathParam: {
+        title: "Invalid value returned by a `getStaticPaths` path.",
+        code: 3010,
+        message: (paramType) => `Invalid params given to \`getStaticPaths\` path. Expected an \`object\`, got \`${paramType}\``,
+        hint: "See https://docs.astro.build/en/reference/api-reference/#getstaticpaths for more information on getStaticPaths."
+      },
+      InvalidGetStaticPathsReturn: {
+        title: "Invalid value returned by getStaticPaths.",
+        code: 3011,
+        message: (returnType) => `Invalid type returned by \`getStaticPaths\`. Expected an \`array\`, got \`${returnType}\``,
+        hint: "See https://docs.astro.build/en/reference/api-reference/#getstaticpaths for more information on getStaticPaths."
+      },
+      GetStaticPathsRemovedRSSHelper: {
+        title: "getStaticPaths RSS helper is not available anymore.",
+        code: 3012,
+        message: "The RSS helper has been removed from `getStaticPaths`. Try the new @astrojs/rss package instead.",
+        hint: "See https://docs.astro.build/en/guides/rss/ for more information."
+      },
+      GetStaticPathsExpectedParams: {
+        title: "Missing params property on `getStaticPaths` route.",
+        code: 3013,
+        message: "Missing or empty required `params` property on `getStaticPaths` route.",
+        hint: "See https://docs.astro.build/en/reference/api-reference/#getstaticpaths for more information on getStaticPaths."
+      },
+      GetStaticPathsInvalidRouteParam: {
+        title: "Invalid value for `getStaticPaths` route parameter.",
+        code: 3014,
+        message: (key, value, valueType) => `Invalid getStaticPaths route parameter for \`${key}\`. Expected undefined, a string or a number, received \`${valueType}\` (\`${value}\`)`,
+        hint: "See https://docs.astro.build/en/reference/api-reference/#getstaticpaths for more information on getStaticPaths."
+      },
+      GetStaticPathsRequired: {
+        title: "`getStaticPaths()` function required for dynamic routes.",
+        code: 3015,
+        message: "`getStaticPaths()` function is required for dynamic routes. Make sure that you `export` a `getStaticPaths` function from your dynamic route.",
+        hint: `See https://docs.astro.build/en/core-concepts/routing/#dynamic-routes for more information on dynamic routes.
+
+Alternatively, set \`output: "server"\` in your Astro config file to switch to a non-static server build. This error can also occur if using \`export const prerender = true;\`.
+See https://docs.astro.build/en/guides/server-side-rendering/ for more information on non-static rendering.`
+      },
+      ReservedSlotName: {
+        title: "Invalid slot name.",
+        code: 3016,
+        message: (slotName2) => `Unable to create a slot named \`${slotName2}\`. \`${slotName2}\` is a reserved slot name. Please update the name of this slot.`
+      },
+      NoAdapterInstalled: {
+        title: "Cannot use Server-side Rendering without an adapter.",
+        code: 3017,
+        message: `Cannot use \`output: 'server'\` without an adapter. Please install and configure the appropriate server adapter for your final deployment.`,
+        hint: "See https://docs.astro.build/en/guides/server-side-rendering/ for more information."
+      },
+      NoMatchingImport: {
+        title: "No import found for component.",
+        code: 3018,
+        message: (componentName) => `Could not render \`${componentName}\`. No matching import has been found for \`${componentName}\`.`,
+        hint: "Please make sure the component is properly imported."
+      },
+      InvalidPrerenderExport: {
+        title: "Invalid prerender export.",
+        code: 3019,
+        message: (prefix, suffix) => {
+          let msg = `A \`prerender\` export has been detected, but its value cannot be statically analyzed.`;
+          if (prefix !== "const")
+            msg += `
+Expected \`const\` declaration but got \`${prefix}\`.`;
+          if (suffix !== "true")
+            msg += `
+Expected \`true\` value but got \`${suffix}\`.`;
+          return msg;
+        },
+        hint: "Mutable values declared at runtime are not supported. Please make sure to use exactly `export const prerender = true`."
+      },
+      UnknownViteError: {
+        title: "Unknown Vite Error.",
+        code: 4e3
+      },
+      FailedToLoadModuleSSR: {
+        title: "Could not import file.",
+        code: 4001,
+        message: (importName) => `Could not import \`${importName}\`.`,
+        hint: "This is often caused by a typo in the import path. Please make sure the file exists."
+      },
+      InvalidGlob: {
+        title: "Invalid glob pattern.",
+        code: 4002,
+        message: (globPattern) => `Invalid glob pattern: \`${globPattern}\`. Glob patterns must start with './', '../' or '/'.`,
+        hint: "See https://docs.astro.build/en/guides/imports/#glob-patterns for more information on supported glob patterns."
+      },
+      UnknownCSSError: {
+        title: "Unknown CSS Error.",
+        code: 5e3
+      },
+      CSSSyntaxError: {
+        title: "CSS Syntax Error.",
+        code: 5001
+      },
+      UnknownMarkdownError: {
+        title: "Unknown Markdown Error.",
+        code: 6e3
+      },
+      MarkdownFrontmatterParseError: {
+        title: "Failed to parse Markdown frontmatter.",
+        code: 6001
+      },
+      InvalidFrontmatterInjectionError: {
+        title: "Invalid frontmatter injection.",
+        code: 6003,
+        message: 'A remark or rehype plugin attempted to inject invalid frontmatter. Ensure "astro.frontmatter" is set to a valid JSON object that is not `null` or `undefined`.',
+        hint: "See the frontmatter injection docs https://docs.astro.build/en/guides/markdown-content/#modifying-frontmatter-programmatically for more information."
+      },
+      MdxIntegrationMissingError: {
+        title: "MDX integration missing.",
+        code: 6004,
+        message: (file3) => `Unable to render ${file3}. Ensure that the \`@astrojs/mdx\` integration is installed.`,
+        hint: "See the MDX integration docs for installation and usage instructions: https://docs.astro.build/en/guides/integrations-guide/mdx/"
+      },
+      UnknownConfigError: {
+        title: "Unknown configuration error.",
+        code: 7e3
+      },
+      ConfigNotFound: {
+        title: "Specified configuration file not found.",
+        code: 7001,
+        message: (configFile) => `Unable to resolve \`--config "${configFile}"\`. Does the file exist?`
+      },
+      ConfigLegacyKey: {
+        title: "Legacy configuration detected.",
+        code: 7002,
+        message: (legacyConfigKey) => `Legacy configuration detected: \`${legacyConfigKey}\`.`,
+        hint: "Please update your configuration to the new format.\nSee https://astro.build/config for more information."
+      },
+      UnknownCLIError: {
+        title: "Unknown CLI Error.",
+        code: 8e3
+      },
+      GenerateContentTypesError: {
+        title: "Failed to generate content types.",
+        code: 8001,
+        message: "`astro sync` command failed to generate content collection types.",
+        hint: "Check your `src/content/config.*` file for typos."
+      },
+      UnknownContentCollectionError: {
+        title: "Unknown Content Collection Error.",
+        code: 9e3
+      },
+      InvalidContentEntryFrontmatterError: {
+        title: "Content entry frontmatter does not match schema.",
+        code: 9001,
+        message: (collection3, entryId, error2) => {
+          return [
+            `${String(collection3)} \u2192 ${String(entryId)} frontmatter does not match collection schema.`,
+            ...error2.errors.map((zodError) => zodError.message)
+          ].join("\n");
+        },
+        hint: "See https://docs.astro.build/en/guides/content-collections/ for more information on content schemas."
+      },
+      InvalidContentEntrySlugError: {
+        title: "Invalid content entry slug.",
+        code: 9002,
+        message: (collection3, entryId) => {
+          return `${String(collection3)} \u2192 ${String(
+            entryId
+          )} has an invalid slug. \`slug\` must be a string.`;
+        },
+        hint: "See https://docs.astro.build/en/guides/content-collections/ for more on the `slug` field."
+      },
+      ContentSchemaContainsSlugError: {
+        title: "Content Schema should not contain `slug`.",
+        code: 9003,
+        message: (collection3) => {
+          return `A content collection schema should not contain \`slug\` since it is reserved for slug generation. Remove this from your ${collection3} collection schema.`;
+        },
+        hint: "See https://docs.astro.build/en/guides/content-collections/ for more on the `slug` field."
+      },
+      UnknownError: {
+        title: "Unknown Error.",
+        code: 99999
+      }
+    });
+    AstroError = class extends Error {
+      constructor(props, ...params) {
+        var _a2;
+        super(...params);
+        this.type = "AstroError";
+        const { code, name, title, message, stack, location, hint, frame } = props;
+        this.errorCode = code;
+        if (name && name !== "Error") {
+          this.name = name;
+        } else {
+          this.name = ((_a2 = getErrorDataByCode(this.errorCode)) == null ? void 0 : _a2.name) ?? "UnknownError";
+        }
+        this.title = title;
+        if (message)
+          this.message = message;
+        this.stack = stack ? stack : this.stack;
+        this.loc = location;
+        this.hint = hint;
+        this.frame = frame;
+      }
+      setErrorCode(errorCode) {
+        this.errorCode = errorCode;
+      }
+      setLocation(location) {
+        this.loc = location;
+      }
+      setName(name) {
+        this.name = name;
+      }
+      setMessage(message) {
+        this.message = message;
+      }
+      setHint(hint) {
+        this.hint = hint;
+      }
+      setFrame(source, location) {
+        this.frame = codeFrame(source, location);
+      }
+      static is(err) {
+        return err.type === "AstroError";
+      }
+    };
+    PROP_TYPE = {
+      Value: 0,
+      JSON: 1,
+      RegExp: 2,
+      Date: 3,
+      Map: 4,
+      Set: 5,
+      BigInt: 6,
+      URL: 7,
+      Uint8Array: 8,
+      Uint16Array: 9,
+      Uint32Array: 10
+    };
+    HydrationDirectivesRaw = ["load", "idle", "media", "visible", "only"];
+    HydrationDirectives = new Set(HydrationDirectivesRaw);
+    HydrationDirectiveProps = new Set(HydrationDirectivesRaw.map((n) => `client:${n}`));
+    astroComponentInstanceSym = Symbol.for("astro.componentInstance");
+    AstroComponentInstance = class {
+      constructor(result, props, slots, factory) {
+        this[_a] = true;
+        this.result = result;
+        this.props = props;
+        this.factory = factory;
+        this.slotValues = {};
+        for (const name in slots) {
+          this.slotValues[name] = slots[name]();
+        }
+      }
+      async init() {
+        this.returnValue = this.factory(this.result, this.props, this.slotValues);
+        return this.returnValue;
+      }
+      async *render() {
+        if (this.returnValue === void 0) {
+          await this.init();
+        }
+        let value = this.returnValue;
+        if (isPromise(value)) {
+          value = await value;
+        }
+        if (isHeadAndContent(value)) {
+          yield* value.content;
+        } else {
+          yield* renderChild(value);
+        }
+      }
+    };
+    _a = astroComponentInstanceSym;
+    slotString = Symbol.for("astro:slot-string");
+    SlotString = class extends HTMLString {
+      constructor(content, instructions) {
+        super(content);
+        this.instructions = instructions;
+        this[slotString] = true;
+      }
+    };
+    Fragment = Symbol.for("astro:fragment");
+    Renderer = Symbol.for("astro:renderer");
+    encoder = new TextEncoder();
+    decoder = new TextDecoder();
+    HTMLParts = class {
+      constructor() {
+        this.parts = "";
+      }
+      append(part, result) {
+        if (ArrayBuffer.isView(part)) {
+          this.parts += decoder.decode(part);
+        } else {
+          this.parts += stringifyChunk(result, part);
+        }
+      }
+      toString() {
+        return this.parts;
+      }
+      toArrayBuffer() {
+        return encoder.encode(this.parts);
+      }
+    };
+    ClientOnlyPlaceholder = "astro-client-only";
+    Skip = class {
+      constructor(vnode) {
+        this.vnode = vnode;
+        this.count = 0;
+      }
+      increment() {
+        this.count++;
+      }
+      haveNoTried() {
+        return this.count === 0;
+      }
+      isCompleted() {
+        return this.count > 2;
+      }
+    };
+    Skip.symbol = Symbol("astro:jsx:skip");
+    consoleFilterRefs = 0;
+    dictionary = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY";
+    binary = dictionary.length;
+    voidElementNames = /^(area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr)$/i;
+    htmlBooleanAttributes = /^(allowfullscreen|async|autofocus|autoplay|controls|default|defer|disabled|disablepictureinpicture|disableremoteplayback|formnovalidate|hidden|loop|nomodule|novalidate|open|playsinline|readonly|required|reversed|scoped|seamless|itemscope)$/i;
+    htmlEnumAttributes = /^(contenteditable|draggable|spellcheck|value)$/i;
+    svgEnumAttributes = /^(autoReverse|externalResourcesRequired|focusable|preserveAlpha)$/i;
+    STATIC_DIRECTIVES = /* @__PURE__ */ new Set(["set:html", "set:text"]);
+    toIdent = (k) => k.trim().replace(/(?:(?!^)\b\w|\s+|[^\w]+)/g, (match, index) => {
+      if (/[^\w]|\s/.test(match))
+        return "";
+      return index === 0 ? match : match.toUpperCase();
+    });
+    toAttributeString = (value, shouldEscape = true) => shouldEscape ? String(value).replace(/&/g, "&#38;").replace(/"/g, "&#34;") : value;
+    kebab = (k) => k.toLowerCase() === k ? k : k.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
+    toStyleString = (obj) => Object.entries(obj).map(([k, v]) => `${kebab(k)}:${v}`).join(";");
+    rendererAliases = /* @__PURE__ */ new Map([["solid", "solid-js"]]);
+    uniqueElements = (item, index, all) => {
+      const props = JSON.stringify(item.props);
+      const children = item.children;
+      return index === all.findIndex((i) => JSON.stringify(i.props) === props && i.children == children);
+    };
+    renderHead = createRenderHead;
+    __accessCheck$2 = (obj, member, msg) => {
+      if (!member.has(obj))
+        throw TypeError("Cannot " + msg);
+    };
+    __privateGet$2 = (obj, member, getter) => {
+      __accessCheck$2(obj, member, "read from private field");
+      return getter ? getter.call(obj) : member.get(obj);
+    };
+    __privateAdd$2 = (obj, member, value) => {
+      if (member.has(obj))
+        throw TypeError("Cannot add the same private member more than once");
+      member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+    };
+    __privateSet$2 = (obj, member, value, setter) => {
+      __accessCheck$2(obj, member, "write to private field");
+      setter ? setter.call(obj, value) : member.set(obj, value);
+      return value;
+    };
+    isNodeJS = typeof process === "object" && Object.prototype.toString.call(process) === "[object process]";
+    createResponse = isNodeJS ? (body3, init2) => {
+      if (typeof body3 === "string" || ArrayBuffer.isView(body3)) {
+        return new Response(body3, init2);
+      }
+      if (typeof StreamingCompatibleResponse === "undefined") {
+        return new (createResponseClass())(body3, init2);
+      }
+      return new StreamingCompatibleResponse(body3, init2);
+    } : (body3, init2) => new Response(body3, init2);
+    needsHeadRenderingSymbol = Symbol.for("astro.needsHeadRendering");
+    stylesheetRel = "stylesheet";
+    isTTY = true;
+    if (typeof process !== "undefined") {
+      ({ FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env || {});
+      isTTY = process.stdout && process.stdout.isTTY;
+    }
+    $ = {
+      enabled: !NODE_DISABLE_COLORS && NO_COLOR == null && TERM !== "dumb" && (FORCE_COLOR != null && FORCE_COLOR !== "0" || isTTY)
+    };
+    reset = init(0, 0);
+    bold = init(1, 22);
+    dim = init(2, 22);
+    red = init(31, 39);
+    yellow = init(33, 39);
+    cyan = init(36, 39);
+    eastasianwidthExports = {};
+    eastasianwidth = {
+      get exports() {
+        return eastasianwidthExports;
+      },
+      set exports(v) {
+        eastasianwidthExports = v;
+      }
+    };
+    (function(module) {
+      var eaw = {};
+      {
+        module.exports = eaw;
+      }
+      eaw.eastAsianWidth = function(character) {
+        var x = character.charCodeAt(0);
+        var y = character.length == 2 ? character.charCodeAt(1) : 0;
+        var codePoint = x;
+        if (55296 <= x && x <= 56319 && (56320 <= y && y <= 57343)) {
+          x &= 1023;
+          y &= 1023;
+          codePoint = x << 10 | y;
+          codePoint += 65536;
+        }
+        if (12288 == codePoint || 65281 <= codePoint && codePoint <= 65376 || 65504 <= codePoint && codePoint <= 65510) {
+          return "F";
+        }
+        if (8361 == codePoint || 65377 <= codePoint && codePoint <= 65470 || 65474 <= codePoint && codePoint <= 65479 || 65482 <= codePoint && codePoint <= 65487 || 65490 <= codePoint && codePoint <= 65495 || 65498 <= codePoint && codePoint <= 65500 || 65512 <= codePoint && codePoint <= 65518) {
+          return "H";
+        }
+        if (4352 <= codePoint && codePoint <= 4447 || 4515 <= codePoint && codePoint <= 4519 || 4602 <= codePoint && codePoint <= 4607 || 9001 <= codePoint && codePoint <= 9002 || 11904 <= codePoint && codePoint <= 11929 || 11931 <= codePoint && codePoint <= 12019 || 12032 <= codePoint && codePoint <= 12245 || 12272 <= codePoint && codePoint <= 12283 || 12289 <= codePoint && codePoint <= 12350 || 12353 <= codePoint && codePoint <= 12438 || 12441 <= codePoint && codePoint <= 12543 || 12549 <= codePoint && codePoint <= 12589 || 12593 <= codePoint && codePoint <= 12686 || 12688 <= codePoint && codePoint <= 12730 || 12736 <= codePoint && codePoint <= 12771 || 12784 <= codePoint && codePoint <= 12830 || 12832 <= codePoint && codePoint <= 12871 || 12880 <= codePoint && codePoint <= 13054 || 13056 <= codePoint && codePoint <= 19903 || 19968 <= codePoint && codePoint <= 42124 || 42128 <= codePoint && codePoint <= 42182 || 43360 <= codePoint && codePoint <= 43388 || 44032 <= codePoint && codePoint <= 55203 || 55216 <= codePoint && codePoint <= 55238 || 55243 <= codePoint && codePoint <= 55291 || 63744 <= codePoint && codePoint <= 64255 || 65040 <= codePoint && codePoint <= 65049 || 65072 <= codePoint && codePoint <= 65106 || 65108 <= codePoint && codePoint <= 65126 || 65128 <= codePoint && codePoint <= 65131 || 110592 <= codePoint && codePoint <= 110593 || 127488 <= codePoint && codePoint <= 127490 || 127504 <= codePoint && codePoint <= 127546 || 127552 <= codePoint && codePoint <= 127560 || 127568 <= codePoint && codePoint <= 127569 || 131072 <= codePoint && codePoint <= 194367 || 177984 <= codePoint && codePoint <= 196605 || 196608 <= codePoint && codePoint <= 262141) {
+          return "W";
+        }
+        if (32 <= codePoint && codePoint <= 126 || 162 <= codePoint && codePoint <= 163 || 165 <= codePoint && codePoint <= 166 || 172 == codePoint || 175 == codePoint || 10214 <= codePoint && codePoint <= 10221 || 10629 <= codePoint && codePoint <= 10630) {
+          return "Na";
+        }
+        if (161 == codePoint || 164 == codePoint || 167 <= codePoint && codePoint <= 168 || 170 == codePoint || 173 <= codePoint && codePoint <= 174 || 176 <= codePoint && codePoint <= 180 || 182 <= codePoint && codePoint <= 186 || 188 <= codePoint && codePoint <= 191 || 198 == codePoint || 208 == codePoint || 215 <= codePoint && codePoint <= 216 || 222 <= codePoint && codePoint <= 225 || 230 == codePoint || 232 <= codePoint && codePoint <= 234 || 236 <= codePoint && codePoint <= 237 || 240 == codePoint || 242 <= codePoint && codePoint <= 243 || 247 <= codePoint && codePoint <= 250 || 252 == codePoint || 254 == codePoint || 257 == codePoint || 273 == codePoint || 275 == codePoint || 283 == codePoint || 294 <= codePoint && codePoint <= 295 || 299 == codePoint || 305 <= codePoint && codePoint <= 307 || 312 == codePoint || 319 <= codePoint && codePoint <= 322 || 324 == codePoint || 328 <= codePoint && codePoint <= 331 || 333 == codePoint || 338 <= codePoint && codePoint <= 339 || 358 <= codePoint && codePoint <= 359 || 363 == codePoint || 462 == codePoint || 464 == codePoint || 466 == codePoint || 468 == codePoint || 470 == codePoint || 472 == codePoint || 474 == codePoint || 476 == codePoint || 593 == codePoint || 609 == codePoint || 708 == codePoint || 711 == codePoint || 713 <= codePoint && codePoint <= 715 || 717 == codePoint || 720 == codePoint || 728 <= codePoint && codePoint <= 731 || 733 == codePoint || 735 == codePoint || 768 <= codePoint && codePoint <= 879 || 913 <= codePoint && codePoint <= 929 || 931 <= codePoint && codePoint <= 937 || 945 <= codePoint && codePoint <= 961 || 963 <= codePoint && codePoint <= 969 || 1025 == codePoint || 1040 <= codePoint && codePoint <= 1103 || 1105 == codePoint || 8208 == codePoint || 8211 <= codePoint && codePoint <= 8214 || 8216 <= codePoint && codePoint <= 8217 || 8220 <= codePoint && codePoint <= 8221 || 8224 <= codePoint && codePoint <= 8226 || 8228 <= codePoint && codePoint <= 8231 || 8240 == codePoint || 8242 <= codePoint && codePoint <= 8243 || 8245 == codePoint || 8251 == codePoint || 8254 == codePoint || 8308 == codePoint || 8319 == codePoint || 8321 <= codePoint && codePoint <= 8324 || 8364 == codePoint || 8451 == codePoint || 8453 == codePoint || 8457 == codePoint || 8467 == codePoint || 8470 == codePoint || 8481 <= codePoint && codePoint <= 8482 || 8486 == codePoint || 8491 == codePoint || 8531 <= codePoint && codePoint <= 8532 || 8539 <= codePoint && codePoint <= 8542 || 8544 <= codePoint && codePoint <= 8555 || 8560 <= codePoint && codePoint <= 8569 || 8585 == codePoint || 8592 <= codePoint && codePoint <= 8601 || 8632 <= codePoint && codePoint <= 8633 || 8658 == codePoint || 8660 == codePoint || 8679 == codePoint || 8704 == codePoint || 8706 <= codePoint && codePoint <= 8707 || 8711 <= codePoint && codePoint <= 8712 || 8715 == codePoint || 8719 == codePoint || 8721 == codePoint || 8725 == codePoint || 8730 == codePoint || 8733 <= codePoint && codePoint <= 8736 || 8739 == codePoint || 8741 == codePoint || 8743 <= codePoint && codePoint <= 8748 || 8750 == codePoint || 8756 <= codePoint && codePoint <= 8759 || 8764 <= codePoint && codePoint <= 8765 || 8776 == codePoint || 8780 == codePoint || 8786 == codePoint || 8800 <= codePoint && codePoint <= 8801 || 8804 <= codePoint && codePoint <= 8807 || 8810 <= codePoint && codePoint <= 8811 || 8814 <= codePoint && codePoint <= 8815 || 8834 <= codePoint && codePoint <= 8835 || 8838 <= codePoint && codePoint <= 8839 || 8853 == codePoint || 8857 == codePoint || 8869 == codePoint || 8895 == codePoint || 8978 == codePoint || 9312 <= codePoint && codePoint <= 9449 || 9451 <= codePoint && codePoint <= 9547 || 9552 <= codePoint && codePoint <= 9587 || 9600 <= codePoint && codePoint <= 9615 || 9618 <= codePoint && codePoint <= 9621 || 9632 <= codePoint && codePoint <= 9633 || 9635 <= codePoint && codePoint <= 9641 || 9650 <= codePoint && codePoint <= 9651 || 9654 <= codePoint && codePoint <= 9655 || 9660 <= codePoint && codePoint <= 9661 || 9664 <= codePoint && codePoint <= 9665 || 9670 <= codePoint && codePoint <= 9672 || 9675 == codePoint || 9678 <= codePoint && codePoint <= 9681 || 9698 <= codePoint && codePoint <= 9701 || 9711 == codePoint || 9733 <= codePoint && codePoint <= 9734 || 9737 == codePoint || 9742 <= codePoint && codePoint <= 9743 || 9748 <= codePoint && codePoint <= 9749 || 9756 == codePoint || 9758 == codePoint || 9792 == codePoint || 9794 == codePoint || 9824 <= codePoint && codePoint <= 9825 || 9827 <= codePoint && codePoint <= 9829 || 9831 <= codePoint && codePoint <= 9834 || 9836 <= codePoint && codePoint <= 9837 || 9839 == codePoint || 9886 <= codePoint && codePoint <= 9887 || 9918 <= codePoint && codePoint <= 9919 || 9924 <= codePoint && codePoint <= 9933 || 9935 <= codePoint && codePoint <= 9953 || 9955 == codePoint || 9960 <= codePoint && codePoint <= 9983 || 10045 == codePoint || 10071 == codePoint || 10102 <= codePoint && codePoint <= 10111 || 11093 <= codePoint && codePoint <= 11097 || 12872 <= codePoint && codePoint <= 12879 || 57344 <= codePoint && codePoint <= 63743 || 65024 <= codePoint && codePoint <= 65039 || 65533 == codePoint || 127232 <= codePoint && codePoint <= 127242 || 127248 <= codePoint && codePoint <= 127277 || 127280 <= codePoint && codePoint <= 127337 || 127344 <= codePoint && codePoint <= 127386 || 917760 <= codePoint && codePoint <= 917999 || 983040 <= codePoint && codePoint <= 1048573 || 1048576 <= codePoint && codePoint <= 1114109) {
+          return "A";
+        }
+        return "N";
+      };
+      eaw.characterLength = function(character) {
+        var code = this.eastAsianWidth(character);
+        if (code == "F" || code == "W" || code == "A") {
+          return 2;
+        } else {
+          return 1;
+        }
+      };
+      function stringToArray(string) {
+        return string.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/g) || [];
+      }
+      eaw.length = function(string) {
+        var characters = stringToArray(string);
+        var len = 0;
+        for (var i = 0; i < characters.length; i++) {
+          len = len + this.characterLength(characters[i]);
+        }
+        return len;
+      };
+      eaw.slice = function(text, start, end) {
+        textLen = eaw.length(text);
+        start = start ? start : 0;
+        end = end ? end : 1;
+        if (start < 0) {
+          start = textLen + start;
+        }
+        if (end < 0) {
+          end = textLen + end;
+        }
+        var result = "";
+        var eawLen = 0;
+        var chars = stringToArray(text);
+        for (var i = 0; i < chars.length; i++) {
+          var char = chars[i];
+          var charLen = eaw.length(char);
+          if (eawLen >= start - (charLen == 2 ? 1 : 0)) {
+            if (eawLen + charLen <= end) {
+              result += char;
+            } else {
+              break;
+            }
+          }
+          eawLen += charLen;
+        }
+        return result;
+      };
+    })(eastasianwidth);
+    dateTimeFormat = new Intl.DateTimeFormat([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    });
+    levels = {
+      debug: 20,
+      info: 30,
+      warn: 40,
+      error: 50,
+      silent: 90
+    };
+    if (typeof process !== "undefined") {
+      let proc = process;
+      if ("argv" in proc && Array.isArray(proc.argv)) {
+        if (proc.argv.includes("--verbose"))
+          ;
+        else if (proc.argv.includes("--silent"))
+          ;
+        else
+          ;
+      }
+    }
+    VALID_PARAM_TYPES = ["string", "number", "undefined"];
+    __accessCheck$1 = (obj, member, msg) => {
+      if (!member.has(obj))
+        throw TypeError("Cannot " + msg);
+    };
+    __privateGet$1 = (obj, member, getter) => {
+      __accessCheck$1(obj, member, "read from private field");
+      return getter ? getter.call(obj) : member.get(obj);
+    };
+    __privateAdd$1 = (obj, member, value) => {
+      if (member.has(obj))
+        throw TypeError("Cannot add the same private member more than once");
+      member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+    };
+    __privateSet$1 = (obj, member, value, setter) => {
+      __accessCheck$1(obj, member, "write to private field");
+      setter ? setter.call(obj, value) : member.set(obj, value);
+      return value;
+    };
+    clientAddressSymbol$1 = Symbol.for("astro.clientAddress");
+    Slots = class {
+      constructor(result, slots, logging) {
+        __privateAdd$1(this, _result, void 0);
+        __privateAdd$1(this, _slots, void 0);
+        __privateAdd$1(this, _loggingOpts, void 0);
+        __privateSet$1(this, _result, result);
+        __privateSet$1(this, _slots, slots);
+        __privateSet$1(this, _loggingOpts, logging);
+        if (slots) {
+          for (const key of Object.keys(slots)) {
+            if (this[key] !== void 0) {
+              throw new AstroError({
+                ...AstroErrorData.ReservedSlotName,
+                message: AstroErrorData.ReservedSlotName.message(key)
+              });
+            }
+            Object.defineProperty(this, key, {
+              get() {
+                return true;
+              },
+              enumerable: true
+            });
+          }
+        }
+      }
+      has(name) {
+        if (!__privateGet$1(this, _slots))
+          return false;
+        return Boolean(__privateGet$1(this, _slots)[name]);
+      }
+      async render(name, args = []) {
+        if (!__privateGet$1(this, _slots) || !this.has(name))
+          return;
+        if (!Array.isArray(args)) {
+          warn(
+            __privateGet$1(this, _loggingOpts),
+            "Astro.slots.render",
+            `Expected second parameter to be an array, received a ${typeof args}. If you're trying to pass an array as a single argument and getting unexpected results, make sure you're passing your array as a item of an array. Ex: Astro.slots.render('default', [["Hello", "World"]])`
+          );
+        } else if (args.length > 0) {
+          const slotValue = __privateGet$1(this, _slots)[name];
+          const component = typeof slotValue === "function" ? await slotValue() : await slotValue;
+          const expression = getFunctionExpression(component);
+          if (expression) {
+            const slot = expression(...args);
+            return await renderSlot(__privateGet$1(this, _result), slot).then(
+              (res) => res != null ? String(res) : res
+            );
+          }
+          if (typeof component === "function") {
+            return await renderJSX(__privateGet$1(this, _result), component(...args)).then(
+              (res) => res != null ? String(res) : res
+            );
+          }
+        }
+        const content = await renderSlot(__privateGet$1(this, _result), __privateGet$1(this, _slots)[name]);
+        const outHTML = stringifyChunk(__privateGet$1(this, _result), content);
+        return outHTML;
+      }
+    };
+    _result = /* @__PURE__ */ new WeakMap();
+    _slots = /* @__PURE__ */ new WeakMap();
+    _loggingOpts = /* @__PURE__ */ new WeakMap();
+    renderMarkdown = null;
+    RouteCache = class {
+      constructor(logging, mode = "production") {
+        this.cache = {};
+        this.logging = logging;
+        this.mode = mode;
+      }
+      clearAll() {
+        this.cache = {};
+      }
+      set(route, entry) {
+        if (this.mode === "production" && this.cache[route.component]) {
+          warn(
+            this.logging,
+            "routeCache",
+            `Internal Warning: route cache overwritten. (${route.component})`
+          );
+        }
+        this.cache[route.component] = entry;
+      }
+      get(route) {
+        return this.cache[route.component];
+      }
+    };
+    GetParamsAndPropsError = /* @__PURE__ */ ((GetParamsAndPropsError2) => {
+      GetParamsAndPropsError2[GetParamsAndPropsError2["NoMatchingStaticPath"] = 0] = "NoMatchingStaticPath";
+      return GetParamsAndPropsError2;
+    })(GetParamsAndPropsError || {});
+    clientAddressSymbol = Symbol.for("astro.clientAddress");
+    lastMessageCount = 1;
+    consoleLogDestination = {
+      write(event) {
+        let dest = console.error;
+        if (levels[event.level] < levels["error"]) {
+          dest = console.log;
+        }
+        function getPrefix() {
+          let prefix = "";
+          let type = event.type;
+          if (type) {
+            prefix += dim(dateTimeFormat.format(new Date()) + " ");
+            if (event.level === "info") {
+              type = bold(cyan(`[${type}]`));
+            } else if (event.level === "warn") {
+              type = bold(yellow(`[${type}]`));
+            } else if (event.level === "error") {
+              type = bold(red(`[${type}]`));
+            }
+            prefix += `${type} `;
+          }
+          return reset(prefix);
+        }
+        let message = event.message;
+        if (message === lastMessage) {
+          lastMessageCount++;
+          message = `${message} ${yellow(`(x${lastMessageCount})`)}`;
+        } else {
+          lastMessage = message;
+          lastMessageCount = 1;
+        }
+        const outMessage = getPrefix() + message;
+        dest(outMessage);
+        return true;
+      }
+    };
+    __accessCheck = (obj, member, msg) => {
+      if (!member.has(obj))
+        throw TypeError("Cannot " + msg);
+    };
+    __privateGet = (obj, member, getter) => {
+      __accessCheck(obj, member, "read from private field");
+      return getter ? getter.call(obj) : member.get(obj);
+    };
+    __privateAdd = (obj, member, value) => {
+      if (member.has(obj))
+        throw TypeError("Cannot add the same private member more than once");
+      member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+    };
+    __privateSet = (obj, member, value, setter) => {
+      __accessCheck(obj, member, "write to private field");
+      setter ? setter.call(obj, value) : member.set(obj, value);
+      return value;
+    };
+    __privateMethod = (obj, member, method) => {
+      __accessCheck(obj, member, "access private method");
+      return method;
+    };
+    App = class {
+      constructor(manifest, streaming = true) {
+        __privateAdd(this, _renderPage);
+        __privateAdd(this, _callEndpoint);
+        __privateAdd(this, _env, void 0);
+        __privateAdd(this, _manifest, void 0);
+        __privateAdd(this, _manifestData, void 0);
+        __privateAdd(this, _routeDataToRouteInfo, void 0);
+        __privateAdd(this, _encoder, new TextEncoder());
+        __privateAdd(this, _logging, {
+          dest: consoleLogDestination,
+          level: "info"
+        });
+        __privateAdd(this, _base, void 0);
+        __privateAdd(this, _baseWithoutTrailingSlash, void 0);
+        __privateSet(this, _manifest, manifest);
+        __privateSet(this, _manifestData, {
+          routes: manifest.routes.map((route) => route.routeData)
+        });
+        __privateSet(this, _routeDataToRouteInfo, new Map(manifest.routes.map((route) => [route.routeData, route])));
+        __privateSet(this, _env, createEnvironment({
+          adapterName: manifest.adapterName,
+          logging: __privateGet(this, _logging),
+          markdown: manifest.markdown,
+          mode: "production",
+          renderers: manifest.renderers,
+          async resolve(specifier) {
+            if (!(specifier in manifest.entryModules)) {
+              throw new Error(`Unable to resolve [${specifier}]`);
+            }
+            const bundlePath = manifest.entryModules[specifier];
+            switch (true) {
+              case bundlePath.startsWith("data:"):
+              case bundlePath.length === 0: {
+                return bundlePath;
+              }
+              default: {
+                return prependForwardSlash(joinPaths(manifest.base, bundlePath));
+              }
+            }
+          },
+          routeCache: new RouteCache(__privateGet(this, _logging)),
+          site: __privateGet(this, _manifest).site,
+          ssr: true,
+          streaming
+        }));
+        __privateSet(this, _base, __privateGet(this, _manifest).base || "/");
+        __privateSet(this, _baseWithoutTrailingSlash, removeTrailingForwardSlash(__privateGet(this, _base)));
+      }
+      removeBase(pathname) {
+        if (pathname.startsWith(__privateGet(this, _base))) {
+          return pathname.slice(__privateGet(this, _baseWithoutTrailingSlash).length + 1);
+        }
+        return pathname;
+      }
+      match(request, { matchNotFound = false } = {}) {
+        const url3 = new URL(request.url);
+        if (__privateGet(this, _manifest).assets.has(url3.pathname)) {
+          return void 0;
+        }
+        let pathname = "/" + this.removeBase(url3.pathname);
+        let routeData = matchRoute(pathname, __privateGet(this, _manifestData));
+        if (routeData) {
+          const asset = matchAssets(routeData, __privateGet(this, _manifest).assets);
+          if (asset)
+            return void 0;
+          return routeData;
+        } else if (matchNotFound) {
+          return matchRoute("/404", __privateGet(this, _manifestData));
+        } else {
+          return void 0;
+        }
+      }
+      async render(request, routeData) {
+        let defaultStatus = 200;
+        if (!routeData) {
+          routeData = this.match(request);
+          if (!routeData) {
+            defaultStatus = 404;
+            routeData = this.match(request, { matchNotFound: true });
+          }
+          if (!routeData) {
+            return new Response(null, {
+              status: 404,
+              statusText: "Not found"
+            });
+          }
+        }
+        if (routeData.route === "/404") {
+          defaultStatus = 404;
+        }
+        let mod = __privateGet(this, _manifest).pageMap.get(routeData.component);
+        if (routeData.type === "page") {
+          let response = await __privateMethod(this, _renderPage, renderPage_fn).call(this, request, routeData, mod, defaultStatus);
+          if (response.status === 500) {
+            const fiveHundredRouteData = matchRoute("/500", __privateGet(this, _manifestData));
+            if (fiveHundredRouteData) {
+              mod = __privateGet(this, _manifest).pageMap.get(fiveHundredRouteData.component);
+              try {
+                let fiveHundredResponse = await __privateMethod(this, _renderPage, renderPage_fn).call(this, request, fiveHundredRouteData, mod, 500);
+                return fiveHundredResponse;
+              } catch {
+              }
+            }
+          }
+          return response;
+        } else if (routeData.type === "endpoint") {
+          return __privateMethod(this, _callEndpoint, callEndpoint_fn).call(this, request, routeData, mod, defaultStatus);
+        } else {
+          throw new Error(`Unsupported route type [${routeData.type}].`);
+        }
+      }
+      setCookieHeaders(response) {
+        return getSetCookiesFromResponse(response);
+      }
+    };
+    _env = /* @__PURE__ */ new WeakMap();
+    _manifest = /* @__PURE__ */ new WeakMap();
+    _manifestData = /* @__PURE__ */ new WeakMap();
+    _routeDataToRouteInfo = /* @__PURE__ */ new WeakMap();
+    _encoder = /* @__PURE__ */ new WeakMap();
+    _logging = /* @__PURE__ */ new WeakMap();
+    _base = /* @__PURE__ */ new WeakMap();
+    _baseWithoutTrailingSlash = /* @__PURE__ */ new WeakMap();
+    _renderPage = /* @__PURE__ */ new WeakSet();
+    renderPage_fn = async function(request, routeData, mod, status = 200) {
+      const url3 = new URL(request.url);
+      const pathname = "/" + this.removeBase(url3.pathname);
+      const info = __privateGet(this, _routeDataToRouteInfo).get(routeData);
+      const links = createLinkStylesheetElementSet(info.links);
+      let scripts = /* @__PURE__ */ new Set();
+      for (const script of info.scripts) {
+        if ("stage" in script) {
+          if (script.stage === "head-inline") {
+            scripts.add({
+              props: {},
+              children: script.children
+            });
+          }
+        } else {
+          scripts.add(createModuleScriptElement(script));
+        }
+      }
+      try {
+        const ctx = createRenderContext({
+          request,
+          origin: url3.origin,
+          pathname,
+          scripts,
+          links,
+          route: routeData,
+          status
+        });
+        const response = await renderPage(mod, ctx, __privateGet(this, _env));
+        return response;
+      } catch (err) {
+        error(__privateGet(this, _logging), "ssr", err.stack || err.message || String(err));
+        return new Response(null, {
+          status: 500,
+          statusText: "Internal server error"
+        });
+      }
+    };
+    _callEndpoint = /* @__PURE__ */ new WeakSet();
+    callEndpoint_fn = async function(request, routeData, mod, status = 200) {
+      const url3 = new URL(request.url);
+      const pathname = "/" + this.removeBase(url3.pathname);
+      const handler = mod;
+      const ctx = createRenderContext({
+        request,
+        origin: url3.origin,
+        pathname,
+        route: routeData,
+        status
+      });
+      const result = await call(handler, __privateGet(this, _env), ctx);
+      if (result.type === "response") {
+        if (result.response.headers.get("X-Astro-Response") === "Not-Found") {
+          const fourOhFourRequest = new Request(new URL("/404", request.url));
+          const fourOhFourRouteData = this.match(fourOhFourRequest);
+          if (fourOhFourRouteData) {
+            return this.render(fourOhFourRequest, fourOhFourRouteData);
+          }
+        }
+        return result.response;
+      } else {
+        const body3 = result.body;
+        const headers = new Headers();
+        const mimeType = mime.getType(url3.pathname);
+        if (mimeType) {
+          headers.set("Content-Type", `${mimeType};charset=utf-8`);
+        } else {
+          headers.set("Content-Type", "text/plain;charset=utf-8");
+        }
+        const bytes = __privateGet(this, _encoder).encode(body3);
+        headers.set("Content-Length", bytes.byteLength.toString());
+        const response = new Response(bytes, {
+          status: 200,
+          headers
+        });
+        attachToResponse(response, result.cookies);
+        return response;
+      }
+    };
+    slotName = (str) => str.trim().replace(/[-_]([a-z])/g, (_2, w) => w.toUpperCase());
+    server_default = {
+      check,
+      renderToStaticMarkup
+    };
+  }
+});
+
+// .netlify/edge-functions/chunks/post1.f998635d.mjs
+var post1_f998635d_exports = {};
+__export(post1_f998635d_exports, {
+  _internal: () => _internal,
+  body: () => body,
+  collection: () => collection,
+  data: () => data,
+  id: () => id,
+  slug: () => slug
+});
+var id, collection, slug, body, data, _internal;
+var init_post1_f998635d = __esm({
+  ".netlify/edge-functions/chunks/post1.f998635d.mjs"() {
+    init_astro_2d2db69e();
+    id = "post1.mdx";
+    collection = "blog";
+    slug = "post1";
+    body = '\ntext\n$\\sum_1^2\\mathbb{B}^2$\n$\\displaystyle \\sum_1^2\\mathbb{B}^2$\ntext\n```js\nconsole.log("hi");\n```\n';
+    data = {
+      title: "post1"
+    };
+    _internal = {
+      filePath: "/home/n/data/p/blog/astro/src/content/blog/post1.mdx",
+      rawData: `
+title: "post1"
+layout: '@layouts/MdLayout.astro'`
+    };
+  }
+});
+
+// .netlify/edge-functions/chunks/post2.fc7d4b03.mjs
+var post2_fc7d4b03_exports = {};
+__export(post2_fc7d4b03_exports, {
+  _internal: () => _internal2,
+  body: () => body2,
+  collection: () => collection2,
+  data: () => data2,
+  id: () => id2,
+  slug: () => slug2
+});
+var id2, collection2, slug2, body2, data2, _internal2;
+var init_post2_fc7d4b03 = __esm({
+  ".netlify/edge-functions/chunks/post2.fc7d4b03.mjs"() {
+    init_astro_2d2db69e();
+    id2 = "post2.mdx";
+    collection2 = "blog";
+    slug2 = "post2";
+    body2 = "\ntext\n";
+    data2 = {
+      title: "post2"
+    };
+    _internal2 = {
+      filePath: "/home/n/data/p/blog/astro/src/content/blog/post2.mdx",
+      rawData: `
+title: "post2"
+layout: '@layouts/MdLayout.astro'`
+    };
+  }
+});
+
+// .netlify/edge-functions/chunks/MdLayout.86a59ce2.mjs
+var MdLayout_86a59ce2_exports = {};
+__export(MdLayout_86a59ce2_exports, {
+  default: () => $$MdLayout,
+  file: () => $$file,
+  url: () => $$url
+});
+var $$Astro, $$MdLayout, $$file, $$url;
+var init_MdLayout_86a59ce2 = __esm({
+  ".netlify/edge-functions/chunks/MdLayout.86a59ce2.mjs"() {
+    init_astro_2d2db69e();
+    $$Astro = createAstro();
+    $$MdLayout = createComponent(async ($$result, $$props, $$slots) => {
+      const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+      Astro2.self = $$MdLayout;
+      const { content } = Astro2.props;
+      return renderTemplate`<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+		<title>${content.title}</title>
+	${renderHead($$result)}</head>
+	<body style="
+    margin: 0;
+    padding: 0;
+    font-family: sans;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+  
+    display: grid;
+    grid-template-rows:
+      auto
+      1fr
+      auto;
+  ">
+    ${renderSlot($$result, $$slots["default"])}
+	</body></html>`;
+    }, "/home/n/data/p/blog/astro/src/layouts/MdLayout.astro");
+    $$file = "/home/n/data/p/blog/astro/src/layouts/MdLayout.astro";
+    $$url = void 0;
+  }
+});
+
+// .netlify/edge-functions/chunks/post1.cebf227b.mjs
+var post1_cebf227b_exports = {};
+__export(post1_cebf227b_exports, {
+  Content: () => Content,
+  collectedLinks: () => collectedLinks,
+  collectedStyles: () => collectedStyles,
+  getHeadings: () => getHeadings
+});
+function getHeadings() {
+  return [];
+}
+function _createMdxContent(props) {
+  const _components = Object.assign({
+    p: "p",
+    span: "span",
+    pre: "pre",
+    code: "code"
+  }, props.components);
+  return createVNode(Fragment, {
+    children: [createVNode(_components.p, {
+      children: ["text\n", createVNode(_components.span, {
+        className: "math math-inline",
+        children: createVNode(_components.span, {
+          className: "katex",
+          children: createVNode(_components.span, {
+            className: "katex-html",
+            "aria-hidden": "true",
+            children: createVNode(_components.span, {
+              className: "base",
+              children: [createVNode(_components.span, {
+                className: "strut",
+                style: {
+                  height: "1.2537em",
+                  verticalAlign: "-0.2997em"
+                }
+              }), createVNode(_components.span, {
+                className: "mop",
+                children: [createVNode(_components.span, {
+                  className: "mop op-symbol small-op",
+                  style: {
+                    position: "relative",
+                    top: "0em"
+                  },
+                  children: "\u2211"
+                }), createVNode(_components.span, {
+                  className: "msupsub",
+                  children: createVNode(_components.span, {
+                    className: "vlist-t vlist-t2",
+                    children: [createVNode(_components.span, {
+                      className: "vlist-r",
+                      children: [createVNode(_components.span, {
+                        className: "vlist",
+                        style: {
+                          height: "0.954em"
+                        },
+                        children: [createVNode(_components.span, {
+                          style: {
+                            top: "-2.4003em",
+                            marginLeft: "0em",
+                            marginRight: "0.05em"
+                          },
+                          children: [createVNode(_components.span, {
+                            className: "pstrut",
+                            style: {
+                              height: "2.7em"
+                            }
+                          }), createVNode(_components.span, {
+                            className: "sizing reset-size6 size3 mtight",
+                            children: createVNode(_components.span, {
+                              className: "mord mtight",
+                              children: "1"
+                            })
+                          })]
+                        }), createVNode(_components.span, {
+                          style: {
+                            top: "-3.2029em",
+                            marginRight: "0.05em"
+                          },
+                          children: [createVNode(_components.span, {
+                            className: "pstrut",
+                            style: {
+                              height: "2.7em"
+                            }
+                          }), createVNode(_components.span, {
+                            className: "sizing reset-size6 size3 mtight",
+                            children: createVNode(_components.span, {
+                              className: "mord mtight",
+                              children: "2"
+                            })
+                          })]
+                        })]
+                      }), createVNode(_components.span, {
+                        className: "vlist-s",
+                        children: "\u200B"
+                      })]
+                    }), createVNode(_components.span, {
+                      className: "vlist-r",
+                      children: createVNode(_components.span, {
+                        className: "vlist",
+                        style: {
+                          height: "0.2997em"
+                        },
+                        children: createVNode(_components.span, {})
+                      })
+                    })]
+                  })
+                })]
+              }), createVNode(_components.span, {
+                className: "mspace",
+                style: {
+                  marginRight: "0.1667em"
+                }
+              }), createVNode(_components.span, {
+                className: "mord",
+                children: [createVNode(_components.span, {
+                  className: "mord mathbb",
+                  children: "B"
+                }), createVNode(_components.span, {
+                  className: "msupsub",
+                  children: createVNode(_components.span, {
+                    className: "vlist-t",
+                    children: createVNode(_components.span, {
+                      className: "vlist-r",
+                      children: createVNode(_components.span, {
+                        className: "vlist",
+                        style: {
+                          height: "0.8141em"
+                        },
+                        children: createVNode(_components.span, {
+                          style: {
+                            top: "-3.063em",
+                            marginRight: "0.05em"
+                          },
+                          children: [createVNode(_components.span, {
+                            className: "pstrut",
+                            style: {
+                              height: "2.7em"
+                            }
+                          }), createVNode(_components.span, {
+                            className: "sizing reset-size6 size3 mtight",
+                            children: createVNode(_components.span, {
+                              className: "mord mtight",
+                              children: "2"
+                            })
+                          })]
+                        })
+                      })
+                    })
+                  })
+                })]
+              })]
+            })
+          })
+        })
+      }), "\n", createVNode(_components.span, {
+        className: "math math-inline",
+        children: createVNode(_components.span, {
+          className: "katex",
+          children: createVNode(_components.span, {
+            className: "katex-html",
+            "aria-hidden": "true",
+            children: createVNode(_components.span, {
+              className: "base",
+              children: [createVNode(_components.span, {
+                className: "strut",
+                style: {
+                  height: "3.0682em",
+                  verticalAlign: "-1.2671em"
+                }
+              }), createVNode(_components.span, {
+                className: "mop op-limits",
+                children: createVNode(_components.span, {
+                  className: "vlist-t vlist-t2",
+                  children: [createVNode(_components.span, {
+                    className: "vlist-r",
+                    children: [createVNode(_components.span, {
+                      className: "vlist",
+                      style: {
+                        height: "1.8011em"
+                      },
+                      children: [createVNode(_components.span, {
+                        style: {
+                          top: "-1.8829em",
+                          marginLeft: "0em"
+                        },
+                        children: [createVNode(_components.span, {
+                          className: "pstrut",
+                          style: {
+                            height: "3.05em"
+                          }
+                        }), createVNode(_components.span, {
+                          className: "sizing reset-size6 size3 mtight",
+                          children: createVNode(_components.span, {
+                            className: "mord mtight",
+                            children: "1"
+                          })
+                        })]
+                      }), createVNode(_components.span, {
+                        style: {
+                          top: "-3.05em"
+                        },
+                        children: [createVNode(_components.span, {
+                          className: "pstrut",
+                          style: {
+                            height: "3.05em"
+                          }
+                        }), createVNode(_components.span, {
+                          children: createVNode(_components.span, {
+                            className: "mop op-symbol large-op",
+                            children: "\u2211"
+                          })
+                        })]
+                      }), createVNode(_components.span, {
+                        style: {
+                          top: "-4.3em",
+                          marginLeft: "0em"
+                        },
+                        children: [createVNode(_components.span, {
+                          className: "pstrut",
+                          style: {
+                            height: "3.05em"
+                          }
+                        }), createVNode(_components.span, {
+                          className: "sizing reset-size6 size3 mtight",
+                          children: createVNode(_components.span, {
+                            className: "mord mtight",
+                            children: "2"
+                          })
+                        })]
+                      })]
+                    }), createVNode(_components.span, {
+                      className: "vlist-s",
+                      children: "\u200B"
+                    })]
+                  }), createVNode(_components.span, {
+                    className: "vlist-r",
+                    children: createVNode(_components.span, {
+                      className: "vlist",
+                      style: {
+                        height: "1.2671em"
+                      },
+                      children: createVNode(_components.span, {})
+                    })
+                  })]
+                })
+              }), createVNode(_components.span, {
+                className: "mspace",
+                style: {
+                  marginRight: "0.1667em"
+                }
+              }), createVNode(_components.span, {
+                className: "mord",
+                children: [createVNode(_components.span, {
+                  className: "mord mathbb",
+                  children: "B"
+                }), createVNode(_components.span, {
+                  className: "msupsub",
+                  children: createVNode(_components.span, {
+                    className: "vlist-t",
+                    children: createVNode(_components.span, {
+                      className: "vlist-r",
+                      children: createVNode(_components.span, {
+                        className: "vlist",
+                        style: {
+                          height: "0.8641em"
+                        },
+                        children: createVNode(_components.span, {
+                          style: {
+                            top: "-3.113em",
+                            marginRight: "0.05em"
+                          },
+                          children: [createVNode(_components.span, {
+                            className: "pstrut",
+                            style: {
+                              height: "2.7em"
+                            }
+                          }), createVNode(_components.span, {
+                            className: "sizing reset-size6 size3 mtight",
+                            children: createVNode(_components.span, {
+                              className: "mord mtight",
+                              children: "2"
+                            })
+                          })]
+                        })
+                      })
+                    })
+                  })
+                })]
+              })]
+            })
+          })
+        })
+      }), "\ntext"]
+    }), "\n", createVNode(_components.pre, {
+      className: "astro-code",
+      style: {
+        backgroundColor: "#FDF6E3",
+        overflowX: "auto",
+        whiteSpace: "pre-wrap",
+        wordWrap: "break-word"
+      },
+      children: createVNode(_components.code, {
+        children: createVNode(_components.span, {
+          className: "line",
+          children: [createVNode(_components.span, {
+            style: {
+              color: "#268BD2"
+            },
+            children: "console"
+          }), createVNode(_components.span, {
+            style: {
+              color: "#657B83"
+            },
+            children: "."
+          }), createVNode(_components.span, {
+            style: {
+              color: "#268BD2"
+            },
+            children: "log"
+          }), createVNode(_components.span, {
+            style: {
+              color: "#657B83"
+            },
+            children: "("
+          }), createVNode(_components.span, {
+            style: {
+              color: "#2AA198"
+            },
+            children: '"hi"'
+          }), createVNode(_components.span, {
+            style: {
+              color: "#657B83"
+            },
+            children: ");"
+          })]
+        })
+      })
+    })]
+  });
+}
+function MDXContent(props = {}) {
+  return createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent, {
+      ...props
+    })
+  });
+}
+var MDXLayout, frontmatter, url, file, Content, collectedLinks, collectedStyles;
+var init_post1_cebf227b = __esm({
+  ".netlify/edge-functions/chunks/post1.cebf227b.mjs"() {
+    init_astro_2d2db69e();
+    MDXLayout = async function({
+      children
+    }) {
+      const Layout = (await Promise.resolve().then(() => (init_MdLayout_86a59ce2(), MdLayout_86a59ce2_exports))).default;
+      const {
+        layout,
+        ...content
+      } = frontmatter;
+      content.file = file;
+      content.url = url;
+      return createVNode(Layout, {
+        file,
+        url,
+        content,
+        frontmatter: content,
+        headings: getHeadings(),
+        "server:root": true,
+        children
+      });
+    };
+    frontmatter = {
+      "title": "post1",
+      "layout": "@layouts/MdLayout.astro"
+    };
+    __astro_tag_component__(getHeadings, "astro:jsx");
+    __astro_tag_component__(MDXContent, "astro:jsx");
+    url = "src/content/blog/post1.mdx";
+    file = "/home/n/data/p/blog/astro/src/content/blog/post1.mdx";
+    Content = (props = {}) => MDXContent({
+      ...props,
+      components: { Fragment, ...props.components }
+    });
+    Content[Symbol.for("astro.needsHeadRendering")] = !Boolean(frontmatter.layout);
+    collectedLinks = "@@ASTRO-LINKS@@";
+    collectedStyles = "@@ASTRO-STYLES@@";
+  }
+});
+
+// .netlify/edge-functions/chunks/post2.07f67ea9.mjs
+var post2_07f67ea9_exports = {};
+__export(post2_07f67ea9_exports, {
+  Content: () => Content2,
+  collectedLinks: () => collectedLinks2,
+  collectedStyles: () => collectedStyles2,
+  getHeadings: () => getHeadings2
+});
+function getHeadings2() {
+  return [];
+}
+function _createMdxContent2(props) {
+  const _components = Object.assign({
+    p: "p"
+  }, props.components);
+  return createVNode(_components.p, {
+    children: "text"
+  });
+}
+function MDXContent2(props = {}) {
+  return createVNode(MDXLayout2, {
+    ...props,
+    children: createVNode(_createMdxContent2, {
+      ...props
+    })
+  });
+}
+var MDXLayout2, frontmatter2, url2, file2, Content2, collectedLinks2, collectedStyles2;
+var init_post2_07f67ea9 = __esm({
+  ".netlify/edge-functions/chunks/post2.07f67ea9.mjs"() {
+    init_astro_2d2db69e();
+    MDXLayout2 = async function({
+      children
+    }) {
+      const Layout = (await Promise.resolve().then(() => (init_MdLayout_86a59ce2(), MdLayout_86a59ce2_exports))).default;
+      const {
+        layout,
+        ...content
+      } = frontmatter2;
+      content.file = file2;
+      content.url = url2;
+      return createVNode(Layout, {
+        file: file2,
+        url: url2,
+        content,
+        frontmatter: content,
+        headings: getHeadings2(),
+        "server:root": true,
+        children
+      });
+    };
+    frontmatter2 = {
+      "title": "post2",
+      "layout": "@layouts/MdLayout.astro"
+    };
+    __astro_tag_component__(getHeadings2, "astro:jsx");
+    __astro_tag_component__(MDXContent2, "astro:jsx");
+    url2 = "src/content/blog/post2.mdx";
+    file2 = "/home/n/data/p/blog/astro/src/content/blog/post2.mdx";
+    Content2 = (props = {}) => MDXContent2({
+      ...props,
+      components: { Fragment, ...props.components }
+    });
+    Content2[Symbol.for("astro.needsHeadRendering")] = !Boolean(frontmatter2.layout);
+    collectedLinks2 = "@@ASTRO-LINKS@@";
+    collectedStyles2 = "@@ASTRO-STYLES@@";
+  }
+});
+
+// .netlify/edge-functions/entry.js
+init_astro_2d2db69e();
+
+// .netlify/edge-functions/chunks/pages/all.9b4848e1.mjs
+init_astro_2d2db69e();
+var $$Astro$5 = createAstro();
 var $$BaseLayout = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
   Astro2.self = $$BaseLayout;
   return renderTemplate`<html lang="en">
 	<head>
@@ -3793,10 +4547,10 @@ var $$BaseLayout = createComponent(async ($$result, $$props, $$slots) => {
     ${renderSlot($$result, $$slots["default"])}
 	</body></html>`;
 }, "/home/n/data/p/blog/astro/src/layouts/BaseLayout.astro");
-var $$Astro = createAstro();
-var $$Index = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
-  Astro2.self = $$Index;
+var $$Astro$4 = createAstro();
+var $$Index$1 = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  Astro2.self = $$Index$1;
   let counter = 0;
   if (Astro2.cookies.has("counter")) {
     const cookie = Astro2.cookies.get("counter");
@@ -3814,28 +4568,118 @@ var $$Index = createComponent(async ($$result, $$props, $$slots) => {
   </main><fooger>footer
 </fooger>` })}`;
 }, "/home/n/data/p/blog/astro/src/pages/index.astro");
-var $$file = "/home/n/data/p/blog/astro/src/pages/index.astro";
-var $$url = "";
+var $$file$2 = "/home/n/data/p/blog/astro/src/pages/index.astro";
+var $$url$2 = "";
 var _page0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
+  default: $$Index$1,
+  file: $$file$2,
+  url: $$url$2
+}, Symbol.toStringTag, { value: "Module" }));
+var $$Astro$3 = createAstro();
+var $$Nav = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  Astro2.self = $$Nav;
+  const { name } = Astro2.props;
+  return renderTemplate`${maybeRenderHead($$result)}<nav style="
+  padding: 0.5rem;
+">
+<a href="/">home</a>
+${name && renderTemplate`<span>/</span>`}
+${name && renderTemplate`<a${addAttribute(`/${name}`, "href")}>${name}</a>`}
+</nav>`;
+}, "/home/n/data/p/blog/astro/src/components/Nav.astro");
+var $$Astro$2 = createAstro();
+var $$Title = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  Astro2.self = $$Title;
+  return renderTemplate`${maybeRenderHead($$result)}<h1 class="bg-blue-800 pl-4 pt-2 text-3xl text-white">
+  ${renderSlot($$result, $$slots["default"])}
+</h1>`;
+}, "/home/n/data/p/blog/astro/src/components/Title.astro");
+var contentDir = "/src/content/";
+var entryGlob = /* @__PURE__ */ Object.assign({
+  "/src/content/blog/post1.mdx": () => Promise.resolve().then(() => (init_post1_f998635d(), post1_f998635d_exports)),
+  "/src/content/blog/post2.mdx": () => Promise.resolve().then(() => (init_post2_fc7d4b03(), post2_fc7d4b03_exports))
+});
+var collectionToEntryMap = createCollectionToGlobResultMap({
+  globResult: entryGlob,
+  contentDir
+});
+var renderEntryGlob = /* @__PURE__ */ Object.assign({
+  "/src/content/blog/post1.mdx": () => Promise.resolve().then(() => (init_post1_cebf227b(), post1_cebf227b_exports)),
+  "/src/content/blog/post2.mdx": () => Promise.resolve().then(() => (init_post2_07f67ea9(), post2_07f67ea9_exports))
+});
+var collectionToRenderEntryMap = createCollectionToGlobResultMap({
+  globResult: renderEntryGlob,
+  contentDir
+});
+var getCollection = createGetCollection({
+  collectionToEntryMap,
+  collectionToRenderEntryMap
+});
+var getEntryBySlug = createGetEntryBySlug({
+  getCollection,
+  collectionToRenderEntryMap
+});
+var $$Astro$1 = createAstro();
+var $$Index = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  Astro2.self = $$Index;
+  const posts = await getCollection("blog");
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, {}, { "default": () => renderTemplate`${renderComponent($$result, "Nav", $$Nav, {})}${maybeRenderHead($$result)}<main style="
+    display: flex;
+    flex-direction: column;
+  ">
+  ${renderComponent($$result, "Title", $$Title, {}, { "default": () => renderTemplate`Posts` })}
+    ${posts.map((post) => renderTemplate`<a${addAttribute(`/posts/${post.slug}`, "href")}>${post.data.title}</a>`)}
+  </main><footer>footer</footer>` })}`;
+}, "/home/n/data/p/blog/astro/src/pages/posts/index.astro");
+var $$file$1 = "/home/n/data/p/blog/astro/src/pages/posts/index.astro";
+var $$url$1 = "/posts";
+var _page1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
   default: $$Index,
-  file: $$file,
-  url: $$url
+  file: $$file$1,
+  url: $$url$1
+}, Symbol.toStringTag, { value: "Module" }));
+var $$Astro2 = createAstro();
+var $$slug = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro2, $$props, $$slots);
+  Astro2.self = $$slug;
+  const post = await getEntryBySlug("blog", Astro2.params.slug);
+  const { Content: Content3 } = await post?.render();
+  return renderTemplate`${renderComponent($$result, "Nav", $$Nav, { "name": "posts" })}
+
+${maybeRenderHead($$result)}<main style="
+  padding: 0.5rem;
+">
+${renderComponent($$result, "Title", $$Title, {}, { "default": () => renderTemplate`${post?.data.title}` })}
+${renderComponent($$result, "Content", Content3, {})}
+</main>
+<footer>footer</footer>`;
+}, "/home/n/data/p/blog/astro/src/pages/posts/[slug].astro");
+var $$file2 = "/home/n/data/p/blog/astro/src/pages/posts/[slug].astro";
+var $$url2 = "/posts/[slug]";
+var _page2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: $$slug,
+  file: $$file2,
+  url: $$url2
 }, Symbol.toStringTag, { value: "Module" }));
 
-// .netlify/edge-functions/chunks/prerender.f5b3a52d.mjs
+// .netlify/edge-functions/chunks/prerender.6961f91a.mjs
 var noop = () => {
 };
 var _ = noop;
-var a = noop;
 
 // .netlify/edge-functions/entry.js
 var clientAddressSymbol2 = Symbol.for("astro.clientAddress");
 function createExports(manifest) {
   const app = new App(manifest);
   const handler = async (request) => {
-    const url = new URL(request.url);
-    if (manifest.assets.has(url.pathname)) {
+    const url3 = new URL(request.url);
+    if (manifest.assets.has(url3.pathname)) {
       return;
     }
     if (app.match(request)) {
@@ -3860,9 +4704,9 @@ var adapter = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePropert
   __proto__: null,
   createExports
 }, Symbol.toStringTag, { value: "Module" }));
-var pageMap = /* @__PURE__ */ new Map([["src/pages/index.astro", _page0], ["src/pages/posts/index.astro", _], ["src/pages/posts/[slug].astro", a]]);
+var pageMap = /* @__PURE__ */ new Map([["src/pages/index.astro", _page0], ["src/pages/posts/index.astro", _page1], ["src/pages/posts/[slug].astro", _page2], ["src/pages/test.astro", _]]);
 var renderers = [Object.assign({ "name": "astro:jsx", "serverEntrypoint": "astro/jsx/server.js", "jsxImportSource": "astro" }, { ssr: server_default })];
-var _manifest2 = Object.assign(deserializeManifest({ "adapterName": "@astrojs/netlify/edge-functions", "routes": [{ "file": "posts/index.html", "links": [], "scripts": [], "routeData": { "route": "/posts", "type": "page", "pattern": "^\\/posts\\/?$", "segments": [[{ "content": "posts", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/posts/index.astro", "pathname": "/posts", "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": [], "scripts": [], "routeData": { "route": "/", "type": "page", "pattern": "^\\/$", "segments": [], "params": [], "component": "src/pages/index.astro", "pathname": "/", "_meta": { "trailingSlash": "ignore" } } }], "base": "/", "markdown": { "drafts": false, "syntaxHighlight": "shiki", "shikiConfig": { "langs": [], "theme": "solarized-light", "wrap": true }, "remarkPlugins": [null], "rehypePlugins": [[null, { "output": "html" }]], "remarkRehype": {}, "gfm": true, "smartypants": true, "contentDir": "file:///home/n/data/p/blog/astro/src/content/" }, "pageMap": null, "renderers": [], "entryModules": { "\0@astrojs-ssr-virtual-entry": "_@astrojs-ssr-virtual-entry.mjs", "/home/n/data/p/blog/astro/src/content/blog/post1.mdx?astroContent=true": "chunks/post1.48751f6c.mjs", "/home/n/data/p/blog/astro/src/content/blog/post2.mdx?astroContent=true": "chunks/post2.1597bd5d.mjs", "/home/n/data/p/blog/astro/src/content/blog/post1.mdx?astroAssetSsr=true": "chunks/post1.373b7d2d.mjs", "/home/n/data/p/blog/astro/src/content/blog/post2.mdx?astroAssetSsr=true": "chunks/post2.f87ecae4.mjs", "/home/n/data/p/blog/astro/src/layouts/MdLayout.astro": "chunks/MdLayout.c4122217.mjs", "astro:scripts/before-hydration.js": "" }, "assets": ["/favicon.ico", "/posts/index.html"] }), {
+var _manifest2 = Object.assign(deserializeManifest({ "adapterName": "@astrojs/netlify/edge-functions", "routes": [{ "file": "test/index.html", "links": [], "scripts": [], "routeData": { "route": "/test", "type": "page", "pattern": "^\\/test\\/?$", "segments": [[{ "content": "test", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/test.astro", "pathname": "/test", "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": [], "scripts": [], "routeData": { "route": "/", "type": "page", "pattern": "^\\/$", "segments": [], "params": [], "component": "src/pages/index.astro", "pathname": "/", "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": [], "scripts": [], "routeData": { "route": "/posts", "type": "page", "pattern": "^\\/posts\\/?$", "segments": [[{ "content": "posts", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/posts/index.astro", "pathname": "/posts", "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": [], "scripts": [], "routeData": { "route": "/posts/[slug]", "type": "page", "pattern": "^\\/posts\\/([^/]+?)\\/?$", "segments": [[{ "content": "posts", "dynamic": false, "spread": false }], [{ "content": "slug", "dynamic": true, "spread": false }]], "params": ["slug"], "component": "src/pages/posts/[slug].astro", "_meta": { "trailingSlash": "ignore" } } }], "base": "/", "markdown": { "drafts": false, "syntaxHighlight": "shiki", "shikiConfig": { "langs": [], "theme": "solarized-light", "wrap": true }, "remarkPlugins": [null], "rehypePlugins": [[null, { "output": "html" }]], "remarkRehype": {}, "gfm": true, "smartypants": true, "contentDir": "file:///home/n/data/p/blog/astro/src/content/" }, "pageMap": null, "renderers": [], "entryModules": { "\0@astrojs-ssr-virtual-entry": "_@astrojs-ssr-virtual-entry.mjs", "/home/n/data/p/blog/astro/src/content/blog/post1.mdx?astroContent=true": "chunks/post1.f998635d.mjs", "/home/n/data/p/blog/astro/src/content/blog/post2.mdx?astroContent=true": "chunks/post2.fc7d4b03.mjs", "/home/n/data/p/blog/astro/src/content/blog/post1.mdx?astroAssetSsr=true": "chunks/post1.cebf227b.mjs", "/home/n/data/p/blog/astro/src/content/blog/post2.mdx?astroAssetSsr=true": "chunks/post2.07f67ea9.mjs", "/home/n/data/p/blog/astro/src/layouts/MdLayout.astro": "chunks/MdLayout.86a59ce2.mjs", "astro:scripts/before-hydration.js": "" }, "assets": ["/favicon.ico", "/test/index.html"] }), {
   pageMap,
   renderers
 });
